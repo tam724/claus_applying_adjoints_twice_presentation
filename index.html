@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Appying Adjoints Twice</title>
+
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+		
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/serif.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<!-- Title frame -->
+				<section class="center">
+					<h3 style="margin-bottom: 100px;">
+						Applying Adjoints Twice: An Efficient Gradient Implementation for Models with Linear Structure with Applications in Reconstruction for EPMA
+					</h3>
+					<div height="50px"></div>
+					<p><strong>Tamme Claus</strong></p>
+					<p>ACoM, Applied and Computational Mathematics, RWTH Aachen University</p>
+					<p>2024</p>
+				</section>
+				
+				<!-- Motivation -->
+				<section style="text-align: left;">
+					<h3>
+						Motivation - from Linear Algebra
+					</h3>
+					Consider Matrix Multiplication ($N >> I, J$):
+					<div class="r-stack">
+						<span class="fragment fade-out" data-fragment-index="1">\[
+							\underbrace{\begin{pmatrix}
+							&   &   \\
+							& \Sigma^{(ij)} &   \\
+							&   &   \end{pmatrix}^{\color{white}{T}}}_{I \times J} = 
+							\color{white}{\Bigg(}
+							\underbrace{\begin{pmatrix}
+							— & h^{(1)} & — \\
+							— & h^{(i)} & — \\
+							— & h^{(I)} & — \\
+							\end{pmatrix}}_{I \times N} 
+							\cdot{}
+							\color{white}{\Bigg(}
+							\underbrace{\boldsymbol{A}^{\color{white}{*}}}_{N \times N}
+							\color{white}{\Bigg)
+							}
+							\cdot{}
+							\underbrace{
+							\begin{pmatrix}
+								| & | & | \\
+								g^{(1)} &  g^{(j)} & g^{(J)} \\
+								| & | & | \\
+							\end{pmatrix}}_{N \times J}
+							\color{white}{\Bigg)}
+						\]</span>
+						<span class="fragment fade-in-then-out" data-fragment-index="1">\[
+							\underbrace{\begin{pmatrix}
+							&   &   \\
+							& \Sigma^{(ij)} &   \\
+							&   &   \end{pmatrix}^{\color{white}{T}}}_{I \times J} = 
+							\color{blue}{\Bigg(}
+							\underbrace{\begin{pmatrix}
+							— & h^{(1)} & — \\
+							— & h^{(i)} & — \\
+							— & h^{(I)} & — \\
+							\end{pmatrix}}_{I \times N} 
+							\cdot{}
+							\color{white}{\Bigg(}
+							\underbrace{\boldsymbol{A}^{\color{white}{*}}}_{N \times N}
+							\color{blue}{\Bigg)
+							}
+							\cdot{}
+							\underbrace{
+							\begin{pmatrix}
+								| & | & | \\
+								g^{(1)} &  g^{(j)} & g^{(J)} \\
+								| & | & | \\
+							\end{pmatrix}}_{N \times J}
+							\color{white}{\Bigg)}
+						\]</span>
+						<span class="fragment fade-in-then-out" data-fragment-index="2">\[
+							\underbrace{\begin{pmatrix}
+							&   &   \\
+							& \Sigma^{(ij)} &   \\
+							&   &   \end{pmatrix}^{\color{white}{T}}}_{I \times J} = 
+							\color{white}{\Bigg(}
+							\underbrace{\begin{pmatrix}
+							— & h^{(1)} & — \\
+							— & h^{(i)} & — \\
+							— & h^{(I)} & — \\
+							\end{pmatrix}}_{I \times N} 
+							\cdot{}
+							\color{red}{\Bigg(}
+							\underbrace{\boldsymbol{A}^{\color{white}{*}}}_{N \times N}
+							\color{white}{\Bigg)
+							}
+							\cdot{}
+							\underbrace{
+							\begin{pmatrix}
+								| & | & | \\
+								g^{(1)} &  g^{(j)} & g^{(J)} \\
+								| & | & | \\
+							\end{pmatrix}}_{N \times J}
+							\color{red}{\Bigg)}
+						\]</span>
+						<span class="fragment fade-in" data-fragment-index="3">\[
+							\underbrace{\begin{pmatrix}
+							&   &   \\
+							& \Sigma^{(ij)} &   \\
+							&   &   \end{pmatrix}^{\color{white}{T}}}_{I \times J} = 
+							\color{blue}{\Bigg(}
+							\underbrace{\begin{pmatrix}
+							— & h^{(1)} & — \\
+							— & h^{(i)} & — \\
+							— & h^{(I)} & — \\
+							\end{pmatrix}}_{I \times N} 
+							\cdot{}
+							\color{red}{\Bigg(}
+							\underbrace{\boldsymbol{A}^{\color{white}{*}}}_{N \times N}
+							\color{blue}{\Bigg)
+							}
+							\cdot{}
+							\underbrace{
+							\begin{pmatrix}
+								| & | & | \\
+								g^{(1)} &  g^{(j)} & g^{(J)} \\
+								| & | & | \\
+							\end{pmatrix}}_{N \times J}
+							\color{red}{\Bigg)}
+						\]</span>
+						<!-- <span style="background-color:#fff;" class="fragment fade-in" data-fragment-index="6">\[
+							\underbrace{\begin{pmatrix}
+							&   &   \\
+							& \Sigma^{(ij)} &   \\
+							&   &   \end{pmatrix}^{\color{black}{T}}}_{J \times I} = 
+							\color{white}{\Bigg(}
+							\underbrace{\begin{pmatrix}
+							— & g^{(1)} & — \\
+							— & g^{(j)} & — \\
+							— & g^{(J)} & — \\
+							\end{pmatrix}}_{J \times N}
+							\cdot{}
+							\color{white}{\Bigg(}
+							\underbrace{\boldsymbol{A}^*}_{N \times N}
+							\color{white}{\Bigg)}
+							\cdot{}
+							\underbrace{
+							\begin{pmatrix}
+								| & | & | \\
+								h^{(1)} &  h^{(i)} & h^{(I)} \\
+								| & | & | \\
+							\end{pmatrix}}_{N \times I}
+							\color{white}{\Bigg)}
+						\]</span> -->
+					</div>
+					<p>where to bracket?</p>
+					<p style="text-align: center" class="fragment fade-in" data-fragment-index="4">
+						different computational costs: $\color{red}{J\times N^2 + IJ\times N} \text{ or } \color{blue}{J\times N^2 + IJ\times N}$
+					</p>
+						<span class="fragment fade-in" data-fragment-index="5">
+							<ul>
+								<li>
+									what happens if $\boldsymbol A$ is more general, e.g. "solution of a linear system / (linear, linearized) weak form" instead of "matrix multiplication"?
+									\[
+										\boldsymbol A g^{(i)} = \{u \in V \, | \, a(u, v) = f_{g^{(i)}}(v) \quad \forall v \in V\}
+									\]
+								</li>
+								<li>
+									what happens if $\boldsymbol A$ is a derivative (structure: chain rule, product rule, ...)?
+									\[
+										\boldsymbol A g^{(j)} = \frac{\partial f(h(w))}{\partial v}\frac{\partial h(w)}{\partial w}g^{(i)}
+									\]
+								</li>
+							</ul>
+						</span>
+						<span class="fragment fade-in" data-fragment-index="6">
+							In general (reduced cost, if $J < I$):
+							\[
+								\underbrace{\Sigma^T}_{J\times I} = \underbrace{G^T}_{J \times \infty} \cdot{}  \underbrace{A^*}_{\infty \times \infty} \cdot{} \underbrace{H^T}_{\infty \times I}
+							\]
+							where $\boldsymbol A ^* $is the <em>adjoint </em> operator.
+						</span>
+				</section>
+
+				<!-- Material Reconstruction in EPMA-->
+				<section style="text-align: left;">
+					<h3>Material Reconstruction in Electron Probe Microanalysis (EPMA)</h3>
+					<div style="display:flex;">
+						<div class="r-stack" style="flex:1">
+							<img class="fragment fade-out" data-fragment-index="1" src="figures/01_material.svg" alt="Electron Fluence Animation"/>
+							<img class="fragment fade-in-then-out" data-fragment-index="1" src="figures/02_forward.svg" alt="Electron Fluence Animation"/>
+							<img class="fragment fade-in-then-out" data-fragment-index="2" src="figures/03_ionization.svg" alt="Electron Fluence Animation"/>
+							<img class="fragment fade-in-then-out" data-fragment-index="3" src="figures/04_interaction_volume.svg" alt="Electron Fluence Animation"/>
+							<img class="fragment fade-in-then-out" data-fragment-index="4" src="figures/05_linescan1.svg" alt="Electron Fluence Animation"/>
+							<img class="fragment fade-in-then-out" data-fragment-index="5" src="figures/06_linescan2.svg" alt="Electron Fluence Animation"/>
+							<img class="fragment fade-in-then-out" data-fragment-index="6" src="figures/07_linescan3.svg" alt="Electron Fluence Animation"/>
+							<img class="fragment fade-in-then-out" data-fragment-index="7" src="figures/08_full_measurements.svg" alt="Electron Fluence Animation"/>
+							<!-- <img class="fragment fade-in-then-out" src="figures/01_material.svg" alt="Electron Fluence Animation"/> -->
+						</div>
+						<div style="flex:1">
+							<ul>
+								<li>Example: Consider a two-phase material with <span style="color: orange">Material A</span> and <span style="color: green;">Material B</span></li>
+								<li>Shoot the sample with <span style="color:blue">electrons</span></li>
+								<li><span style="color:blue">Electron</span> propagation is affected by scattering. (animated: different energies)</li>
+								<li>Ionization and successive emission of characteristic x-rays (wavelength differs between <span style="color:orange">A-photons</span> and <span style="color:green">B-photons</span>)</li>
+								<li>Detector measures the total wavelength-dispersive photon intensity (of <span style="color:orange">A-</span> and <span style="color:green">B-</span>photons)</li>
+								<li>Spatial information gained via different beam positions (linescan),</li>
+								<li>... with different beam angles</li>
+								<li>... and different beam energies</li>
+							</ul>
+						</div>
+
+					</div>
+				</section>
+
+				<!-- Gradients in Inverse Problems-->
+				<section style="text-align: left;">
+					<h3>Gradients in Inverse Problems</h3>
+				</section>
+
+				<!-- Riesz Representation Theorem/Def Adjoint -->
+				<!-- <section style="text-align: left;">
+					<h3>Riesz Representation Theorem/Definition of the Adjoint</h3>
+
+					<h4>Riesz Representation Theorem</h4>
+					<p>
+						Let $(H, \langle \cdot{}, \cdot{} \rangle_H)$ be a (real) Hilbert space with inner product $\langle \cdot{}, \cdot{} \rangle_H$. For every continuous linear functional $f_\varphi \in H^*$ (the dual of $H$), there exists a unique vector $\varphi \in H$, called the <em>Riesz Representation</em> of $f_\varphi$, such that
+						\[
+							f_\varphi(x) = \langle \varphi, x \rangle_H \quad \forall x \in H
+						\]
+					</p>
+
+					<h4>Definition: Adjoint Operator</h4>
+					Let $(G, \langle \cdot{}, \cdot{} \rangle_G)$ be another (real) Hilbert space, $A:G\to H$ a continuous linear operator between $G$ and $H$ and $f_h \in  H^*$ a continuous linear functional.
+					\[
+						f_h(A(g)) = \langle h, A(g) \rangle_H \quad \forall g \in G
+					\]
+					$f_h(A(g))$ is also a continuous linear functional $f_\lambda(g)$ on $G$ with a representation $\lambda \in G$
+					\[
+						f_h(A(g)) = f_\lambda(g) = \langle \lambda, g \rangle_G := \langle A^*(h), g \rangle_G
+					\]
+				</section> -->
+
+				<section style="text-align: left;">
+					<h3>Two ways to implement the "matrix product"</h3>
+					<p>
+						\[
+							\Sigma = f_h(A(g)) = \langle h, A(g) \rangle_H = \langle A^*(h), g \rangle_G = f_g(A^*(h))
+						\]
+					</p>
+					<ul>
+						<li>given multiple inputs $g^{(1)}, ... g^{(J)} \in G$, $h^{(1)}, ... h^{(I)} \in H$ and $A: G \to H$, $A^*: H \to G$
+						</li>
+						<li> we want to compute $\Sigma^{(ij)} = f_{h^{(j)}}(A(g^{(j)}))$
+						</li>
+					</ul>
+					<h4>two possible implementations</h4>
+					<div style="display:flex;">
+						<div style="flex: 1;">
+							<pre><code data-trim data-noescape>
+								for j in range(1, J)
+									v[j] = A(g[j])
+									for i in range(1, I)
+										Σ[i, j] = h[i] * v[j]
+							</code></pre>
+						</div>
+						<div style="flex: 1;">
+							<pre><code data-trim data-noescape>
+								for i in range(1, I)
+									λ[j] = A*(h[i])
+									for j in range(1, J)
+										Σ[i, j] = g[j] * λ[j]
+							</code></pre>
+						</div>
+					</div>
+				</section>
+
+				<section>
+					test
+					<section>
+						dsaasd
+					</section>
+					<section>
+						asddsa
+					</section>
+				</section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script src="plugin/math/math.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// The "normal" size of the presentation, aspect ratio will
+				// be preserved when the presentation is scaled to fit different
+				// resolutions. Can be specified using percentage units.
+				width: 1920,
+				height: 1440,
+
+				// Factor of the display size that should remain empty around
+				// the content
+				margin: 0.1,
+
+				// Bounds for smallest/largest possible scale to apply to content
+				minScale: 0.01,
+				maxScale: 2.0,
+				center: false,
+
+				transition: 'none',
+				backgroundTransition: 'fade-in',
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath]
+			});
+		</script>
+	</body>
+</html>
