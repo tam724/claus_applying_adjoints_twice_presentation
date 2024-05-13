@@ -198,15 +198,37 @@
 					<h3>Material Reconstruction in Electron Probe Microanalysis (EPMA)</h3>
 					<div style="display:flex;">
 						<div class="r-stack" style="flex:1">
-							<img class="fragment fade-out" data-fragment-index="1" src="figures/01_material.svg" alt="Electron Fluence Animation"/>
-							<img class="fragment fade-in-then-out" data-fragment-index="1" src="figures/02_forward.svg" alt="Electron Fluence Animation"/>
-							<img class="fragment fade-in-then-out" data-fragment-index="2" src="figures/03_ionization.svg" alt="Electron Fluence Animation"/>
-							<img class="fragment fade-in-then-out" data-fragment-index="3" src="figures/04_interaction_volume.svg" alt="Electron Fluence Animation"/>
-							<img class="fragment fade-in-then-out" data-fragment-index="4" src="figures/05_linescan1.svg" alt="Electron Fluence Animation"/>
-							<img class="fragment fade-in-then-out" data-fragment-index="5" src="figures/06_linescan2.svg" alt="Electron Fluence Animation"/>
-							<img class="fragment fade-in-then-out" data-fragment-index="6" src="figures/07_linescan3.svg" alt="Electron Fluence Animation"/>
-							<img class="fragment fade-in-then-out" data-fragment-index="7" src="figures/08_full_measurements.svg" alt="Electron Fluence Animation"/>
-							<!-- <img class="fragment fade-in-then-out" src="figures/01_material.svg" alt="Electron Fluence Animation"/> -->
+							<div class="fragment fade-out" data-fragment-index="1">
+								<img src="figures/01_material.jpg" alt="Material">
+							</div>
+							<div class="fragment fade-in-then-out" data-fragment-index="1">
+								<video data-autoplay>
+									<source src="figures/02_forward.webm" type="video/webm">
+								</video>
+							</div>
+							<div class="fragment fade-in-then-out" data-fragment-index="2">
+								<video data-autoplay>
+									<source src="figures/03_ionization.webm" type="video/webm">
+								</video>
+							</div>
+							<div class="fragment fade-in-then-out" data-fragment-index="3">
+								<img src="figures/04_interaction_volume.jpg" alt="Interaction Volume">
+							</div>
+							<div class="fragment fade-in-then-out" data-fragment-index="4">
+								<video data-autoplay>
+									<source src="figures/05_linescan.webm" type="video/webm">
+								</video>
+							</div>
+							<div class="fragment fade-in-then-out" data-fragment-index="5">
+								<video data-autoplay>
+									<source src="figures/06_linescan.webm" type="video/webm">
+								</video>
+							</div>
+							<div class="fragment fade-in-then-out" data-fragment-index="6">
+								<video data-autoplay>
+									<source src="figures/07_linescan.webm" type="video/webm">
+								</video>
+							</div>
 						</div>
 						<div style="flex:1">
 							<ul>
@@ -230,7 +252,7 @@
 				</section>
 
 				<!-- Riesz Representation Theorem/Def Adjoint -->
-				<!-- <section style="text-align: left;">
+				<section style="text-align: left;">
 					<h3>Riesz Representation Theorem/Definition of the Adjoint</h3>
 
 					<h4>Riesz Representation Theorem</h4>
@@ -250,7 +272,7 @@
 					\[
 						f_h(A(g)) = f_\lambda(g) = \langle \lambda, g \rangle_G := \langle A^*(h), g \rangle_G
 					\]
-				</section> -->
+				</section>
 
 				<section style="text-align: left;">
 					<h3>Two ways to implement the "matrix product"</h3>
