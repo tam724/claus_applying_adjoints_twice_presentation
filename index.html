@@ -166,14 +166,14 @@
 					</div>
 					<p>where to bracket?</p>
 					<p style="text-align: center" class="fragment fade-in" data-fragment-index="4">
-						different computational costs: $\color{red}{J\times N^2 + IJ\times N} \text{ or } \color{blue}{J\times N^2 + IJ\times N}$
+						different computational costs: $\color{red}{J\times N^2 + IJ\times N} \text{ or } \color{blue}{I\times N^2 + IJ\times N}$
 					</p>
 						<span class="fragment fade-in" data-fragment-index="5">
 							<ul>
 								<li>
 									what happens if $\boldsymbol A$ is more general, e.g. "solution of a linear system / (linear, linearized) weak form" instead of "matrix multiplication"?
 									\[
-										\boldsymbol A g^{(i)} = \{u \in V \, | \, a(u, v) = f_{g^{(i)}}(v) \quad \forall v \in V\}
+										\boldsymbol A g^{(i)} = \{u \in V \, | \, a(u, v) = \langle g^{(i)}, v \rangle \quad \forall v \in V\}
 									\]
 								</li>
 								<li>
@@ -275,19 +275,23 @@
 				</section>
 
 				<section style="text-align: left;">
-					<h3>Two ways to implement the "matrix product"</h3>
+					<h3>An adjoint method</h3>
 					<p>
+						Definition of the <em>adjoint</em> ($H, G$ Hilbert, $A: G \to H$ continuous, linear)
 						\[
-							\Sigma = f_h(A(g)) = \langle h, A(g) \rangle_H = \langle A^*(h), g \rangle_G = f_g(A^*(h))
+							\langle h, A(g) \rangle_H := \langle A^*(h), g \rangle_G \quad \forall h \in H \, \forall g \in G
 						\]
 					</p>
 					<ul>
-						<li>given multiple inputs $g^{(1)}, ... g^{(J)} \in G$, $h^{(1)}, ... h^{(I)} \in H$ and $A: G \to H$, $A^*: H \to G$
+						<li>given multiple inputs $g^{(1)}, ... g^{(J)} \in G$, $h^{(1)}, ... h^{(I)} \in H$
 						</li>
-						<li> we want to compute $\Sigma^{(ij)} = f_{h^{(j)}}(A(g^{(j)}))$
+						<li> we want to compute
 						</li>
 					</ul>
-					<h4>two possible implementations</h4>
+					\[
+					\Sigma^{(ij)} = \langle h^{(i)}, A(g^{(j)}) \rangle = \langle A^*(h^{(i)}), g^{(j)} \rangle 
+					\]
+					<h4>Pseudocode</h4>
 					<div style="display:flex;">
 						<div style="flex: 1;">
 							<pre><code data-trim data-noescape>
@@ -296,6 +300,7 @@
 									for i in range(1, I)
 										Σ[i, j] = h[i] * v[j]
 							</code></pre>
+							\[\text{cost: } J\mathcal{C}(\texttt{A}) + IJ\mathcal{C}(\texttt{*})\]
 						</div>
 						<div style="flex: 1;">
 							<pre><code data-trim data-noescape>
@@ -304,17 +309,220 @@
 									for j in range(1, J)
 										Σ[i, j] = g[j] * λ[j]
 							</code></pre>
+							\[\text{cost: } I\mathcal{C}(\texttt{A}) + IJ\mathcal{C}(\texttt{*})\]
 						</div>
 					</div>
 				</section>
 
-				<section>
-					test
+				<section style="text-align: left;">
 					<section>
-						dsaasd
+						<h3>Problem with linear structure</h3>
+						<ul>
+							<li>$m = \gamma_p$ with $\gamma_{(\cdot{})}: \mathbb{R}^{N} \to M$: parametrization</li>
+							<li>$u^{(i)} \in V$ a state where $a_m(u^{(i)}, v) = b_m^{(i)}(v) \quad \forall v \in V$ with $b^{(i)}_m$ an excitation $\forall i\in [1, I]$</li>
+							<li>$\Sigma^{(i, j)} = c^{(j)}_m(u^{(i)})$ a measurement with $c_m^{(j)}: V \to \mathbb{R}$ an extraction $\forall i=[1, I], j=[1, J]$</li>
+							<li>$C = g_{\Sigma}$ with $g_{(\cdot{})}: \mathbb{R}^{I\times J} \to \mathbb{R}$ the objective</li>
+							<li>we are interested in $\nabla_p C$</li>
+						</ul>
+						<h4>Naive Implementation (Sensitivity Equations)</h4>
+						<ul>
+							<li>$\dot{m}^{(n)} = \dot{\gamma}_p(e_n)$ $\forall n \in [1, N]$</li>
+							<li>$\dot{u}^{(i, n)} \in V$ where $a_m(\dot{u}^{(i, n)}, v) + \dot{a}_m(u^{(i)}, v, \dot{m}^{(n)})=\dot{b}^{(i)}_m(v, \dot{m}^{(n)})$ $\forall i \in [1, I], \forall n \in [1, N]$</li>
+							<li>$\dot{\Sigma}^{(i, j, n)} = c_m^{(j)}(\dot{u}^{(i, n)}) + \dot{c}_m^{(j)}(u^{(i)}, \dot{m}^{(n)})$</li>
+							<li>$\dot{C}^{(n)} = \dot{g}_{\Sigma}(\dot{\Sigma}^{(:, :, n)})$</li>
+							<li>$(\nabla_{p} C)_n = \dot{C}^{(n)}$</li>
+						</ul>
+						<h4>First Adjoint</h4>
+						<ul>
+							<li>$a_m(u, \lambda^{(j)}) = c_m^{(j)}(u) \quad \forall u \in U$, $\forall j \in [1, J]$</li>
+							<li>$\Sigma^{(i, j)} = b_m^{(i)}(\lambda^{(j)})$</li>
+							<li>$a_m(\bar{u}^{(j)}, v) = \sum_{i=1}^{I}\bar{\Sigma}$</li>
+						</ul>
 					</section>
 					<section>
-						asddsa
+						<h3>Full System</h3> 
+					</section>
+				</section>
+
+				<section style="text-align: left;">
+					<h3>Notation</h3>
+					<ul>
+						<li>linear operator $f(x)$</li>
+						<li>non-linear operator $f_x$</li>
+						<li>tangent operator $\dot{f}_x(\dot{x}) = \frac{\partial f_x}{\partial x} \dot{x}$ (for linear $\dot{f}(\dot{x}) = f(\dot{x})$)</li>
+						<li>adjoint operator $\bar{f}_x(\bar{y})$ defined by $\langle \bar{f}_x(\bar{y}), \dot{x} \rangle = \langle \bar{y}, \dot{f}_x{(\dot{x})} \rangle \quad \forall \bar{y}, \dot{x}$</li>
+					</ul>
+				</section>
+				<section style="text-align: left;">
+					<h3>(Simplified) abstract system</h3>
+					We consider the following system ($m = \gamma_p$)
+					<div style="display:flex;">
+						<div style="flex: 1;">
+							\begin{align*}
+								a_m(u^{(i)}, v) + b^{(i)}(v) &= 0 \quad \forall v \in V \\
+								\Sigma^{(i)} &= c(u^{(i)}) \\
+								C &= g_{\boldsymbol \Sigma} \\
+								\nabla_p C &= \text{TODO!}
+							\end{align*}
+						</div>
+						<div style="flex: 1;">
+							\begin{align*}
+								\boldsymbol{\Sigma} &= (\Sigma^{(1)}, ..., \Sigma^{(I)})^T\\
+								\boldsymbol{b}(v) &= (b^{(1)}(v), ... b^{(I)}(v))^T
+							\end{align*}
+						</div>
+					</div>
+					<div>
+						<ul style="width: 100%">
+							<li class="fragment fade-in" data-fragment-index="1">introduce a $\lambda \in V$ (fixed but yet unspecified "Lagrange-multiplier") 
+								<div class="r-stack">
+									<div class="fragment fade-in-then-out" data-fragment-index="1">
+										\[
+											\Sigma^{(i)} = c(u^{(i)}) \color{white}{+ \underbrace{a_m(u^{(i)}, \lambda) + b^{(i)}(\lambda)}_{=0 \vphantom{\forall u^{(i)} \in V}}}
+										\]
+									</div>
+									<div class="fragment fade-in-then-out" data-fragment-index="2">
+										\[
+										\Sigma^{(i)} = c(u^{(i)}) + \underbrace{a_m(u^{(i)}, \lambda) + b^{(i)}(\lambda)}_{=0 \vphantom{\forall u^{(i)} \in V}}
+									\]
+									</div>
+									<div class="fragment fade-in" data-fragment-index="3">
+										\[
+											\Sigma^{(i)} = \underbrace{c(u^{(i)}) + a_m(u^{(i)}, \lambda)}_{=0 \forall u^{(i)}} + b^{(i)}(\lambda)
+										\]
+									</div>
+								</div>
+							</li>
+							<li class="fragment fade-in" data-fragment-index="4"> now we specify $\lambda \in V$ s.t.
+								<div>
+									\begin{align*}
+										a_m(u, \lambda) + c(u) &= 0 \quad \forall u \in V \\
+										\Sigma^{(i)} &= b^{(i)}(\lambda) \\
+									\end{align*}
+								</div>	
+							</li>
+							<li class="fragment fade-in" data-fragment-index="5">
+								1st "application of an adjoint method"
+								\begin{align*}
+									a_m(u, \lambda) + c(u) &= 0 \quad \forall u \in V \\
+									C = g_{\boldsymbol\Sigma} &= g_{\boldsymbol b(\lambda)} \\
+									\nabla_p C &= \text{TODO!}
+								\end{align*}
+							</li>
+						</ul>
+					</div>
+					</section>
+					<section style="text-align: left;">
+						<h3>(Simplified) abstract system</h3>
+						We continue with
+						<div> 
+							\begin{align*}
+								a_m(u, \lambda) + c(u) &= 0 \quad \forall u \in V \\
+								C = g_{\boldsymbol\Sigma} &= g_{\boldsymbol b(\lambda)}
+							\end{align*}
+						</div>
+						<ul style="width: 100%">
+							<li class="fragment fade-in" data-fragment-index="1">
+								derive sensitivity equations ($\dot{m}^{(n)} = \dot{\gamma}_p(e_n)$)
+								<div class="r-stack">
+									<span class="fragment fade-in-then-out" data-fragment-index="1">
+										\begin{alignat*}{2}
+											a_m(u, \dot{\lambda}^{(n)}) &+ \dot{a}_m(u, \lambda, \dot{m}^{(n)}) &&= 0 \quad \forall u \in V \\
+											&\dot{C}^{(n)} = \dot{g}_{\boldsymbol \Sigma}(\boldsymbol b(\dot{\lambda}^{(n)}))
+										\end{alignat*} 
+									</span>
+									<span class="fragment fade-in-then-out" data-fragment-index="2"> 
+										\begin{alignat*}{2}
+											a_m(u, \dot{\lambda}^{(n)}) &+ \beta^{(n)}(u) && = 0 \quad \forall u \in V \\
+											&\dot{C}^{(n)} = \dot{g}_{\boldsymbol \Sigma}(\boldsymbol b(\dot{\lambda}^{(n)}))
+										\end{alignat*}
+									</span>
+									<span class="fragment fade-in-then-out" data-fragment-index="3"> 
+										\begin{alignat*}{2}
+											a_m(u, \dot{\lambda}^{(n)}) &+ \beta^{(n)}(u) && = 0 \quad \forall u \in V \\
+											&\dot{C}^{(n)} = \alpha(\dot{\lambda}^{(n)}) \hspace{19pt}
+										\end{alignat*}
+									</span>
+									<span class="fragment fade-in-then-out" data-fragment-index="4"> 
+										\begin{alignat*}{2}
+											a_m(u, \dot{\lambda}^{(n)}) &+ \beta^{(n)}(u) && = 0 \quad \forall u \in V \\
+											&\dot{C}^{(n)} = \alpha(\dot{\lambda}^{(n)}) \hspace{19pt}
+										\end{alignat*} 
+									</span>
+									<span class="fragment fade-in" data-fragment-index="5">
+										\begin{alignat*}{2}
+											a_m(u, \dot{\lambda}^{(n)}) &+ \dot{a}_m(u, \lambda, \dot{m}^{(n)}) &&= 0 \quad \forall u \in V \\
+											&\dot{C}^{(n)} = \dot{g}_{\boldsymbol \Sigma}(\boldsymbol b(\dot{\lambda}^{(n)}))
+										\end{alignat*} 
+									</span>
+								</div> 
+							</li>
+							<li class=" fragment fade-in" data-fragment-index="4">
+								second application of "an adjoint method" ($\bar{u} \in U$) <em>(continuous adjoint method)</em>
+								<div class="r-stack">
+									<span class="fragment fade-in-then-out" data-fragment-index="4">
+										\begin{alignat*}{2}
+											a_m(\bar{u}, \dot{\lambda}) &+ \alpha(\dot{\lambda}) && = 0 \quad \forall \dot{\lambda} \in V \\
+											&\dot{C}^{(n)} = \beta^{(n)}(\bar{u}) \hspace{30pt}
+										\end{alignat*}
+									</span>
+									<span class="fragment fade-in" data-fragment-index="5">
+										\begin{alignat*}{2}
+											a_m(\bar{u}, \dot{\lambda}) &+ \dot{g}_{\boldsymbol \Sigma}(\boldsymbol b(\dot{\lambda})) && = 0 \quad \forall \dot{\lambda} \in V \\
+											&\dot{C}^{(n)} = \dot{a}_m(\bar{u}, \lambda, \dot{m}^{(n)})
+										\end{alignat*}
+									</span>
+								</div>
+							</li>
+						</ul>
+						<!-- if we mix in a little bit of notation from algorithmic differentiation
+						\begin{align*}
+							a_m(\bar{u}, \dot{\lambda}) + \bar{\boldsymbol \Sigma}^T \bar{\boldsymbol b}(\dot{\lambda}) = 0 \quad \forall \dot{\lambda} \in V\\
+							\bar{m} = \bar{a}_m(\bar{u}, \lambda, \bar{C}) \\
+							(\nabla_p C)_n = \bar{\gamma}_{p^{(n)}}(\bar{m}) 
+						\end{align*} -->
+						<!-- Together with the adjoint forward problem, we have:
+						\begin{align*}
+							a_m(u, \lambda) + c(u) &= 0 \quad \forall u \in V\\
+							\Sigma^{(i)} &= b^{(i)}(\lambda)\\
+							C &= g_{\boldsymbol \Sigma}\\
+							\bar{\boldsymbol \Sigma} &= \bar{g}_{\boldsymbol{\Sigma}}(\bar{C})\\
+							a_m(\bar{u}, \dot{\lambda}) + \bar{\boldsymbol \Sigma}^T \bar{\boldsymbol b}(\dot{\lambda}) &= 0 \quad \forall \dot{\lambda} \in V\\
+							\bar{m} &= \bar{a}_m(\bar{u}, \lambda, \bar{C}) \\
+							(\nabla_p C)_n &= \bar{\gamma}_{p^{(n)}}(\bar{m}) 
+						\end{align*} -->
+					</section>
+					<section style="text-align: left;">
+						<h3>Summary</h3>
+						<div style="display:flex;">
+							<div style="flex: 1;">
+								<h4>naive implementation</h4>
+								\begin{align*}
+									a_m(u^{(i)}, v) + b^{(i)}(v) &= 0 \quad \forall v \in V \\
+									\Sigma^{(i)} &= c(u^{(i)}) \\
+									C &= g_{\boldsymbol \Sigma} \\
+									a_m(\dot{u}^{(i, n)}, v) + \dot{a}_m(u^{(i)}, v, \dot{m}^{(n)}) &= 0 \quad \forall v \in V\\
+									\dot{\Sigma}^{(i, n)} &= c(\dot{u}^{(i, n)}) \\
+									(\nabla_p C)^{(n)} &= \dot{g}_{\boldsymbol \Sigma}(\dot{\boldsymbol \Sigma}^{(n)})
+								\end{align*}
+							</div>
+							<div style="flex: 1;">
+								<h4>adjoint$^2$ implementation</h4>
+								\begin{align}
+									a_m(u, \lambda) + c(u) &= 0 \quad \forall u \in V\\
+									\boldsymbol \Sigma &= \boldsymbol b(\lambda) \\
+									C &= g_{\boldsymbol \Sigma} \\
+									a_m(\bar{u}, \dot{\lambda}) + \dot{g}_{\boldsymbol \Sigma}(\boldsymbol b(\dot{\lambda})) &= 0 \quad \forall \dot{\lambda} \in V \\
+									(\nabla_p C)^{(n)} &= \dot{a}_m(\bar{u}, \lambda, \dot{m}^{(n)})\\
+								\end{align}
+							</div>
+						</div>
+						<h4>Generalizations:</h4>
+						<ul>
+							<li>$b^{(i)}(v) \rightsquigarrow b_m^{(i)}(v)$ (add to </li>
+							<li>$c(u) \rightsquigarrow c_m^{(j)}(u)$</li>
+							<li></li>
+						</ul>
 					</section>
 				</section>
 			</div>
@@ -329,6 +537,8 @@
 			// More info about initialization & config:
 			// - https://revealjs.com/initialization/
 			// - https://revealjs.com/config/
+
+			Reveal.configure({pdfSeparateFragments: true});
 			Reveal.initialize({
 				hash: true,
 
