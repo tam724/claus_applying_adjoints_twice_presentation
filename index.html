@@ -40,7 +40,7 @@
 				<!-- Motivation -->
 				<section style="text-align: left">
 					<h3>
-						Motivation - from Linear Algebra
+						Motivation: Matrix Product Bracketing
 					</h3>
 					Consider Matrix Multiplication ($N \gg I, J$):
 					<div class="r-stack">
@@ -198,110 +198,122 @@
 					</span>
 				</section>
 				
-				<!-- Material Reconstruction in EPMA-->
-				<section  style="text-align: left">
-					<h3>Electron Probe Microanalysis (EPMA)</h3>
-					<div style="display:flex;">
-						<div style="flex:1; margin-right: 40px; margin-top:30px;">
-							<p style="text-align: center; "><em>"Material imaging based on characteristic x-ray emission"</em></p>
-							<ul style="margin-top: 20px;">
-								<li>Material Science: research, quality control; Mineralogy; Meteorite analysis</li>
-								<li>Ionization of material sample using high-energy focused electron beam</li>
-								<li>Wavelength-dispersive spectrometers measure characteristic x-radiation</li>
+				<section>
+					<!-- Material Reconstruction in EPMA-->
+					<section  style="text-align: left">
+						<h3>Motivation: Electron Probe Microanalysis (EPMA)</h3>
+						<div style="display:flex;">
+							<div style="flex:1; margin-right: 40px; margin-top:-20px;">
+								<p style="text-align: center; "><em>"Material imaging based on characteristic x-ray emission"</em></p>
+								<ul style="margin-top: 0px;">
+									<li>Material Science, Quality control, Mineralogy; Meteorite analysis</li>
+									<li>Ionization of material sample using high-energy focused electron beam</li>
+									<li>Wavelength-dispersive spectrometers measure characteristic x-radiation</li>
 
-							</ul>
-						</div>
-						<div style="flex:1; text-align: center;">
-							<img src="figures/epma.jpg" height="400px">
-							<p style="font-size:60% ; margin-top: -10px;">Microprobe at GFE (source: <a href="https://www.gfe.rwth-aachen.de/cms/gfe/dienste/~rhxt/esma/?lidx=1">gfe.rwth-aachen.de</a>)</p>
-						</div> 
-					</div>
-					<div style="display:flex;">
-						<div class="r-stack" style="flex:1; text-align: center;">
-							<div class="fragment fade-in-then-out" data-fragment-index="1">
-								<img src="figures/01_material.jpg" alt="Material" width="700px" style="margin-top: 60px;">
+								</ul>
 							</div>
-							<div class="fragment fade-in-then-out" data-fragment-index="2">
-								<video data-autoplay width="700px" style="margin-top: 40px;">
-									<source src="figures/02_forward.webm" type="video/webm">
-								</video>
+							<div style="flex:1; text-align: center;">
+								<img src="figures/epma.jpg" height="400px">
+								<p style="font-size:60% ; margin-top: -20px;">Microprobe at GFE (source: <a href="https://www.gfe.rwth-aachen.de/cms/gfe/dienste/~rhxt/esma/?lidx=1">gfe.rwth-aachen.de</a>)</p>
+							</div> 
+						</div>
+						<div style="display:flex;">
+							<div class="r-stack" style="flex:2; text-align: center;">
+								<div class="fragment fade-in-then-out" data-fragment-index="1">
+									<img src="figures/01_material.jpg" alt="Material" width="700px" style="margin-top: 60px;">
+								</div>
+								<div class="fragment fade-in-then-out" data-fragment-index="2">
+									<video data-autoplay width="700px" style="margin-top: 40px;">
+										<source data-src="figures/02_forward.webm" type="video/webm">
+									</video>
+								</div>
+								<div class="fragment fade-in-then-out" data-fragment-index="3">
+									<video data-autoplay  width="700px" style="margin-top: 40px;">
+										<source data-src="figures/03_ionization.webm" type="video/webm">
+									</video>
+								</div>
+								<div class="fragment fade-in-then-out" data-fragment-index="4">
+									<img src="figures/04_interaction_volume.jpg" alt="Interaction Volume"  width="700px" style="margin-top: 60px;">
+								</div>
+								<div class="fragment fade-in-then-out" data-fragment-index="5">
+									<video data-autoplay  width="700px" style="margin-top: 40px;">
+										<source data-src="figures/05_linescan.webm" type="video/webm">
+									</video>
+								</div>
+								<div class="fragment fade-in-then-out" data-fragment-index="6">
+									<video data-autoplay width="700px" style="margin-top: 40px;">
+										<source data-src="figures/06_linescan.webm" type="video/webm">
+									</video>
+								</div>
+								<div class="fragment fade-in" data-fragment-index="7">
+									<video data-autoplay width="700px" style="margin-top: 40px;">
+										<source data-src="figures/07_linescan.webm" type="video/webm">
+									</video>
+								</div>
 							</div>
-							<div class="fragment fade-in-then-out" data-fragment-index="3">
-								<video data-autoplay  width="700px" style="margin-top: 40px;">
-									<source src="figures/03_ionization.webm" type="video/webm">
-								</video>
-							</div>
-							<div class="fragment fade-in-then-out" data-fragment-index="4">
-								<img src="figures/04_interaction_volume.jpg" alt="Interaction Volume"  width="700px" style="margin-top: 60px;">
-							</div>
-							<div class="fragment fade-in-then-out" data-fragment-index="5">
-								<video data-autoplay  width="700px" style="margin-top: 40px;">
-									<source src="figures/05_linescan.webm" type="video/webm">
-								</video>
-							</div>
-							<div class="fragment fade-in-then-out" data-fragment-index="6">
-								<video data-autoplay width="700px" style="margin-top: 40px;">
-									<source src="figures/06_linescan.webm" type="video/webm">
-								</video>
-							</div>
-							<div class="fragment fade-in" data-fragment-index="7">
-								<video data-autoplay width="700px" style="margin-top: 40px;">
-									<source src="figures/07_linescan.webm" type="video/webm">
-								</video>
+							<div style="flex:3">
+								<ul>
+									<li class="fragment fade-in" data-fragment-index="1">Example Material: two-phase (<span style="color: orange">A</span>, <span style="color: green;">B</span>)</li>
+									<li class="fragment fade-in" data-fragment-index="2"><span style="color:blue">Electron</span> propagation affected by scattering (animated: different energies) </li>
+									<li class="fragment fade-in" data-fragment-index="3">Ionization and emission of characteristic x-rays (wavelength of <span style="color:orange">A-rays</span> and <span style="color:green">B-rays</span> differ)</li>
+									<li class="fragment fade-in" data-fragment-index="4">Measure wavelength-dispersive x-ray intensity</li>
+									<li class="fragment fade-in" data-fragment-index="5">Spatial information gained via different beam positions (linescan), <span class="fragment fade-in" data-fragment-index="6">beam angles </span> <span class="fragment fade-in" data-fragment-index="7">and beam energies</span></li>
+									<li class="fragment fade-in" data-fragment-index="8"><em>inverse problem of material reconstruction</em>
+										<div class="r-stack">
+											<span class="fragment fade-in-then-out" data-fragment-index="8">
+												\begin{equation}
+													p^* = \underset{p \in P}{\text{arg min}} \underbrace{|| \Sigma(p)  - \tilde{\Sigma} ||^2}_{=C(p)}
+												\end{equation}
+											</span>
+											<span class="fragment fade-in" data-fragment-index="9">
+												\begin{equation}
+													p^* = \underset{p \in P}{\text{arg min}} \underbrace{|| (\Sigma \circ \gamma)(p)  - \tilde{\Sigma} ||^2}_{=C(p)}
+												\end{equation}
+											</span>
+										</div>
+									</li>
+									<li class="fragment fade-in" data-fragment-index="10">gradient-based iterative methods (Steepest Descent, BFGS, or HMC)</li>
+									<li class="fragment fade-in" data-fragment-index="11"><em>we focus on computing $\nabla_p C(p)$ efficiently via adjoints</em></li>
+								</ul>
 							</div>
 						</div>
-						<div style="flex:1">
-							<ul>
-								<li class="fragment fade-in" data-fragment-index="1">Example: Consider a two-phase material with <span style="color: orange">Material A</span> and <span style="color: green;">Material B</span></li>
-								<li class="fragment fade-in" data-fragment-index="2">Shoot the sample with <span style="color:blue">electrons</span></li>
-								<li class="fragment fade-in" data-fragment-index="2"><span style="color:blue">Electron</span> propagation is affected by scattering. (animated: different energies)</li>
-								<li class="fragment fade-in" data-fragment-index="3">Ionization and emission of characteristic x-rays (wavelength differs between <span style="color:orange">A-photons</span> and <span style="color:green">B-photons</span>)</li>
-								<li class="fragment fade-in" data-fragment-index="4">Detector measures the total wavelength-dispersive photon intensity (of <span style="color:orange">A-</span> and <span style="color:green">B-</span>photons)</li>
-								<li class="fragment fade-in" data-fragment-index="5">Spatial information gained via different beam positions (linescan),</li>
-								<li class="fragment fade-in" data-fragment-index="6">... with different beam angles</li>
-								<li class="fragment fade-in" data-fragment-index="7">... and different beam energies</li>
-								<li class="fragment fade-in" data-fragment-index="8"><em>inverse problem of material reconstruction</em></li>
-								
-							</ul>
+					</section>
+					<!-- Gradients in Inverse Problems-->
+					<section style="text-align: left;">
+						<h3>Gradients in Inverse Problems</h3>
+						<span><em>"Determine the model parameters $p$ such that the model $\Sigma(p)$ produces the observed data $\tilde{\Sigma}$."</em></span>
+						<div style="display:flex;">
+							<div style="flex:2 ;">
+								<h4 style="margin-top: 50px;">classical approach</h4>
+								\begin{align*}
+									p^* = \underset{p \in P}{\text{arg min}} || \Sigma(p)  - \tilde{\Sigma} ||^2
+								\end{align*}
+								<ul>
+									<li>iterative approximation of the minimum based on the gradient of the objective function $p \mapsto ||\Sigma(p) - \tilde{\Sigma}||^2$</li>
+									<li>Gradient Descent, CG, BFGS, ...</li>
+									<li>regularization: addition of a penalty term $p \mapsto ||\Sigma(p) - \tilde{\Sigma}||^2 + \mathcal{R}(p)$</li>
+									<li>we will do: $\Sigma = \Sigma \circ \gamma$</li>
+								</ul>
+							</div>
+							<div style="flex:1; ">
+								<img src="figures/gd.png" width="500px">
+							</div>
 						</div>
-					</div>
-				</section>
-
-				<!-- Gradients in Inverse Problems-->
-				<section style="text-align: left;">
-					<h3>Gradients in Inverse Problems</h3>
-					<span><em>"Determine the model parameters $p$ such that the model $\Sigma(p)$ produces the observed data $\tilde{\Sigma}$."</em></span>
-					<div style="display:flex;">
-						<div style="flex:2 ;">
-							<h4 style="margin-top: 50px;">classical approach</h4>
-							\begin{align*}
-								p^* = \underset{p \in P}{\text{arg min}} || \Sigma(p)  - \tilde{\Sigma} ||^2
-							\end{align*}
-							<ul>
-								<li>iterative approximation of the minimum based on the gradient of the objective function $p \mapsto ||\Sigma(p) - \tilde{\Sigma}||^2$</li>
-								<li>Gradient Descent, CG, BFGS, ...</li>
-								<li>regularization: addition of a penalty term $p \mapsto ||\Sigma(p) - \tilde{\Sigma}||^2 + \mathcal{R}(p)$</li>
-								<li>we will do: $\Sigma = \Sigma \circ \gamma$</li>
-							</ul>
+						<div style="display:flex;">
+							<div style="flex:1; ">
+								<img src="figures/hmc.png" width="500px">
+							</div>
+							<div style="flex:2">
+								<h4 style="margin-top: 50px;">bayesian approach</h4>
+								<ul>
+									<li>approximate the posterior $\pi(p|\tilde{\Sigma})$ (typically: iterative sampling, MCMC)</li>
+									<li>Hamiltonian Monte-Carlo (based on the gradient of the target density)</li>
+								</ul>
+							</div>
 						</div>
-						<div style="flex:1; ">
-							<img src="figures/gd.png" width="500px">
-						</div>
-					</div>
-					<div style="display:flex;">
-						<div style="flex:1; ">
-							<img src="figures/hmc.png" width="500px">
-						</div>
-						<div style="flex:2">
-							<h4 style="margin-top: 50px;">bayesian approach</h4>
-							<ul>
-								<li>approximate the posterior $\pi(p|\tilde{\Sigma})$ (typically: iterative sampling, MCMC)</li>
-								<li>Hamiltonian Monte-Carlo (based on the gradient of the target density)</li>
-							</ul>
-						</div>
-					</div>
-					</ul>
-					<p style="text-align: center;"><em>Efficient evaluation of the objective function and its gradient is crucial!</em></p>
+						</ul>
+						<p style="text-align: center;"><em>Efficient evaluation of the objective function and its gradient is crucial!</em></p>
+					</section>
 				</section>
 
 				<!-- An adjoint method -->
@@ -523,19 +535,19 @@
 							</li>
 							<li>the (continuous, linear) <em>adjoint operator</em> $\bar{f}_x \in L(Y, X)$
 								\begin{align*}
-									\langle \bar{y} , \dot{f}_x(\dot{x}) \rangle_Y = \langle \bar{f}_x^* (\bar{y}), \dot{x} \rangle_X \quad \forall \bar{y} \in Y, \dot{x} \in X
+									\langle \bar{y} , \dot{f}_x(\dot{x}) \rangle_Y = \langle \bar{f}_x (\bar{y}), \dot{x} \rangle_X \quad \forall \bar{y} \in Y, \dot{x} \in X
 								\end{align*}
 							</li>
 						</ul>
 						<p>
-							Also we define:
+							Also we define ($y = f_x$):
 							<ul>
-								<li><em>tangent variable</em> $\dot{x} \in X, \dot{y} \in Y$ given $\dot{x} \in X$, $\dot{y} = \dot{f}_x(\dot{x})$</li>
-								<li><em>adjoint variable</em> $\bar{x} \in X, \bar{y} \in Y$ given $\bar{y} \in Y$, $\bar{x} = \bar{f}_x(\bar{y})$</li>
+								<li><em>tangent variables</em> $\dot{x} \in X, \dot{y} \in Y$: given $\dot{x} \in X$, $\dot{y} = \dot{f}_x(\dot{x})$</li>
+								<li><em>adjoint variables</em> $\bar{x} \in X, \bar{y} \in Y$: given $\bar{y} \in Y$, $\bar{x} = \bar{f}_x(\bar{y})$</li>
 							</ul>
 						</p>
 
-						Applying this to a composition $ f_x = \varphi^{(N)}_{v^{(N-1)}} \circ \, ...\, \circ\, \varphi^{(1)}_x$ is tangent/adjoint mode automatic differentiation. (neglectic all implementational details!)
+						Applying this to a composition $ f_x = \varphi^{(N)}_{v^{(N-1)}} \circ \, ...\, \circ\, \varphi^{(1)}_x$ where $\varphi^{(n)}$ are single assignments (chain rule!) is tangent/adjoint mode automatic differentiation. (neglecting all implementational details..)
 					</section>
 
 					<section style="text-align: left;">
@@ -637,7 +649,7 @@
 				</section>
 
 				<section style="text-align: left;">
-					<h3>(Simplified) abstract system</h3>
+					<h3>Applying Adjoints Twice: First adjoint</h3>
 					<div style="display:flex;">
 						<div style="flex: 2;">
 							We consider the model 
@@ -652,7 +664,7 @@
 							<ul>
 								<li>computational domain $\mathcal{R}$</li>
 								<li>parametrization: $\gamma: \mathbb{R}^{n} \to M(\mathcal{R})$</li>
-								<li>system $a_m: V(\mathcal{R}) \times V(\mathcal{R}) \to \mathbb{R}$ bilinear</li>
+								<li>system $a_m \in \text{Bil}(V(\mathcal{R}) \times V(\mathcal{R}), \mathbb{R})$ </li>
 								<li>excitations $\boldsymbol{b} = (b^{(1)}, ... b^{(I)})^T \in L(V(\mathcal{R}), \mathbb{R}^I)$</li>
 								<li>extraction $c \in L(V(\mathcal{R}), \mathbb{R})$</li>
 								<li>measurements $\boldsymbol{\Sigma} = (\Sigma^{(1)}, ..., \Sigma^{(I)})^T \in \mathbb{R}^I$</li>
@@ -701,7 +713,7 @@
 				</section>
 
 				<section style="text-align: left;">
-					<h3>(Simplified) abstract system</h3>
+					<h3>Applying Adjoints Twice: Second adjoint</h3>
 					We continue with
 					<div> 
 						\begin{align*}
@@ -711,7 +723,7 @@
 					</div>
 					<ul style="width: 100%">
 						<li class="fragment fade-in" data-fragment-index="1">
-							derive sensitivity equations ($\dot{m}^{(n)} = \dot{\gamma}_p(e_n)$)
+							derive tangent model ($\dot{m}^{(n)} = \dot{\gamma}_p(e_n)$)
 							<div class="r-stack">
 								<span class="fragment fade-in-then-out" data-fragment-index="1">
 									\begin{alignat*}{2}
@@ -745,7 +757,7 @@
 								</span>
 							</div> 
 						</li>
-						<li class=" fragment fade-in" data-fragment-index="4">
+						<li class="fragment fade-in" data-fragment-index="4">
 							second application of "an adjoint method" ($\bar{\lambda} \in U$) <em>(continuous adjoint method)</em>
 							<div class="r-stack">
 								<span class="fragment fade-in-then-out" data-fragment-index="4">
@@ -762,31 +774,31 @@
 								</span>
 							</div>
 						</li>
+						<li class="fragment fade-in" data-fragment-index="6">
+							with adjoint derivative notation ($\bar{\boldsymbol{\Sigma}} = \bar{g}_{\boldsymbol\Sigma}(\bar{C})$)
+							\begin{alignat*}{2}
+										a_m(\bar{\lambda}, \dot{\lambda}) &+ \bar{\boldsymbol \Sigma}^T \boldsymbol b(\dot{\lambda}) && = 0 \quad \forall \dot{\lambda} \in V(\mathcal{R}) \\
+										&\bar{p} = \bar{\gamma}_p(\bar{a}_m(\bar{\lambda}, \lambda, \bar{C}))\\
+										&(\nabla_p C)^{(n)} = \bar{p}^{(n)}
+									\end{alignat*}
+						</li>
 					</ul>
-						<!-- if we mix in a little bit of notation from algorithmic differentiation
-						\begin{align*}
-							a_m(\bar{u}, \dot{\lambda}) + \bar{\boldsymbol \Sigma}^T \bar{\boldsymbol b}(\dot{\lambda}) = 0 \quad \forall \dot{\lambda} \in V\\
-							\bar{m} = \bar{a}_m(\bar{u}, \lambda, \bar{C}) \\
-							(\nabla_p C)_n = \bar{\gamma}_{p^{(n)}}(\bar{m}) 
-						\end{align*} -->
-						<!-- Together with the adjoint forward problem, we have:
-						\begin{align*}
-							a_m(u, \lambda) + c(u) &= 0 \quad \forall u \in V\\
-							\Sigma^{(i)} &= b^{(i)}(\lambda)\\
-							C &= g_{\boldsymbol \Sigma}\\
-							\bar{\boldsymbol \Sigma} &= \bar{g}_{\boldsymbol{\Sigma}}(\bar{C})\\
-							a_m(\bar{u}, \dot{\lambda}) + \bar{\boldsymbol \Sigma}^T \bar{\boldsymbol b}(\dot{\lambda}) &= 0 \quad \forall \dot{\lambda} \in V\\
-							\bar{m} &= \bar{a}_m(\bar{u}, \lambda, \bar{C}) \\
-							(\nabla_p C)_n &= \bar{\gamma}_{p^{(n)}}(\bar{m}) 
-						\end{align*} -->
 				</section>
 
 				<section style="text-align: left;">
-					<h3>Summary</h3>
-					<div style="display:flex;">
-						<div style="flex: 1;">
-							<h4>naive implementation</h4>
-							\begin{align*}
+					<h3>Applying Adjoints Twice: Adjoints<sup>2</sup></h3>
+					<table style="text-align: center">
+						<tr style="border-style: hidden;">
+							<td style="text-align: center; ">
+								<h4>non-adjoint forward + tangent derivative</h4>
+							</td>
+							<td style="text-align: center; ">
+								<h4>adjoint forward + adjoint derivative</h4>
+							</td>
+						</tr>
+						<tr>
+							<td style="text-align: center; ">
+								\begin{align*}
 								a_m(u^{(i)}, v) + b^{(i)}(v) &= 0 \quad \forall v \in V(\mathcal{R}) \\
 								\Sigma^{(i)} &= c(u^{(i)}) \\
 								C &= g_{\boldsymbol \Sigma} \\
@@ -794,10 +806,9 @@
 								\dot{\Sigma}^{(i, n)} &= c(\dot{u}^{(i, n)}) \\
 								(\nabla_p C)^{(n)} &= \dot{g}_{\boldsymbol \Sigma}(\dot{\boldsymbol \Sigma}^{(n)})
 							\end{align*}
-						</div>
-						<div style="flex: 1;">
-							<h4>adjoint$^2$ implementation</h4>
-							\begin{align}
+							</td>
+							<td style="text-align: center; ">
+								\begin{align}
 								a_m(u, \lambda) + c(u) &= 0 \quad \forall u \in V(\mathcal{R})\\
 								\boldsymbol \Sigma &= \boldsymbol b(\lambda) \\
 								C &= g_{\boldsymbol \Sigma} \\
@@ -806,13 +817,20 @@
 								\bar{p} &= \bar{\gamma}_p(\bar{a}_m(\bar{\lambda}, \lambda, \bar{C}))\\ 
 								(\nabla_p C)^{(n)} &= \bar{p}^{(n)} 
 							\end{align}
-						</div>
-					</div>
+							</td>
+						</tr>
+					</table>
 					<h4>Generalizations:</h4>
 					<ul>
 						<li>$m$-dependent excitation $b^{(i)}(v) \rightsquigarrow b_m^{(i)}(v)$</li>
-						<li>$m$-dependent multiple extractions $c(u) \rightsquigarrow c_m^{(j)}(u)$</li>
-						<li>...</li>
+						<li>$m$-dependent extractions $c(u) \rightsquigarrow c_m(u)$</li>
+						<li>multiple extractions $c_m(u) \rightsquigarrow c^{(j)}_m(u)$ ($I, N \gg J$)</li>
+					</ul>
+					<h4 style="margin-top: 20px;">Assumptions:</h4>
+					<ul>
+						<li>the cost $\mathcal{C}(a)$ of solving $a(\cdot{}, \cdot{}) + ... = 0$ dominates (no direct solve possible)</li>
+						<li>cost comparison (naive): $(I + IN)\times \mathcal{C}(a) + ... \mathcal{C}(\langle\cdot\rangle)$</li>
+						<li>cost comparison (adjoint<sup>2</sup>): $2J \times \mathcal{C}(a) + ... \times \mathcal{C}(\langle\cdot\rangle)$</li>
 					</ul>
 				</section>
 
@@ -826,24 +844,25 @@
 										-\nabla \cdot{} m \nabla u^{(i)} = 0 \quad &\forall x \in \mathcal{R}\\
 										u^{(i)} = g^{(i)} \quad &\forall x \in \partial\mathcal{R}
 										\end{cases}\\
-									&\Sigma^{(i, j)} = \int_{\Omega} \mu^{(j)} u^{(i)} dx\\
+									&\Sigma^{(i, j)} = \int_{\mathcal{R}} \mu^{(j)} u^{(i)} dx\\
 									&C = \frac{1}{2 IJ}\sum_{i, j=1}^{I,J} (\Sigma^{(i, j)} - \tilde{\Sigma}^{(i, j)})^2  
 								\end{align*}
 							</div>
-							<div style="flex: 1;">
+							<div style="flex: 2; padding-left: 20px;">
 								<ul>
+									<li>$\gamma: \mathbb{R}^N \to L^{(2)}(\mathcal{R})$</li>
 									<li>$m, \mu^{(j)} \in L^2(\mathcal{R})$, $g^{(i)} \in L^2(\partial \mathcal{R})$</li>
-									<li>weak enforcement of boundary conditions $u, v \in H^1(\mathcal{R})$</li>
-									<li>Aubin-Nitsche trick: stabilized bilinear form
-										\[a(u, v) + b(v) = 0 \quad \forall v \in H^1(\mathcal{R})\]
+									<li>weak enforcement of boundary conditions $u, v \in H^1_h(\mathcal{R})$</li>
+									<li>Aubin-Nitsche trick: stable bilinear form
+										\[a(u^{(i)}, v) + b^{(i)}(v) = 0 \quad \forall v \in H^1_h(\mathcal{R})\]
 									</li>
-									<li>$I \gg J$</li>
+									<li>$I, N \gg J$ (many bc $g^{(i)}$, many parameters $p \in \mathbb{R}^N$, some extractions $\mu^{(j)}$)</li>
 								</ul>
 							</div>
 						</div>
 						<div class="r-stack">
-							<div class="fragment fade-out" data-fragment-index="1" style="display:flex;">
-								<table style="text-align: center; border-style: hidden;">
+							<div class="fragment fade-out" data-fragment-index="1">
+								<table style="text-align: center">
 									<tr style="border-style: hidden;">
 										<td style="text-align: center; "><h5>forward solution $u^{(i)}$</h5></td>
 										<td style="text-align: center; "><h5>extraction $\mu^{(j)}$</h5></td>
@@ -860,16 +879,30 @@
 											<img src="figures/poisson/measurements/7.svg" height="600px"/>
 										</td>
 									</tr>
+									<tr style="border-style: hidden;">
+										<td style="text-align: center; "></td>
+										<td style="text-align: center; "></td>
+										<td style="text-align: center; ">$\hphantom{\sim 10 ns}$</td>
+									</tr>
 								</table>
 							</div>
-							<div class="fragment fade-in" data-fragment-index="1" style="display:flex;">
+							<div class="fragment fade-in" data-fragment-index="1">
 								<table style="text-align: center;">
 									<tr style="border-style: hidden;">
 										<td style="text-align: center; "><h5>forward solution $u^{(i)}$</h5></td>
 										<td style="text-align: center; "><h5>extraction $\mu^{(j)}$</h5></td>
-										<td style="text-align: center; "><h5>measurement $\Sigma^{(i, j)}$</h5></td>
+										<td style="text-align: center; ">
+											<div class="r-stack">
+												<div class="fragment fade-out" data-fragment-index="2">
+													<h5>measurement $\Sigma^{(i, j)}$</h5>
+												</div>
+												<div class="fragment fade-in" data-fragment-index="2">
+													<h5>measurement $\Sigma^{(i, j)}$ (naive)</h5>
+												</div>
+											</div>
+										</td>
 									</tr>
-									<tr>
+									<tr style="border-style: hidden;">
 										<td style="text-align: center; ">
 											<img src="figures/poisson/forward_solution/500.svg" width="600px"/>
 										</td>
@@ -877,125 +910,231 @@
 											<img src="figures/poisson/extractions/3.svg" width="600px"/>
 										</td>
 										<td style="text-align: center; ">
-											<img src="figures/poisson/all_measurements.svg" height="600px"/>
+											<div class="r-stack">
+												<div class="fragment fade-out" data-fragment-index="2">
+													<img src="figures/poisson/all_measurements.svg" height="600px"/>
+												</div>
+												<div class="fragment fade-in" data-fragment-index="2">
+													<img src="figures/poisson/all_measurements_forward.svg" height="600px"/>
+												</div>
+											</div>
 										</td>
+									</tr>
+									<tr style="border-style: hidden;">
+										<td style="text-align: center; ">
+											<div class="fragment fade-in" data-fragment-index="1">
+												$\sim 7ms$
+											</div></td>
+										<td style="text-align: center; "></td>
+										<td style="text-align: center; ">
+											<div class="r-stack">
+												<div class="fragment fade-out" data-fragment-index="2" style="background-color: green;">
+													$\sim 55ms \approx 7 \times 7ms$
+												</div>
+												<div class="fragment fade-in" data-fragment-index="2" style="background-color: red;">
+													$\sim 5300ms \approx 800 \times 7ms$
+												</div>
+											</div></td>
 									</tr>
 								</table>
 							</div>
 						</div>
 					</section>
 					<section>
-						<div style="flex: 1;">
-							<h4>weak form</h4>
-					\begin{align*}
-						a_m(u, v) &= \int_{\mathcal{R}} m \nabla u \cdot{} \nabla v dx - \int_{\partial \mathcal{R}} m \nabla_n u v + u \nabla_n v \, d\Gamma + \int_{\partial \mathcal{R}} \alpha u v \, d \Gamma \\
-						b^{(i)}(v) &= \int_{\partial \mathcal{R}} \nabla_n v  g^{(i)} \, d\Gamma - \int_{\mathcal{R}} \alpha g^{(i)} v \, d\Gamma\\
-						c^{(j)}(u) &= \int_{\mathcal{R}} \mu^{(j)} u \, dx
-					\end{align*}
-						</div>
+						<h3>Example: Derivation</h3>
+						<h4>weak forms</h4>
+						\begin{align*}
+							a_m(u, v) &= \int_{\mathcal{R}} m \nabla u \cdot{} \nabla v dx - \int_{\partial \mathcal{R}} m \nabla_n u v + u \nabla_n v \, d\Gamma + \int_{\partial \mathcal{R}} \alpha u v \, d \Gamma \\
+							b^{(i)}(v) &= \int_{\partial \mathcal{R}} \nabla_n v  g^{(i)} \, d\Gamma - \int_{\partial \mathcal{R}} \alpha g^{(i)} v \, d\Gamma\\
+							c^{(j)}(u) &= \int_{\mathcal{R}} \mu^{(j)} u \, dx
+						\end{align*}
+						<h4>adjoint forward</h4>
+						\begin{align*}
+							a_m(u, \lambda^{(j)}) + c^{(j)}(u) = 0 \quad \forall u\\
+							\int_{\mathcal{R}} m \nabla u \cdot{} \nabla \lambda^{(j)} dx - \int_{\partial \mathcal{R}} m \nabla_n u \lambda^{(j)} + u \nabla_n \lambda^{(j)} \, d\Gamma + \int_{\partial \mathcal{R}} \alpha u \lambda^{(j)} \, d \Gamma + \int_{\mathcal{R}} \mu^{(j)} u \, dx = 0 \quad \forall u 
+						\end{align*}
+						<h4>adjoint forward (strong form)</h4>
+						\begin{align*}
+							\begin{cases}
+								-\nabla m \cdot{} \nabla \lambda^{(j)} = -\mu^{(j)} \quad &\forall x \in \mathcal{R}\\
+								\lambda^{(j)} = 0 \quad &\forall x \in \partial \mathcal{R}
+							\end{cases}
+						\end{align*}
+					</section>
+					<section>
+						<h3>Example: Derivation</h3>
+						<h4>adjoint derivative</h4>
+						\begin{align*}
+							&a_m(\bar{\lambda}^{(j)}, \dot{\lambda}) + \bar{\boldsymbol \Sigma}^{(j)T} \boldsymbol{b}(\dot{\lambda}) = 0 \quad \forall \dot{\lambda} \\
+							&\int_{\mathcal{R}} m \nabla \bar{\lambda}^{(j)} \cdot{} \nabla \dot{\lambda} dx - \int_{\partial \mathcal{R}} m \nabla_n \bar{\lambda}^{(j)} \dot{\lambda} + \bar{\lambda}^{(j)} \nabla_n \dot{\lambda} \, d\Gamma + \int_{\partial \mathcal{R}} \alpha \bar{\lambda}^{(j)} \dot{\lambda} \, d \Gamma \\
+							&+ \int_{\partial \mathcal{R}} \nabla_n \dot{\lambda}  \sum_{i=1}^{I}(\bar{\Sigma}^{(i, j)} g^{(i)}) \, d\Gamma - \int_{\partial \mathcal{R}} \alpha \sum_{i=1}^{I} (\bar{\Sigma}^{(i, j)} g^{(i)}) \dot{\lambda} \, d\Gamma = 0 \quad \forall \dot{\lambda}
+						\end{align*}
+						<h4>adjoint derivative (strong form)</h4>
+						\begin{align*}
+							\begin{cases}
+								- \nabla m \cdot{} \nabla \bar{\lambda}^{(j)} = 0 \quad &\forall x \in \mathcal{R} \\
+								\bar{\lambda}^{(j)} = \sum_{i=1}^{I} \bar{\Sigma}^{(i, j)} g^{(i)} \quad &\forall x \in \partial \mathcal{R} 
+							\end{cases}
+						\end{align*}
+						<h4>tangent model</h4>
+						\begin{align*}
+							\dot{C} = \sum_{j=1}^{J} \dot{a}_m(\bar{\lambda}^{(j)}, \lambda^{(j)}, \dot{m}) = \sum_{j=1}^{J} \int_{\mathcal{R}} \dot{m} \nabla \bar{\lambda}^{(j)} \cdot{} \nabla \lambda^{(j)} \, dx - \int_{\partial \mathcal{R}} \dot{m} \nabla_n \bar{\lambda}^{(j)} \underbrace{\lambda^{(j)}}_{=0} \, d \Gamma
+						\end{align*}
+						<h4>adjoint model</h4>
+						\begin{align*}
+							\langle \bar{C}, \sum_{j=1}^{J} \sum_{j=1}^{J} \int_{\mathcal{R}} \dot{m} \nabla \bar{\lambda}^{(j)} \cdot{} \nabla \lambda^{(j)} \, dx \rangle = \langle \bar{C} \sum_{j=1}^{J} \nabla \bar{\lambda}^{(j)} \cdot{} \nabla \lambda^{(j)}, \dot{m} \rangle_{L^2(\mathcal{R})} \\
+							\bar{a}_m(\bar{\lambda}^{(:)}, \lambda^{(:)}, \bar{C}) = \sum_{j=1}^{J} \bar{C} \nabla \bar{\lambda}^{(j)} \cdot{} \nabla \lambda^{(j)} 
+						\end{align*}
+					</section>
+					<section>
+						<h3>Example: Derivation</h3>
+						<h4>adjoint parametrization</h4>
+						\begin{align*}
+							\langle \bar{m}, \dot{m} \rangle_{L^2(\mathcal{R})} = \langle \bar{m}, \dot{\gamma}_p(\dot{p}) \rangle_{L^2(\mathcal{R})} = \langle \int_{\mathcal{R}} \frac{\partial \gamma_p}{\partial p} \bar{m} \, dx, \dot{p} \rangle_{\mathbb{R}} 
+						\end{align*}
 					</section>
 				</section>
 
 				<section style="text-align: left;">
-					<h3>Example: an inverse problem based on the Poisson equation</h3>
-					<div style="display:flex;">
-						<div style="flex: 1;">
-							<h5>adjoint forward</h5>
-							\begin{align*}
-								&\begin{cases}
-									-\nabla \cdot{} m \nabla \lambda^{(j)} &= -\mu^{(j)} &\forall x \in \mathcal{R} \\
-									\lambda^{(j)} &= 0 \quad &\forall x \in \partial \mathcal{R}
-								\end{cases}\\
-								&\Sigma^{(i, j)} = \int_{\partial \Omega} \nabla_n \lambda^{(j)} g^{(i)} \, d x\\
-								&C = \frac{1}{2 I J} \sum_{i, j}^{I, J} (\Sigma^{(i, j)} - \tilde{\Sigma}^{(i, j)})^2
-							\end{align*}
-						</div>
-						<div style="flex: 1;">
-							<h5>adjoint derivative</h5>
-							\begin{align*}
-								&\bar{\Sigma}^{(i, j)} = \frac{1}{IJ} (\Sigma^{(i, j)} - \tilde{\Sigma}^{(i, j)}) \bar{C}\\
-								&\begin{cases}
-									-\nabla \cdot{} m \nabla \bar{\lambda}^{(j)}  &= 0 \quad  &\forall x \in \mathcal{R} \\
-									\bar{\lambda}^{(j)} &= \sum_{i=1}^{I} \bar{\Sigma}^{(i, j)} g^{(i)} \quad &\forall x \in \partial \mathcal{R}\\
-								\end{cases} \\
-								&\bar{m} = \bar{C} \sum_{j=1}^{J} \nabla \bar{\lambda}^{(j)} \cdot{} \nabla \lambda^{(j)} \\
-								& (\nabla_p C)^{(n)} = \int_{\Omega} \frac{\partial \gamma_p}{\partial p^{(n)}} \bar{m} \, d x\\
-							\end{align*}
-						</div>
-					</div>
-					<div class="r-stack">
-						<div class="fragment fade-in-then-out" style="display:flex;">
-							<table style="text-align: center;">
+					<h3>Example: An inverse problem based on the Poisson equation</h3>
+					<table>
+						<tr style="border-style: hidden;">
+							<td style="text-align: center; "><h5>adjoint forward (strong form)</h5></td>
+							<td style="text-align: center; "><h5>adjoint derivative (strong form)</h5></td>
+						</tr>
+						<tr>
+							<td style="text-align: center; ">
+								\begin{align*}
+									& m = \gamma_p\\ 
+									&\begin{cases}
+										-\nabla \cdot{} m \nabla \lambda^{(j)} &= -\mu^{(j)} &\forall x \in \mathcal{R} \\
+										\lambda^{(j)} &= 0 \quad &\forall x \in \partial \mathcal{R}
+									\end{cases}\\
+									&\Sigma^{(i, j)} = \int_{\partial \mathcal{R}} \nabla_n \lambda^{(j)} g^{(i)} \, d x\\
+									&C = \frac{1}{2 I J} \sum_{i, j}^{I, J} (\Sigma^{(i, j)} - \tilde{\Sigma}^{(i, j)})^2
+								\end{align*}
+							</td>
+							<td style="text-align: center; ">
+								\begin{align*}
+									&\bar{\Sigma}^{(i, j)} = \frac{1}{IJ} (\Sigma^{(i, j)} - \tilde{\Sigma}^{(i, j)}) \bar{C}\\
+									&\begin{cases}
+										-\nabla \cdot{} m \nabla \bar{\lambda}^{(j)}  &= 0 \quad  &\forall x \in \mathcal{R} \\
+										\bar{\lambda}^{(j)} &= \sum_{i=1}^{I} \bar{\Sigma}^{(i, j)} g^{(i)} \quad &\forall x \in \partial \mathcal{R}\\
+									\end{cases} \\
+									&\bar{m} = \bar{C} \sum_{j=1}^{J} \nabla \bar{\lambda}^{(j)} \cdot{} \nabla \lambda^{(j)} \\
+									& (\nabla_p C)^{(n)} = (\bar{\gamma}_{p}(\bar{m}))^{(n)} = \int_{\mathcal{R}} \frac{\partial \gamma_p}{\partial p^{(n)}} \bar{m} \, d x\\
+								\end{align*}
+							</td>
+						</tr>
+					</table>
+
+					<div class="r-stack" style="margin-top: -30px;">
+						<div class="fragment fade-in" data-fragment-index="1">
+							<table style="text-align: center; padding: 0px">
 								<tr style="border-style: hidden;">
-									<td style="text-align: center; "><h5>adjoint forward $\lambda^{(j)}$</h5></td>
-									<td style="text-align: center; "><h5>adjoint derivative $\bar{\lambda}^{(j)}$</h5></td>
-									<td style="text-align: center; "><h5>gradient $\bar{m}$</h5></td>
+									<td style="text-align: center; padding: 0px"><h5>adjoint forward $\lambda^{(j)}$</h5></td>
+									<td style="text-align: center; padding: 0px"><h5>adjoint derivative $\bar{\lambda}^{(j)}$</h5></td>
+									<td style="text-align: center; padding: 0px">
+										<div class="r-stack">
+											<h5 class="fragment fade-out" data-fragment-index="2">gradient $\bar{m}$</h5>
+											<h5 class="fragment fade-in" data-fragment-index="2">gradient $\bar{m}$ (finite differences)</h5>
+										</div>
+									</td>
 								</tr>
-								<tr>
-									<td style="text-align: center; ">
-										<img src="figures/poisson/forward_adjoint/7.svg" width="600px"/>
+								<tr style="border-style: hidden;">
+									<td style="text-align: center; padding: 0px;">
+										<img src="figures/poisson/forward_adjoint/7.svg" style="width: 600px;"/>
 									</td>
-									<td style="text-align: center; ">
-										<img src="figures/poisson/derivative_adjoint/7.svg" width="600px"/>
+									<td style="text-align: center; padding: 0px;">
+										<img src="figures/poisson/derivative_adjoint/7.svg" style="width: 600px;"/>
 									</td>
-									<td style="text-align: center; ">
-										<img src="figures/poisson/gradient.svg" width="600px"/>
+									<td style="text-align: center; padding: 0px;">
+										<div class="r-stack">
+											<div class="fragment fade-out" data-fragment-index="2" >
+												<img src="figures/poisson/gradient.svg" style="width: 600px;"/>
+											</div>
+											<div class="fragment fade-in" data-fragment-index="2" >
+												<img src="figures/poisson/gradient_fd.svg" style="width: 600px;"/>
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr style="border-style: hidden;">
+									<td style="text-align: center; padding: 0px;"></td>
+									<td style="text-align: center; padding: 0px;"></td>
+									<td style="text-align: center; padding: 0px;">
+										<div class="r-stack" style="margin: -50px">
+											<div class="fragment fade-out" data-fragment-index="2" style="background-color: green;">
+												$\sim 92 ms \approx 2 \times 7 \times 7ms$
+											</div>
+											<div class="fragment fade-in" data-fragment-index="2" style="background-color: red;">
+												$\sim 160 s \approx 2972 \times 55ms$
+											</div>
+										</div>
 									</td>
 								</tr>
 							</table>
-							<!-- <div style="flex: 1;">
-								<h5>adjoint forward $\lambda^{(j)}$</h5>
-							</div>
-							<div style="flex: 1;">
-							</div>
-							<div style="flex: 1;">
-								<h5>gradient $\bar{m}$</h5>
-							</div> -->
+
 						</div>
-						<!-- <div class="fragment fade-in"  style="display:flex;">
-							<div style="flex: 1;">
-								<h5>forward solution $u^{(i)}$</h5>
-								<img src="figures/poisson/forward_solution/500.svg" width="600px"/>
-							</div>
-							<div style="flex: 1;">
-								<h5>extraction $\mu^{(j)}$</h5>
-								<img src="figures/poisson/extractions/3.svg" width="600px"/>
-							</div>
-							<div style="flex: 1;">
-								<h5>measurement $\Sigma^{(i, j)}$</h5>
-								<img style="margin-top: 50px;" src="figures/poisson/all_measurements.svg" height="460px"/>
-							</div>
-						</div> -->
 					</div>
 				</section>
 
 				<section style="text-align: left;">
-					<h3>Example: an inverse problem based on the Poisson equation</h3>
+					<h3>Example: An inverse problem based on the Poisson equation</h3>
 					\begin{align*}
-						m = \gamma_p = (0.1, 0.9, 0.4)^T \cdot{} \mathcal{NN}^{2 \to 20 \to 20 \to 3}_p(x)
+						m = \gamma_p = x \mapsto (0.1, 0.9, 0.4)^T \cdot{} \mathcal{NN}^{2 \to 20 \text{(tanh)} \to 20\text{(tanh)} \to 3\text{(softmax)}}_p(x)
 					\end{align*}
-					<div style="display:flex;">
-						<div style="flex: 1;">
-							<h5>measurements $\Sigma^{(i, j)}$ and $\tilde{\Sigma}^{(i, j)}$</h5>
-							<video loop data-autoplay width="600px" style="margin-top: 50px ;"> 
-								<source src="figures/poisson/optimization_measurements.webm" type="video/webm">
-							</video>
-						</div>
-						<div style="flex: 1;">
-							<h5>optimized material $m$</h5>
-							<video loop data-autoplay width="600px">
-								<source src="figures/poisson/optimization_material.webm" type="video/webm">
-							</video>
-						</div>
-						<div style="flex: 1;">
-							<h5>objective $\text{MSE}(\Sigma^{(i, j)}, \tilde{\Sigma}^{(i,j)})$</h5>
-							<video loop data-autoplay width="600px" style="margin-top: 50px ;">
-								<source src="figures/poisson/optimization_error.webm" type="video/webm">
-							</video>
-						</div>
-					</div>
+					<ul>
+						<li>inverting on $m$ directly is ill-posed</li>
+						<li>motivated from SciML: use a $\mathcal{NN}$ as the parametrization $\gamma_p$</li>
+						<li>we use the parametrization $\gamma_p$ to regularize (here: only phase classification)</li>
+						<li>number of parameters: $544$</li>
+						<li>coarser discretization for the inversion ($757$ material cells vs $2972$ for the true measurements)</li>
+						<li>$1$% random noise added to the true measurements</li>
+					</ul>
+					<table>
+						<tr style="border-style: hidden;">
+							<td style="text-align: center; " width="620px">
+								<h5>measurements $\Sigma^{(i, j)}$ and $\tilde{\Sigma}^{(i, j)}$</h5>
+							</td>
+							<td style="text-align: center; " width="580px">
+								<h5>optimized material $m$</h5>
+							</td>
+							<td style="text-align: center; " width="600px">
+								<h5>objective $\text{MSE}(\Sigma^{(i, j)}, \tilde{\Sigma}^{(i,j)})$</h5>
+							</td>
+						</tr>
+						<tr class="fragment highlight-red" data-fragment-index="1">
+							<td style="text-align: center; vertical-align: top;">
+								<video data-autoplay style="width=550px; margin-top: 20px;"> 
+									<source data-src="figures/poisson/optimization_measurements.webm" type="video/webm">
+								</video>
+							</td>
+							<td style="text-align: center; ">
+								<div class="r-stack">
+									<div class="fragment highlight-red" data-fragment-index="1">
+										<video data-autoplay style="width: 600px;">
+											<source data-src="figures/poisson/optimization_material.webm" type="video/webm">
+										</video>
+									</div>
+									<div class="fragment fade-in" data-fragment-index="2">
+										<video style="width: 600px;">
+											<source data-src="figures/poisson/true_material.webm" type="video/webm">
+										</video>
+									</div>
+								</div>
+							</td>
+							<td style="text-align: center; vertical-align: top;">
+								<video data-autoplay style="width=550px; margin-top: 50px; "> 
+									<source data-src="figures/poisson/optimization_error.webm" type="video/webm">
+								</video>
+							</td>
+						</tr>
+					</table>
+					<ul>
+						<li>taylor the parametrization $\gamma_p$ to a specific problem (layers, other geometry, phase values, e.g.)</li>
+					</ul>
 				</section>
-					
 
 				<section style="text-align: left;">
 					<h3>Material Reconstruction in EPMA</h3>
@@ -1027,12 +1166,57 @@
 						</li>
 					</ul>
 				</section>
+
 				<section style="text-align: left;">
 					<h3>Material Reconstruction in EPMA</h3>
 					<ul>
 						<li>compute measurements $\Sigma^{(i, j)}$ with the extraction as the source to the adjoint RT-CSD</li>
 						<li>adjoint RT-CSD: reversed in energy and direction(or space) $a_m(\psi, \phi)$ vs. $a_m(\phi, \psi)$</li>
+						<table>
+							<tr style="border-style: hidden;">
+								<td style="text-align: center; ">
+									<h4>forward</h4>
+								</td>
+								<td style="text-align: center; ">
+									<h4>adjoint forward</h4>
+								</td>
+							</tr>
+							<tr>
+								<td style="text-align: center; ">
+									<video data-autoplay style="width: 800px; margin-top: 40px;">
+										<source data-src="figures/adjoint_visualization/forward.webm" type="video/webm">
+									</video>
+								</td>
+								<td style="text-align: center; ">
+									<video data-autoplay style="width: 800px; margin-top: 40px;">
+										<source data-src="figures/adjoint_visualization/adjoint.webm" type="video/webm">
+									</video>
+								</td>
+							</tr>
+						</table>
 					</ul>
+					<table>
+						<tr>
+							<td style="width:800px; vertical-align: top;"> 
+								<ul>
+									<li>orange/green marker: measurements from forward</li>
+									<li>green lines: measurements from adjoint forward</li>
+								</ul>
+							</td>
+							<td>
+								<img src="figures/adjoint_visualization/measurements.svg" style="width: 800px;">
+							</td>
+						</tr>
+					</table>
+				</section>
+				<section style="text-align: left;">
+					<h3>Material Reconstruction in EPMA</h3>
+					<img src="figures/adjoint_visualization/gradient.svg">
+				</section>
+
+				<section style="text-align: left;">
+					<h3>Outlook</h3>
+
 				</section>
 			</div>
 		</div>
