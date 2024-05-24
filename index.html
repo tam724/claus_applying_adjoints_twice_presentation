@@ -836,30 +836,48 @@
 
 				<section style="text-align: left;">
 					<section><h3>Example: An inverse problem based on the Poisson equation</h3>
-						<div style="display:flex;">
-							<div style="flex: 1;">
-								\begin{align*}
-									&m = \gamma_p\\
-									&\begin{cases}
-										-\nabla \cdot{} m \nabla u^{(i)} = 0 \quad &\forall x \in \mathcal{R}\\
-										u^{(i)} = g^{(i)} \quad &\forall x \in \partial\mathcal{R}
-										\end{cases}\\
-									&\Sigma^{(i, j)} = \int_{\mathcal{R}} \mu^{(j)} u^{(i)} dx\\
-									&C = \frac{1}{2 IJ}\sum_{i, j=1}^{I,J} (\Sigma^{(i, j)} - \tilde{\Sigma}^{(i, j)})^2  
-								\end{align*}
-							</div>
-							<div style="flex: 2; padding-left: 20px;">
-								<ul>
-									<li>$\gamma: \mathbb{R}^N \to L^{(2)}(\mathcal{R})$</li>
-									<li>$m, \mu^{(j)} \in L^2(\mathcal{R})$, $g^{(i)} \in L^2(\partial \mathcal{R})$</li>
-									<li>weak enforcement of boundary conditions $u, v \in H^1_h(\mathcal{R})$</li>
-									<li>Aubin-Nitsche trick: stable bilinear form
-										\[a(u^{(i)}, v) + b^{(i)}(v) = 0 \quad \forall v \in H^1_h(\mathcal{R})\]
-									</li>
-									<li>$I, N \gg J$ (many bc $g^{(i)}$, many parameters $p \in \mathbb{R}^N$, some extractions $\mu^{(j)}$)</li>
-								</ul>
-							</div>
-						</div>
+						<table>
+							<tr>
+								<td style="text-align: center; vertical-align: top;">
+									<h4>forward (strong form)</h4>
+									\begin{align*}
+										&m = \gamma_p\\
+										&\begin{cases}
+											-\nabla \cdot{} m \nabla u^{(i)} = 0 \quad &\forall x \in \mathcal{R}\\
+											u^{(i)} = g^{(i)} \quad &\forall x \in \partial\mathcal{R}
+											\end{cases}\\
+										&\Sigma^{(i, j)} = \int_{\mathcal{R}} \mu^{(j)} u^{(i)} dx\\
+										&C = \frac{1}{2 IJ}\sum_{i, j=1}^{I,J} (\Sigma^{(i, j)} - \tilde{\Sigma}^{(i, j)})^2  
+									\end{align*}
+								</td>
+								<td style="text-align: center; vertical-align: top;">
+									<div class="r-stack">
+										<ul class="fragment fade-out" data-fragment-index="1">
+											<li>$\gamma: \mathbb{R}^N \to L^{(2)}(\mathcal{R})$</li>
+											<li>$m, \mu^{(j)} \in L^2(\mathcal{R})$, $g^{(i)} \in L^2(\partial \mathcal{R})$</li>
+											<li>weak enforcement of boundary conditions $u, v \in H^1_h(\mathcal{R})$</li>
+											<li>Aubin-Nitsche trick: stable bilinear form
+												\[a(u^{(i)}, v) + b^{(i)}(v) = 0 \quad \forall v \in H^1_h(\mathcal{R})\]
+											</li>
+											<li>$I, N \gg J$ (many bc $g^{(i)}$, many parameters $p \in \mathbb{R}^N$, some extractions $\mu^{(j)}$)</li>
+											<li>here: $I=800$, $N=2971$, $J=8$</li>
+										</ul>
+										<div class="fragment fade-in" data-fragment-index="1">
+											<h4>adjoint forward (strong form)</h4>
+											\begin{align*}
+												& m = \gamma_p\\ 
+												&\begin{cases}
+													-\nabla \cdot{} m \nabla \lambda^{(j)} &= -\mu^{(j)} &\forall x \in \mathcal{R} \\
+													\lambda^{(j)} &= 0 \quad &\forall x \in \partial \mathcal{R}
+												\end{cases}\\
+												&\Sigma^{(i, j)} = \int_{\partial \mathcal{R}} \nabla_n \lambda^{(j)} g^{(i)} \, d x\\
+												&C = \frac{1}{2 I J} \sum_{i, j}^{I, J} (\Sigma^{(i, j)} - \tilde{\Sigma}^{(i, j)})^2
+											\end{align*}
+										</div>
+									</div>
+								</td>
+							</tr>
+						</table>
 						<div class="r-stack">
 							<div class="fragment fade-out" data-fragment-index="1">
 								<table style="text-align: center">
@@ -1142,28 +1160,30 @@
 						<li>
 							(stationary) radiative transfer/linear boltzmann equation in continuous-slowing-down approximation (CSD) ($x \in \mathcal{R} \subset \mathbb{R}^3$, $\epsilon \in \mathbb{R}^+$, $\Omega \in S^2$)
 							\begin{align}
-								-\partial_\epsilon (s(x, \epsilon) \psi(x, \epsilon, \Omega)) + \Omega \cdot{} \nabla_x \psi(x, \epsilon, \Omega) = \int_{S^2} k(x, \epsilon, \Omega \cdot{} \Omega') \psi(x, \epsilon, \Omega') \, d\Omega' - \tau(x, \epsilon) \psi(x, \epsilon, \Omega)
+								-\partial_\epsilon (s(x, \epsilon) \psi^{(i)}(x, \epsilon, \Omega)) + \Omega \cdot{} \nabla_x \psi^{(i)}(x, \epsilon, \Omega) = \int_{S^2} k(x, \epsilon, \Omega \cdot{} \Omega') \psi^{(i)}(x, \epsilon, \Omega') \, d\Omega' - \tau(x, \epsilon) \psi^{(i)}(x, \epsilon, \Omega)
 							\end{align}
 						</li>
 						<li>
-							beam is modeled by boundary conditions
+							beam is modeled by boundary conditions (excitations)
 							\begin{align}
-								\psi(x, \epsilon, \Omega) = g(x, \epsilon, \Omega) \quad \forall x \in \partial \mathcal{R} | n \cdot{} \Omega < 0 
+								\psi^{(i)}(x, \epsilon, \Omega) = g^{(i)}(x, \epsilon, \Omega) \quad \forall x \in \partial \mathcal{R} | n \cdot{} \Omega < 0 
 							\end{align}
 						</li>
+						<li>$i = 1, ..., I$: beam position, beam energy, beam direction</li>
 						<li>
-							additivity approximation (for $\sigma = s$, $k$ and $\tau$)
+							additivity approximation (for $\sigma = s$, $k$ and $\tau$), $p \in \mathbb{R}^N$
 							\begin{equation}
-								\sigma(x, \cdot{}) = \sum_{e=1}^{n_e} \rho_{e}(x) \sigma_e(\cdot{})
+								\sigma(x, \cdot{}) = \sum_{e=1}^{n_e} \rho_{e}(x) \sigma_e(\cdot{})\quad \text{where} \quad (\rho_1, ... \rho_{n_e})^T = \gamma_p
 							\end{equation}
 						</li>
 						<li>
-							extraction
+							x-ray generation and detection (extraction)
 							\begin{align}
 								\Sigma^{(i, j)} = \int_{\mathcal{R}} \int_{0}^{\infty} \sigma^{ion}_j(\epsilon) \rho_j(x) e^{-\int_{d(x)} \sum_{e=1}^{n_e} \mu_e^{(j)} \rho_e(y) \,d y}\int_{S^2} \psi^{(i)}(x, \epsilon, \Omega) \,d \Omega \, d \epsilon \,d  x
 
 							\end{align}
 						</li>
+						<li>$j = 1, ..., J$: number of measured x-ray lines/materials</li>
 					</ul>
 				</section>
 
@@ -1175,13 +1195,13 @@
 						<table>
 							<tr style="border-style: hidden;">
 								<td style="text-align: center; ">
-									<h4>forward</h4>
+									<h4>forward $\psi^{(i)}$</h4>
 								</td>
 								<td style="text-align: center; ">
-									<h4>adjoint forward</h4>
+									<h4>adjoint forward $\lambda^{(j)}$</h4>
 								</td>
 							</tr>
-							<tr>
+							<tr style="border-style: hidden;">
 								<td style="text-align: center; ">
 									<video data-autoplay style="width: 800px; margin-top: 40px;">
 										<source data-src="figures/adjoint_visualization/forward.webm" type="video/webm">
@@ -1191,6 +1211,14 @@
 									<video data-autoplay style="width: 800px; margin-top: 40px;">
 										<source data-src="figures/adjoint_visualization/adjoint.webm" type="video/webm">
 									</video>
+								</td>
+							</tr>
+							<tr style="border-style: hidden;">
+								<td style="text-align: center; ">
+									cost: $I \times \mathcal{C}(a) \sim I \times 2\text{min}$
+								</td>
+								<td style="text-align: center; ">
+									cost: $J \times \mathcal{C}(a) \sim J \times 2\text{min}$
 								</td>
 							</tr>
 						</table>
@@ -1211,7 +1239,25 @@
 				</section>
 				<section style="text-align: left;">
 					<h3>Material Reconstruction in EPMA</h3>
-					<img src="figures/adjoint_visualization/gradient.svg">
+					<ul>
+						<li>compute the gradient $\bar{\rho}_e$ using the "adjoint augmented" excitations as the source to the RT-CSD</li>
+					</ul>
+					<table>
+						<tr style="border-style: hidden;">
+							<td style="text-align: center; "><h4>adjoint derivative $\bar{\lambda}^{(j)}$</h4></td>
+							<td style="text-align: center; "><h4>gradient $\bar{\rho}_e$</h4></td>
+						</tr>
+						<tr style="border-style: hidden;">
+							<td style="text-align: center; ">
+								<video data-autoplay style="width: 800px; margin-top: 40px;">
+									<source data-src="figures/adjoint_visualization/adjoint_derivative_1.webm" type="video/webm">
+								</video>
+							</td>
+							<td style="text-align: center; ">
+								<img src="figures/adjoint_visualization/gradient.svg" style="width: 800px">
+							</td>
+						</tr>
+					</table>
 				</section>
 
 				<section style="text-align: left;">
@@ -1234,7 +1280,8 @@
 			Reveal.configure({pdfSeparateFragments: true});
 			Reveal.initialize({
 				hash: true,
-
+				controls: true, 
+				controlsLayout: 'bottom-right',
 				// The "normal" size of the presentation, aspect ratio will
 				// be preserved when the presentation is scaled to fit different
 				// resolutions. Can be specified using percentage units.
