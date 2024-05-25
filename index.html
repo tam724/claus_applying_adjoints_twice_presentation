@@ -47,14 +47,14 @@
 						<span class="fragment fade-out" data-fragment-index="1">\[
 							\underbrace{\begin{pmatrix}
 							&   &   \\
-							& \Sigma^{(ij)} &   \\
-							&   &   \end{pmatrix}^{\color{white}{T}}}_{I \times J} = 
+							& \Sigma^{(ji)} &   \\
+							&   &   \end{pmatrix}^{\color{white}{T}}}_{J \times I} = 
 							\color{white}{\Bigg(}
 							\underbrace{\begin{pmatrix}
 							— & h^{(1)} & — \\
-							— & h^{(i)} & — \\
-							— & h^{(I)} & — \\
-							\end{pmatrix}}_{I \times N} 
+							— & h^{(j)} & — \\
+							— & h^{(J)} & — \\
+							\end{pmatrix}}_{J \times N} 
 							\cdot{}
 							\color{white}{\Bigg(}
 							\underbrace{\boldsymbol{A}^{\color{white}{*}}}_{N \times N}
@@ -64,22 +64,22 @@
 							\underbrace{
 							\begin{pmatrix}
 								| & | & | \\
-								g^{(1)} &  g^{(j)} & g^{(J)} \\
+								g^{(1)} &  g^{(i)} & g^{(I)} \\
 								| & | & | \\
-							\end{pmatrix}}_{N \times J}
+							\end{pmatrix}}_{N \times I}
 							\color{white}{\Bigg)}
 						\]</span>
 						<span class="fragment fade-in-then-out" data-fragment-index="1">\[
 							\underbrace{\begin{pmatrix}
 							&   &   \\
-							& \Sigma^{(ij)} &   \\
-							&   &   \end{pmatrix}^{\color{white}{T}}}_{I \times J} = 
+							& \Sigma^{(ji)} &   \\
+							&   &   \end{pmatrix}^{\color{white}{T}}}_{J \times I} = 
 							\color{blue}{\Bigg(}
 							\underbrace{\begin{pmatrix}
 							— & h^{(1)} & — \\
-							— & h^{(i)} & — \\
-							— & h^{(I)} & — \\
-							\end{pmatrix}}_{I \times N} 
+							— & h^{(j)} & — \\
+							— & h^{(J)} & — \\
+							\end{pmatrix}}_{J \times N} 
 							\cdot{}
 							\color{white}{\Bigg(}
 							\underbrace{\boldsymbol{A}^{\color{white}{*}}}_{N \times N}
@@ -89,22 +89,22 @@
 							\underbrace{
 							\begin{pmatrix}
 								| & | & | \\
-								g^{(1)} &  g^{(j)} & g^{(J)} \\
+								g^{(1)} &  g^{(i)} & g^{(I)} \\
 								| & | & | \\
-							\end{pmatrix}}_{N \times J}
+							\end{pmatrix}}_{N \times I}
 							\color{white}{\Bigg)}
 						\]</span>
 						<span class="fragment fade-in-then-out" data-fragment-index="2">\[
 							\underbrace{\begin{pmatrix}
 							&   &   \\
-							& \Sigma^{(ij)} &   \\
-							&   &   \end{pmatrix}^{\color{white}{T}}}_{I \times J} = 
+							& \Sigma^{(ji)} &   \\
+							&   &   \end{pmatrix}^{\color{white}{T}}}_{J \times I} = 
 							\color{white}{\Bigg(}
 							\underbrace{\begin{pmatrix}
 							— & h^{(1)} & — \\
-							— & h^{(i)} & — \\
-							— & h^{(I)} & — \\
-							\end{pmatrix}}_{I \times N} 
+							— & h^{(j)} & — \\
+							— & h^{(J)} & — \\
+							\end{pmatrix}}_{J \times N} 
 							\cdot{}
 							\color{red}{\Bigg(}
 							\underbrace{\boldsymbol{A}^{\color{white}{*}}}_{N \times N}
@@ -114,22 +114,22 @@
 							\underbrace{
 							\begin{pmatrix}
 								| & | & | \\
-								g^{(1)} &  g^{(j)} & g^{(J)} \\
+								g^{(1)} &  g^{(i)} & g^{(I)} \\
 								| & | & | \\
-							\end{pmatrix}}_{N \times J}
+							\end{pmatrix}}_{N \times I}
 							\color{red}{\Bigg)}
 						\]</span>
 						<span class="fragment fade-in" data-fragment-index="3">\[
 							\underbrace{\begin{pmatrix}
 							&   &   \\
-							& \Sigma^{(ij)} &   \\
-							&   &   \end{pmatrix}^{\color{white}{T}}}_{I \times J} = 
+							& \Sigma^{(ji)} &   \\
+							&   &   \end{pmatrix}^{\color{white}{T}}}_{J \times I} = 
 							\color{blue}{\Bigg(}
 							\underbrace{\begin{pmatrix}
 							— & h^{(1)} & — \\
-							— & h^{(i)} & — \\
-							— & h^{(I)} & — \\
-							\end{pmatrix}}_{I \times N} 
+							— & h^{(j)} & — \\
+							— & h^{(J)} & — \\
+							\end{pmatrix}}_{J \times N} 
 							\cdot{}
 							\color{red}{\Bigg(}
 							\underbrace{\boldsymbol{A}^{\color{white}{*}}}_{N \times N}
@@ -139,9 +139,9 @@
 							\underbrace{
 							\begin{pmatrix}
 								| & | & | \\
-								g^{(1)} &  g^{(j)} & g^{(J)} \\
+								g^{(1)} &  g^{(i)} & g^{(I)} \\
 								| & | & | \\
-							\end{pmatrix}}_{N \times J}
+							\end{pmatrix}}_{N \times I}
 							\color{red}{\Bigg)}
 						\]</span>
 						<!-- <span style="background-color:#fff;" class="fragment fade-in" data-fragment-index="6">\[
@@ -171,20 +171,20 @@
 					</div>
 					<p>where to bracket?</p>
 					<p style="text-align: center" class="fragment fade-in" data-fragment-index="4">
-						different computational costs: $\color{red}{J\times N^2 + IJ\times N} \text{ or } \color{blue}{I\times N^2 + IJ\times N}$
+						different computational costs: $\color{red}{I\times N^2 + IJ\times N} \text{ or } \color{blue}{J\times N^2 + IJ\times N}$
 					</p>
 					<span class="fragment fade-in" data-fragment-index="5">
 						<ul>
 							<li>
 								what happens if $\boldsymbol A$ is more general, e.g. "solution of a linear system / (linear, linearized) weak form" instead of "matrix multiplication"?
 								\[
-									\boldsymbol A g^{(i)} = \{u \in V \, | \, a(u, v) = \langle g^{(i)}, v \rangle \quad \forall v \in V\}
+									\boldsymbol A g^{(i)} = \{u \in V \, | \, a(u, v) + \langle g^{(i)}, v \rangle = 0 \quad \forall v \in V\}
 								\]
 							</li>
 							<li>
 								what happens if $\boldsymbol A$ is a derivative (structure: chain rule, product rule, ...)?
 								\[
-									\boldsymbol A g^{(j)} = \frac{\partial f(h(w))}{\partial v}\frac{\partial h(w)}{\partial w}g^{(i)}
+									\boldsymbol A g^{(i)} = \frac{\partial f(h(w))}{\partial v}\frac{\partial h(w)}{\partial w}g^{(i)}
 								\]
 							</li>
 						</ul>
@@ -192,7 +192,7 @@
 					<span class="fragment fade-in" data-fragment-index="6">
 						In general (reduced cost, if $J < I$):
 						\[
-							\underbrace{\Sigma^T}_{J\times I} = \underbrace{G^T}_{J \times \infty} \cdot{}  \underbrace{A^*}_{\infty \times \infty} \cdot{} \underbrace{H^T}_{\infty \times I}
+							\underbrace{\Sigma^T}_{I \times J} = \underbrace{G^T}_{I \times \infty} \cdot{}  \underbrace{A^*}_{\infty \times \infty} \cdot{} \underbrace{H^T}_{\infty \times J}
 						\]
 						where $\boldsymbol A ^* $is the <em>adjoint </em> operator.
 					</span>
@@ -319,52 +319,52 @@
 				<!-- An adjoint method -->
 				<section style="text-align: left;">
 					<section style="text-align: left";>
-						<h3>An adjoint method</h3>
+						<h3>An Adjoint Method</h3>
 						<p>
-							Definition of the <em>adjoint</em> ($H, G$ Hilbert spaces, $A: G \to H$ continuous, linear)
+							Definition of the <em>Adjoint</em> ($H, G$ Hilbert spaces, $A: G \to H$ continuous, linear)
 							\[
 								\langle h, A(g) \rangle_H := \langle A^*(h), g \rangle_G \quad \forall h \in H \, \forall g \in G
 							\]
 						</p>
 						<ul>
-							<li>given multiple inputs $g^{(1)}, ... g^{(J)} \in G$, $h^{(1)}, ... h^{(I)} \in H$
+							<li>given multiple inputs $g^{(1)}, ... g^{(I)} \in G$, $h^{(1)}, ... h^{(J)} \in H$
 							</li>
 							<li> we want to compute
 							</li>
 						</ul>
 						\[
-						\Sigma^{(ij)} = \langle h^{(i)}, A(g^{(j)}) \rangle = \langle A^*(h^{(i)}), g^{(j)} \rangle \quad \forall i=1, ...I \, j=1, ...J
+						\Sigma^{(ji)} = \langle h^{(j)}, A(g^{(i)}) \rangle_H = \langle A^*(h^{(j)}), g^{(i)} \rangle_G \quad \forall i=1, ...I \, j=1, ...J
 						\]
 						<div style="display:flex;">
 							<div style="flex: 1;">
 								<h4>non-adjoint implementation</h4>
 								\begin{align*}
-									&\text{foreach } \color{orange}{j = 1, ..., J} \text{ do} \\
-									&\qquad \color{orange}{v^{(j)} \leftarrow A(g^{(j)})}\\
-									&\qquad \text{foreach } \color{green}{i = 1, ..., I} \text{ do}\\
-									&\qquad \qquad \Sigma^{(i, j)} \leftarrow \langle \color{green}{h^{(i)}}, \color{orange}{v^{(j)}} \rangle_H\\
+									&\text{foreach } \color{orange}{i = 1, ..., I} \text{ do} \\
+									&\qquad \color{orange}{v^{(i)} \leftarrow A(g^{(i)})}\\
+									&\qquad \text{foreach } \color{green}{j = 1, ..., J} \text{ do}\\
+									&\qquad \qquad \Sigma^{(ji)} \leftarrow \langle \color{green}{h^{(j)}}, \color{orange}{v^{(i)}} \rangle_H\\
 									&\qquad \text{end}\\
 									&\text{end}
 								\end{align*}
 								<ul>
-									<li>cost: $\color{orange}{J} \times \mathcal{C}(A) + \color{green}{I}\color{orange}{J} \times \mathcal{C}(\langle \cdot{}, \cdot{} \rangle_H)$</li>
-									<li>use if $\color{green}{I} > \color{orange}{J}$</li>
+									<li>cost: $\color{orange}{I} \times \mathcal{C}(A) + \color{orange}{I}\color{green}{J} \times \mathcal{C}(\langle \cdot{}, \cdot{} \rangle_H)$</li>
+									<li>use if $\color{green}{J} > \color{orange}{I}$</li>
 								</ul>
 							</div>
 							<div style="flex: 1;">
 								<h4>adjoint implementation</h4>
 								\begin{align*}
-									&\text{foreach } \color{green}{i = 1, ..., I} \text{ do} \\
-									&\qquad \color{green}{\lambda^{(i)} \leftarrow A^*(h^{(i)})}\\
-									&\qquad \text{foreach } \color{orange}{j = 1, ..., J} \text{ do}\\
-									&\qquad \qquad \Sigma^{(i, j)} \leftarrow \langle \color{orange}{g^{(j)}}, \color{green}{\lambda^{(i)}} \rangle_G\\
+									&\text{foreach } \color{green}{j = 1, ..., J} \text{ do} \\
+									&\qquad \color{green}{\lambda^{(j)} \leftarrow A^*(h^{(j)})}\\
+									&\qquad \text{foreach } \color{orange}{i = 1, ..., I} \text{ do}\\
+									&\qquad \qquad \Sigma^{(ji)} \leftarrow \langle \color{green}{\lambda^{(j)}}, \color{orange}{g^{(i)}} \rangle_G\\
 									&\qquad \text{end}\\
 									&\text{end}
 								\end{align*}
 								<ul>
-									<li>cost: $\color{green}{I} \times \mathcal{C}(A^*) + \color{green}{I}\color{orange}{J} \times \mathcal{C}(\langle \cdot{}, \cdot{} \rangle_G)$
+									<li>cost: $\color{green}{J} \times \mathcal{C}(A^*) + \color{orange}{I}\color{green}{J} \times \mathcal{C}(\langle \cdot{}, \cdot{} \rangle_G)$
 									</li>
-									<li>use if $\color{orange}{J} > \color{green}{I}$</li>
+									<li>use if $\color{orange}{I} > \color{green}{J} $</li>
 								</ul>
 							</div>
 						</div>
@@ -521,14 +521,14 @@
 				<section>
 					<section style="text-align: left;">
 						<h3>Derivative Notation (from Algorithmic Differentiation)</h3>
+						<ul>
+							<li>given $f_{(\cdot{})}: X \to Y, x \mapsto f_x$ ($X, Y$ Hilbert) non-linear, Frechet-differentiable</li>
+						</ul>
 						<p>
-							Given a (non-linear, Frechet-differentiable) function $f_{(\cdot{})}: X \to Y, x \mapsto f_x$ ($X, Y$ Hilbert).
-						</p>
-						<p>
-							We define:
+							we define:
 						</p>	
 						<ul>
-							<li>the (continuous, linear) <em>tangent operator</em> $\dot{f}_x \in L(X, Y)$
+							<li>the (continuous, linear) <em>tangent operator</em> $\dot{f}_x \in L(X, Y)$ (directional derivative)
 								\begin{align*}
 									\dot{f}_x(\dot{x}) = \frac{\partial f_x}{\partial x}(\dot{x}) = \lim_{h \to 0} \frac{f_{x + h\dot{x}} - f_{x}}{h}
 								\end{align*}
@@ -546,7 +546,6 @@
 								<li><em>adjoint variables</em> $\bar{x} \in X, \bar{y} \in Y$: given $\bar{y} \in Y$, $\bar{x} = \bar{f}_x(\bar{y})$</li>
 							</ul>
 						</p>
-
 						Applying this to a composition $ f_x = \varphi^{(N)}_{v^{(N-1)}} \circ \, ...\, \circ\, \varphi^{(1)}_x$ where $\varphi^{(n)}$ are single assignments (chain rule!) is tangent/adjoint mode automatic differentiation. (neglecting all implementational details..)
 					</section>
 
@@ -674,7 +673,8 @@
 					</div>
 					<div style="margin-top: 50px;">
 						<ul style="width: 100%">
-							<li class="fragment fade-in" data-fragment-index="1">introduce a $\lambda \in V(\mathcal{R})$ (fixed but yet unspecified "Lagrange-multiplier") 
+							<li><span style="color: gray;">solution operator $A(g^{(i)}) = (u^{(i)} | a_m(u^{(i)}, v) + b^{(i)}(v) = 0 \, \forall v \text{ where } b^{(i)}(v) = \langle g^{(i)}, v \rangle)$</span></li>
+							<li class="fragment fade-in" data-fragment-index="1">introduce a $\lambda \in V(\mathcal{R})$ (fixed but yet unspecified) "Lagrange-multiplier" 
 								<div class="r-stack">
 									<div class="fragment fade-in-then-out" data-fragment-index="1">
 										\[
@@ -701,12 +701,13 @@
 									\end{align*}
 								</div>	
 							</li>
+							<li class="fragment fade-in" data-fragment-index="4"><span style="color: gray;">adjoint solution operator $A^*(h) = (\lambda | a_m(u, \lambda) + c(u) = 0 \, \forall u \text{ where } c(u) = \langle h, u \rangle)$</span></li>
 							<li class="fragment fade-in" data-fragment-index="5">
 								1st "application of an adjoint method"
-								\begin{align*}
+								<!-- \begin{align*}
 									a_m(u, \lambda) + c(u) &= 0 \quad \forall u \in V(\mathcal{R}) \\
 									C = g_{\boldsymbol\Sigma} &= g_{\boldsymbol b(\lambda)}
-								\end{align*}
+								\end{align*} -->
 							</li>
 						</ul>
 					</div>
@@ -775,7 +776,7 @@
 							</div>
 						</li>
 						<li class="fragment fade-in" data-fragment-index="6">
-							with adjoint derivative notation ($\bar{\boldsymbol{\Sigma}} = \bar{g}_{\boldsymbol\Sigma}(\bar{C})$)
+							with adjoint variables ($\bar{\boldsymbol{\Sigma}} = \bar{g}_{\boldsymbol\Sigma}(\bar{C})$)
 							\begin{alignat*}{2}
 										a_m(\bar{\lambda}, \dot{\lambda}) &+ \bar{\boldsymbol \Sigma}^T \boldsymbol b(\dot{\lambda}) && = 0 \quad \forall \dot{\lambda} \in V(\mathcal{R}) \\
 										&\bar{p} = \bar{\gamma}_p(\bar{a}_m(\bar{\lambda}, \lambda, \bar{C}))\\
@@ -786,7 +787,7 @@
 				</section>
 
 				<section style="text-align: left;">
-					<h3>Applying Adjoints Twice: Adjoints<sup>2</sup></h3>
+					<h3>Applying Adjoints Twice</h3>
 					<table style="text-align: center">
 						<tr style="border-style: hidden;">
 							<td style="text-align: center; ">
@@ -846,7 +847,7 @@
 											-\nabla \cdot{} m \nabla u^{(i)} = 0 \quad &\forall x \in \mathcal{R}\\
 											u^{(i)} = g^{(i)} \quad &\forall x \in \partial\mathcal{R}
 											\end{cases}\\
-										&\Sigma^{(i, j)} = \int_{\mathcal{R}} \mu^{(j)} u^{(i)} dx\\
+										&\Sigma^{(i, j)} = \int_{\mathcal{R}} h^{(j)} u^{(i)} dx\\
 										&C = \frac{1}{2 IJ}\sum_{i, j=1}^{I,J} (\Sigma^{(i, j)} - \tilde{\Sigma}^{(i, j)})^2  
 									\end{align*}
 								</td>
@@ -854,20 +855,20 @@
 									<div class="r-stack">
 										<ul class="fragment fade-out" data-fragment-index="1">
 											<li>$\gamma: \mathbb{R}^N \to L^{(2)}(\mathcal{R})$</li>
-											<li>$m, \mu^{(j)} \in L^2(\mathcal{R})$, $g^{(i)} \in L^2(\partial \mathcal{R})$</li>
+											<li>$m, h^{(j)} \in L^2(\mathcal{R})$, $g^{(i)} \in L^2(\partial \mathcal{R})$</li>
 											<li>weak enforcement of boundary conditions $u, v \in H^1_h(\mathcal{R})$</li>
 											<li>Aubin-Nitsche trick: stable bilinear form
 												\[a(u^{(i)}, v) + b^{(i)}(v) = 0 \quad \forall v \in H^1_h(\mathcal{R})\]
 											</li>
-											<li>$I, N \gg J$ (many bc $g^{(i)}$, many parameters $p \in \mathbb{R}^N$, some extractions $\mu^{(j)}$)</li>
-											<li>here: $I=800$, $N=2971$, $J=8$</li>
+											<li>$I, N \gg J$ (many bc $g^{(i)}$, many parameters $p \in \mathbb{R}^N$, some extractions $h^{(j)}$)</li>
+											<li>here: $I=800$, $N=2971$, $J=7$</li>
 										</ul>
 										<div class="fragment fade-in" data-fragment-index="1">
 											<h4>adjoint forward (strong form)</h4>
 											\begin{align*}
 												& m = \gamma_p\\ 
 												&\begin{cases}
-													-\nabla \cdot{} m \nabla \lambda^{(j)} &= -\mu^{(j)} &\forall x \in \mathcal{R} \\
+													-\nabla \cdot{} m \nabla \lambda^{(j)} &= -h^{(j)} &\forall x \in \mathcal{R} \\
 													\lambda^{(j)} &= 0 \quad &\forall x \in \partial \mathcal{R}
 												\end{cases}\\
 												&\Sigma^{(i, j)} = \int_{\partial \mathcal{R}} \nabla_n \lambda^{(j)} g^{(i)} \, d x\\
@@ -883,7 +884,7 @@
 								<table style="text-align: center">
 									<tr style="border-style: hidden;">
 										<td style="text-align: center; "><h5>forward solution $u^{(i)}$</h5></td>
-										<td style="text-align: center; "><h5>extraction $\mu^{(j)}$</h5></td>
+										<td style="text-align: center; "><h5>extraction $h^{(j)}$</h5></td>
 										<td style="text-align: center; "><h5>measurement $\Sigma^{(i, j)}$</h5></td>
 									</tr>
 									<tr>
@@ -908,7 +909,7 @@
 								<table style="text-align: center;">
 									<tr style="border-style: hidden;">
 										<td style="text-align: center; "><h5>forward solution $u^{(i)}$</h5></td>
-										<td style="text-align: center; "><h5>extraction $\mu^{(j)}$</h5></td>
+										<td style="text-align: center; "><h5>extraction $h^{(j)}$</h5></td>
 										<td style="text-align: center; ">
 											<div class="r-stack">
 												<div class="fragment fade-out" data-fragment-index="2">
@@ -964,7 +965,7 @@
 						\begin{align*}
 							a_m(u, v) &= \int_{\mathcal{R}} m \nabla u \cdot{} \nabla v dx - \int_{\partial \mathcal{R}} m \nabla_n u v + u \nabla_n v \, d\Gamma + \int_{\partial \mathcal{R}} \alpha u v \, d \Gamma \\
 							b^{(i)}(v) &= \int_{\partial \mathcal{R}} \nabla_n v  g^{(i)} \, d\Gamma - \int_{\partial \mathcal{R}} \alpha g^{(i)} v \, d\Gamma\\
-							c^{(j)}(u) &= \int_{\mathcal{R}} \mu^{(j)} u \, dx
+							c^{(j)}(u) &= \int_{\mathcal{R}} h^{(j)} u \, dx
 						\end{align*}
 						<h4>adjoint forward</h4>
 						\begin{align*}
@@ -974,7 +975,7 @@
 						<h4>adjoint forward (strong form)</h4>
 						\begin{align*}
 							\begin{cases}
-								-\nabla m \cdot{} \nabla \lambda^{(j)} = -\mu^{(j)} \quad &\forall x \in \mathcal{R}\\
+								-\nabla m \cdot{} \nabla \lambda^{(j)} = -h^{(j)} \quad &\forall x \in \mathcal{R}\\
 								\lambda^{(j)} = 0 \quad &\forall x \in \partial \mathcal{R}
 							\end{cases}
 						\end{align*}
@@ -1017,22 +1018,28 @@
 					<h3>Example: An inverse problem based on the Poisson equation</h3>
 					<table>
 						<tr style="border-style: hidden;">
-							<td style="text-align: center; "><h5>adjoint forward (strong form)</h5></td>
-							<td style="text-align: center; "><h5>adjoint derivative (strong form)</h5></td>
+							<!-- <td style="text-align: center; "><h5>adjoint forward (strong form)</h5></td> -->
+							<td></td>
+							<td style="text-align: center; vertical-align: top; "><h5>adjoint derivative (strong form)</h5></td>
 						</tr>
 						<tr>
-							<td style="text-align: center; ">
+							<!-- <td style="text-align: center; ">
 								\begin{align*}
 									& m = \gamma_p\\ 
 									&\begin{cases}
-										-\nabla \cdot{} m \nabla \lambda^{(j)} &= -\mu^{(j)} &\forall x \in \mathcal{R} \\
+										-\nabla \cdot{} m \nabla \lambda^{(j)} &= -h^{(j)} &\forall x \in \mathcal{R} \\
 										\lambda^{(j)} &= 0 \quad &\forall x \in \partial \mathcal{R}
 									\end{cases}\\
 									&\Sigma^{(i, j)} = \int_{\partial \mathcal{R}} \nabla_n \lambda^{(j)} g^{(i)} \, d x\\
 									&C = \frac{1}{2 I J} \sum_{i, j}^{I, J} (\Sigma^{(i, j)} - \tilde{\Sigma}^{(i, j)})^2
 								\end{align*}
+							</td> -->
+							<td style="text-align: left; vertical-align: top; ">
+								<ul>
+									<li>more text dsasdsadsadshere!</li>
+								</ul>
 							</td>
-							<td style="text-align: center; ">
+							<td style="text-align: center; vertical-align: top; ">
 								\begin{align*}
 									&\bar{\Sigma}^{(i, j)} = \frac{1}{IJ} (\Sigma^{(i, j)} - \tilde{\Sigma}^{(i, j)}) \bar{C}\\
 									&\begin{cases}
@@ -1046,55 +1053,50 @@
 						</tr>
 					</table>
 
-					<div class="r-stack" style="margin-top: -30px;">
-						<div class="fragment fade-in" data-fragment-index="1">
-							<table style="text-align: center; padding: 0px">
-								<tr style="border-style: hidden;">
-									<td style="text-align: center; padding: 0px"><h5>adjoint forward $\lambda^{(j)}$</h5></td>
-									<td style="text-align: center; padding: 0px"><h5>adjoint derivative $\bar{\lambda}^{(j)}$</h5></td>
-									<td style="text-align: center; padding: 0px">
-										<div class="r-stack">
-											<h5 class="fragment fade-out" data-fragment-index="2">gradient $\bar{m}$</h5>
-											<h5 class="fragment fade-in" data-fragment-index="2">gradient $\bar{m}$ (finite differences)</h5>
-										</div>
-									</td>
-								</tr>
-								<tr style="border-style: hidden;">
-									<td style="text-align: center; padding: 0px;">
-										<img src="figures/poisson/forward_adjoint/7.svg" style="width: 600px;"/>
-									</td>
-									<td style="text-align: center; padding: 0px;">
-										<img src="figures/poisson/derivative_adjoint/7.svg" style="width: 600px;"/>
-									</td>
-									<td style="text-align: center; padding: 0px;">
-										<div class="r-stack">
-											<div class="fragment fade-out" data-fragment-index="2" >
-												<img src="figures/poisson/gradient.svg" style="width: 600px;"/>
-											</div>
-											<div class="fragment fade-in" data-fragment-index="2" >
-												<img src="figures/poisson/gradient_fd.svg" style="width: 600px;"/>
-											</div>
-										</div>
-									</td>
-								</tr>
-								<tr style="border-style: hidden;">
-									<td style="text-align: center; padding: 0px;"></td>
-									<td style="text-align: center; padding: 0px;"></td>
-									<td style="text-align: center; padding: 0px;">
-										<div class="r-stack" style="margin: -50px">
-											<div class="fragment fade-out" data-fragment-index="2" style="background-color: green;">
-												$\sim 92 ms \approx 2 \times 7 \times 7ms$
-											</div>
-											<div class="fragment fade-in" data-fragment-index="2" style="background-color: red;">
-												$\sim 160 s \approx 2972 \times 55ms$
-											</div>
-										</div>
-									</td>
-								</tr>
-							</table>
-
-						</div>
-					</div>
+					<table style="text-align: center; padding: 0px">
+						<tr style="border-style: hidden;">
+							<td style="text-align: center; padding: 0px"><h5>adjoint forward $\lambda^{(j)}$</h5></td>
+							<td style="text-align: center; padding: 0px"><h5>adjoint derivative $\bar{\lambda}^{(j)}$</h5></td>
+							<td style="text-align: center; padding: 0px">
+								<div class="r-stack">
+									<h5 class="fragment fade-out" data-fragment-index="2">gradient $\bar{m}$</h5>
+									<h5 class="fragment fade-in" data-fragment-index="2">gradient $\bar{m}$ (finite differences)</h5>
+								</div>
+							</td>
+						</tr>
+						<tr style="border-style: hidden;">
+							<td style="text-align: center; padding: 0px;">
+								<img src="figures/poisson/forward_adjoint/7.svg" style="width: 600px;"/>
+							</td>
+							<td style="text-align: center; padding: 0px;">
+								<img src="figures/poisson/derivative_adjoint/7.svg" style="width: 600px;"/>
+							</td>
+							<td style="text-align: center; padding: 0px;">
+								<div class="r-stack">
+									<div class="fragment fade-out" data-fragment-index="2" >
+										<img src="figures/poisson/gradient.svg" style="width: 600px;"/>
+									</div>
+									<div class="fragment fade-in" data-fragment-index="2" >
+										<img src="figures/poisson/gradient_fd.svg" style="width: 600px;"/>
+									</div>
+								</div>
+							</td>
+						</tr>
+						<tr style="border-style: hidden;">
+							<td style="text-align: center; padding: 0px;"></td>
+							<td style="text-align: center; padding: 0px;"></td>
+							<td style="text-align: center; padding: 0px;">
+								<div class="r-stack" style="margin: -50px">
+									<div class="fragment fade-out" data-fragment-index="2" style="background-color: green;">
+										$\sim 92 ms \approx 2 \times 7 \times 7ms$
+									</div>
+									<div class="fragment fade-in" data-fragment-index="2" style="background-color: red;">
+										$\sim 160 s \approx 2972 \times 55ms$
+									</div>
+								</div>
+							</td>
+						</tr>
+					</table>
 				</section>
 
 				<section style="text-align: left;">
@@ -1154,44 +1156,13 @@
 					</ul>
 				</section>
 
-				<section style="text-align: left;">
-					<h3>Material Reconstruction in EPMA</h3>
-					<ul>
-						<li>
-							(stationary) radiative transfer/linear boltzmann equation in continuous-slowing-down approximation (CSD) ($x \in \mathcal{R} \subset \mathbb{R}^3$, $\epsilon \in \mathbb{R}^+$, $\Omega \in S^2$)
-							\begin{align}
-								-\partial_\epsilon (s(x, \epsilon) \psi^{(i)}(x, \epsilon, \Omega)) + \Omega \cdot{} \nabla_x \psi^{(i)}(x, \epsilon, \Omega) = \int_{S^2} k(x, \epsilon, \Omega \cdot{} \Omega') \psi^{(i)}(x, \epsilon, \Omega') \, d\Omega' - \tau(x, \epsilon) \psi^{(i)}(x, \epsilon, \Omega)
-							\end{align}
-						</li>
-						<li>
-							beam is modeled by boundary conditions (excitations)
-							\begin{align}
-								\psi^{(i)}(x, \epsilon, \Omega) = g^{(i)}(x, \epsilon, \Omega) \quad \forall x \in \partial \mathcal{R} | n \cdot{} \Omega < 0 
-							\end{align}
-						</li>
-						<li>$i = 1, ..., I$: beam position, beam energy, beam direction</li>
-						<li>
-							additivity approximation (for $\sigma = s$, $k$ and $\tau$), $p \in \mathbb{R}^N$
-							\begin{equation}
-								\sigma(x, \cdot{}) = \sum_{e=1}^{n_e} \rho_{e}(x) \sigma_e(\cdot{})\quad \text{where} \quad (\rho_1, ... \rho_{n_e})^T = \gamma_p
-							\end{equation}
-						</li>
-						<li>
-							x-ray generation and detection (extraction)
-							\begin{align}
-								\Sigma^{(i, j)} = \int_{\mathcal{R}} \int_{0}^{\infty} \sigma^{ion}_j(\epsilon) \rho_j(x) e^{-\int_{d(x)} \sum_{e=1}^{n_e} \mu_e^{(j)} \rho_e(y) \,d y}\int_{S^2} \psi^{(i)}(x, \epsilon, \Omega) \,d \Omega \, d \epsilon \,d  x
-
-							\end{align}
-						</li>
-						<li>$j = 1, ..., J$: number of measured x-ray lines/materials</li>
-					</ul>
-				</section>
-
-				<section style="text-align: left;">
-					<h3>Material Reconstruction in EPMA</h3>
-					<ul>
-						<li>compute measurements $\Sigma^{(i, j)}$ with the extraction as the source to the adjoint RT-CSD</li>
-						<li>adjoint RT-CSD: reversed in energy and direction(or space) $a_m(\psi, \phi)$ vs. $a_m(\phi, \psi)$</li>
+				<section>
+					<section style="text-align: left;">
+						<h3>Outlook: Material Reconstruction in EPMA</h3>
+						<ul>
+							<li>model: (stationary) radiative transfer/linear Boltzmann equation in continuous-slowing-down approximation (CSD)</li>
+							<li>adjoint model: reversed in time and direction(or space) $a_m(\psi, \phi)$ vs. $a_m(\phi, \psi)$</li>
+						</ul>
 						<table>
 							<tr style="border-style: hidden;">
 								<td style="text-align: center; ">
@@ -1200,69 +1171,143 @@
 								<td style="text-align: center; ">
 									<h4>adjoint forward $\lambda^{(j)}$</h4>
 								</td>
+								<td style="text-align: center; ">
+									<h4>gradient $\bar{\rho}_e$</h4>
+								</td>
 							</tr>
 							<tr style="border-style: hidden;">
 								<td style="text-align: center; ">
-									<video data-autoplay style="width: 800px; margin-top: 40px;">
+									<video data-autoplay style="width: 600px; margin-top: 00px;">
 										<source data-src="figures/adjoint_visualization/forward.webm" type="video/webm">
 									</video>
 								</td>
 								<td style="text-align: center; ">
-									<video data-autoplay style="width: 800px; margin-top: 40px;">
+									<video data-autoplay style="width: 600px; margin-top: 00px;">
 										<source data-src="figures/adjoint_visualization/adjoint.webm" type="video/webm">
 									</video>
 								</td>
-							</tr>
-							<tr style="border-style: hidden;">
 								<td style="text-align: center; ">
-									cost: $I \times \mathcal{C}(a) \sim I \times 2\text{min}$
-								</td>
-								<td style="text-align: center; ">
-									cost: $J \times \mathcal{C}(a) \sim J \times 2\text{min}$
+									<img src="figures/adjoint_visualization/gradient.svg" style="width: 600px">
 								</td>
 							</tr>
 						</table>
-					</ul>
-					<table>
-						<tr>
-							<td style="width:800px; vertical-align: top;"> 
-								<ul>
-									<li>orange/green marker: measurements from forward</li>
-									<li>green lines: measurements from adjoint forward</li>
-								</ul>
-							</td>
-							<td>
-								<img src="figures/adjoint_visualization/measurements.svg" style="width: 800px;">
-							</td>
-						</tr>
-					</table>
-				</section>
-				<section style="text-align: left;">
-					<h3>Material Reconstruction in EPMA</h3>
-					<ul>
-						<li>compute the gradient $\bar{\rho}_e$ using the "adjoint augmented" excitations as the source to the RT-CSD</li>
-					</ul>
-					<table>
-						<tr style="border-style: hidden;">
-							<td style="text-align: center; "><h4>adjoint derivative $\bar{\lambda}^{(j)}$</h4></td>
-							<td style="text-align: center; "><h4>gradient $\bar{\rho}_e$</h4></td>
-						</tr>
-						<tr style="border-style: hidden;">
-							<td style="text-align: center; ">
-								<video data-autoplay style="width: 800px; margin-top: 40px;">
-									<source data-src="figures/adjoint_visualization/adjoint_derivative_1.webm" type="video/webm">
-								</video>
-							</td>
-							<td style="text-align: center; ">
-								<img src="figures/adjoint_visualization/gradient.svg" style="width: 800px">
-							</td>
-						</tr>
-					</table>
-				</section>
+						<h4 style="margin-top: 100px;">References</h4>
+						<div style="font-size: 60%;"> 
+							<ul>
+								<li>T. Bui-Tanh: <em>Adjoint and Its roles in Sciences, Engineering, and Mathematics: A Tutorial</em>. arXiv (2023)<br><a href="https://doi.org/10.48550/arXiv.2306.09917">doi:10.48550/arXiv.2306.09917</a></li>
+								<li>J.A. Halbleib and J.E. Morel: <em>Adjoint Monte Carlo Electron Transport in the Continuous-Slowing-Down-Approximation</em>. J. Comput. Phys. (1980)<br><a href="https://doi.org/10.1016/0021-9991(80)90106-0">doi:10.1016/0021-9991(80)90106-0</a></li>
+								<li>U. Naumann: <em>The Art of Differentiating Computer Programs: An Introduction to Algorithmic Differentiation</em>. SIAM (2012)<br><a href="https://doi.org/10.1137/1.9781611972078">doi:10.1137/1.9781611972078</a></li>
+								<li>R.E. Plessix: <em> A review of the adjoint-state method for computing the gradient of a functional with geophysical applications</em>. Geophys. J. Int. (2006)<br><a href="https://doi.org/10.1111/j.1365-246X.2006.02978.x">doi:10.1111/j.1365-246X.2006.02978.x</a></li>
+							</ul>
+						</div>
+					</section>
 
-				<section style="text-align: left;">
-					<h3>Outlook</h3>
+					<section style="text-align: left;">
+						<h3>Material Reconstruction in EPMA</h3>
+						<ul>
+							<li>
+								(stationary) radiative transfer/linear boltzmann equation in continuous-slowing-down approximation (CSD) ($x \in \mathcal{R} \subset \mathbb{R}^3$, $\epsilon \in \mathbb{R}^+$, $\Omega \in S^2$)
+								\begin{align}
+									-\partial_\epsilon (s(x, \epsilon) \psi^{(i)}(x, \epsilon, \Omega)) + \Omega \cdot{} \nabla_x \psi^{(i)}(x, \epsilon, \Omega) = \int_{S^2} k(x, \epsilon, \Omega \cdot{} \Omega') \psi^{(i)}(x, \epsilon, \Omega') \, d\Omega' - \tau(x, \epsilon) \psi^{(i)}(x, \epsilon, \Omega)
+								\end{align}
+							</li>
+							<li>
+								beam is modeled by boundary conditions (excitations)
+								\begin{align}
+									\psi^{(i)}(x, \epsilon, \Omega) = g^{(i)}(x, \epsilon, \Omega) \quad \forall x \in \partial \mathcal{R} | n \cdot{} \Omega < 0 
+								\end{align}
+							</li>
+							<li>$i = 1, ..., I$: beam position, beam energy, beam direction</li>
+							<li>
+								additivity approximation (for $\sigma = s$, $k$ and $\tau$), $p \in \mathbb{R}^N$
+								\begin{equation}
+									\sigma(x, \cdot{}) = \sum_{e=1}^{n_e} \rho_{e}(x) \sigma_e(\cdot{})\quad \text{where} \quad (\rho_1, ... \rho_{n_e})^T = \gamma_p
+								\end{equation}
+							</li>
+							<li>
+								x-ray generation and detection (extraction)
+								\begin{align}
+									\Sigma^{(i, j)} = \int_{\mathcal{R}} \int_{0}^{\infty} \sigma^{ion}_j(\epsilon) \rho_j(x) e^{-\int_{d(x)} \sum_{e=1}^{n_e} \mu_e^{(j)} \rho_e(y) \,d y}\int_{S^2} \psi^{(i)}(x, \epsilon, \Omega) \,d \Omega \, d \epsilon \,d  x
 
+								\end{align}
+							</li>
+							<li>$j = 1, ..., J$: number of measured x-ray lines/materials</li>
+						</ul>
+					</section>
+
+					<section style="text-align: left;">
+						<h3>Material Reconstruction in EPMA</h3>
+						<ul>
+							<li>compute measurements $\Sigma^{(i, j)}$ with the extraction as the source to the adjoint RT-CSD</li>
+							<li>adjoint RT-CSD: reversed in energy and direction(or space) $a_m(\psi, \phi)$ vs. $a_m(\phi, \psi)$</li>
+							<table>
+								<tr style="border-style: hidden;">
+									<td style="text-align: center; ">
+										<h4>forward $\psi^{(i)}$</h4>
+									</td>
+									<td style="text-align: center; ">
+										<h4>adjoint forward $\lambda^{(j)}$</h4>
+									</td>
+								</tr>
+								<tr style="border-style: hidden;">
+									<td style="text-align: center; ">
+										<video data-autoplay style="width: 800px; margin-top: 40px;">
+											<source data-src="figures/adjoint_visualization/forward.webm" type="video/webm">
+										</video>
+									</td>
+									<td style="text-align: center; ">
+										<video data-autoplay style="width: 800px; margin-top: 40px;">
+											<source data-src="figures/adjoint_visualization/adjoint.webm" type="video/webm">
+										</video>
+									</td>
+								</tr>
+								<tr style="border-style: hidden;">
+									<td style="text-align: center; ">
+										cost: $I \times \mathcal{C}(a) \sim I \times 2\text{min}$
+									</td>
+									<td style="text-align: center; ">
+										cost: $J \times \mathcal{C}(a) \sim J \times 2\text{min}$
+									</td>
+								</tr>
+							</table>
+						</ul>
+						<table>
+							<tr>
+								<td style="width:800px; vertical-align: top;"> 
+									<ul>
+										<li>orange/green marker: measurements from forward</li>
+										<li>green lines: measurements from adjoint forward</li>
+									</ul>
+								</td>
+								<td>
+									<img src="figures/adjoint_visualization/measurements.svg" style="width: 800px;">
+								</td>
+							</tr>
+						</table>
+					</section>
+
+					<section style="text-align: left;">
+						<h3>Material Reconstruction in EPMA</h3>
+						<ul>
+							<li>compute the gradient $\bar{\rho}_e$ using the "adjoint augmented" excitations as the source to the RT-CSD</li>
+						</ul>
+						<table>
+							<tr style="border-style: hidden;">
+								<td style="text-align: center; "><h4>adjoint derivative $\bar{\lambda}^{(j)}$</h4></td>
+								<td style="text-align: center; "><h4>gradient $\bar{\rho}_e$</h4></td>
+							</tr>
+							<tr style="border-style: hidden;">
+								<td style="text-align: center; ">
+									<video data-autoplay style="width: 800px; margin-top: 40px;">
+										<source data-src="figures/adjoint_visualization/adjoint_derivative_1.webm" type="video/webm">
+									</video>
+								</td>
+								<td style="text-align: center; ">
+									<img src="figures/adjoint_visualization/gradient.svg" style="width: 800px">
+								</td>
+							</tr>
+						</table>
+					</section>
 				</section>
 			</div>
 		</div>
