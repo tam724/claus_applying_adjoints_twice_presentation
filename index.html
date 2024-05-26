@@ -17,6 +17,21 @@
 
 		<!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+		<style>
+			.fragment.blur {
+				filter: blur(10px);
+			}
+			.fragment.blur.visible {
+			  filter: none;
+			}
+			.section {
+				text-align: left;
+			}
+			.tr {
+				border-style: none;
+			}
+		  </style>
+		  
 	</head>
 	<body>
 		<div class="reveal">
@@ -327,9 +342,7 @@
 							\]
 						</p>
 						<ul>
-							<li>given multiple inputs $g^{(1)}, ... g^{(I)} \in G$, $h^{(1)}, ... h^{(J)} \in H$
-							</li>
-							<li> we want to compute
+							<li>given multiple $g^{(1)}, ... g^{(I)} \in G$, $h^{(1)}, ... h^{(J)} \in H$ we want to compute
 							</li>
 						</ul>
 						\[
@@ -367,6 +380,17 @@
 									<li>use if $\color{orange}{I} > \color{green}{J} $</li>
 								</ul>
 							</div>
+						</div>
+						<div>
+							Derivative Notation: $f_{(\cdot{})}: X \to Y$ non-linear, differentiable
+							<p>
+								<ul>
+									<li><em>tangent operator</em> $\dot{f}_x \in L(X, Y)$, $\dot{f}_x(\dot{x}) = \lim_{h \to 0} \frac{f_{x+h\dot{x}} - f_x}{h}$, "directional derivative"</li>
+									<li><em>adjoint operator</em> $\bar{f}_x \in L(Y, X)$, $\langle \bar{y}, \dot{f}_x(\dot{x}) \rangle_Y = \langle \bar{f}_x(\bar{y}), \dot{x}\rangle_X$</li>
+									<li><em>tangent variables</em> $\dot{x}, \dot{y}$ where $\dot{y} = \dot{f}_x(\dot{x})$</li>
+									<li><em>adjoint variables</em> $\bar{x}, \bar{y}$ where $\bar{x} = \bar{f}_x(\bar{y})$</li>
+								</ul>
+							</p>
 						</div>
 					</section>
 
@@ -486,39 +510,7 @@
 							\end{align*}
 						</p>
 					</section>
-				</section>
-<!-- 
-				<section style="text-align: left;">
-					<section>
-						<h3>Problem with linear structure</h3>
-						<ul>
-							<li>$m = \gamma_p$ with $\gamma_{(\cdot{})}: \mathbb{R}^{N} \to M$: parametrization</li>
-							<li>$u^{(i)} \in V$ a state where $a_m(u^{(i)}, v) = b_m^{(i)}(v) \quad \forall v \in V$ with $b^{(i)}_m$ an excitation $\forall i\in [1, I]$</li>
-							<li>$\Sigma^{(i, j)} = c^{(j)}_m(u^{(i)})$ a measurement with $c_m^{(j)}: V \to \mathbb{R}$ an extraction $\forall i=[1, I], j=[1, J]$</li>
-							<li>$C = g_{\Sigma}$ with $g_{(\cdot{})}: \mathbb{R}^{I\times J} \to \mathbb{R}$ the objective</li>
-							<li>we are interested in $\nabla_p C$</li>
-						</ul>
-						<h4>Naive Implementation (Sensitivity Equations)</h4>
-						<ul>
-							<li>$\dot{m}^{(n)} = \dot{\gamma}_p(e_n)$ $\forall n \in [1, N]$</li>
-							<li>$\dot{u}^{(i, n)} \in V$ where $a_m(\dot{u}^{(i, n)}, v) + \dot{a}_m(u^{(i)}, v, \dot{m}^{(n)})=\dot{b}^{(i)}_m(v, \dot{m}^{(n)})$ $\forall i \in [1, I], \forall n \in [1, N]$</li>
-							<li>$\dot{\Sigma}^{(i, j, n)} = c_m^{(j)}(\dot{u}^{(i, n)}) + \dot{c}_m^{(j)}(u^{(i)}, \dot{m}^{(n)})$</li>
-							<li>$\dot{C}^{(n)} = \dot{g}_{\Sigma}(\dot{\Sigma}^{(:, :, n)})$</li>
-							<li>$(\nabla_{p} C)_n = \dot{C}^{(n)}$</li>
-						</ul>
-						<h4>First Adjoint</h4>
-						<ul>
-							<li>$a_m(u, \lambda^{(j)}) = c_m^{(j)}(u) \quad \forall u \in U$, $\forall j \in [1, J]$</li>
-							<li>$\Sigma^{(i, j)} = b_m^{(i)}(\lambda^{(j)})$</li>
-							<li>$a_m(\bar{u}^{(j)}, v) = \sum_{i=1}^{I}\bar{\Sigma}$</li>
-						</ul>
-					</section>
-					<section>
-						<h3>Full System</h3> 
-					</section>
-				</section> -->
 
-				<section>
 					<section style="text-align: left;">
 						<h3>Derivative Notation (from Algorithmic Differentiation)</h3>
 						<ul>
@@ -648,6 +640,115 @@
 				</section>
 
 				<section style="text-align: left;">
+					<h3>The adjoint of a bilinear weak form (pde)</h3>
+					$A$ is the solution operator of a bilinear weak form ($U, G, H$ Hilbert spaces: $G, H \subseteq U$)
+					<p>
+						<ul>
+							<li>
+								$\color{orange}{A(g) = (u \in U | a(u, v) + b(v) = 0\, \forall v \in U)}$ where $b(v) = \langle v, g\rangle_G$
+							</li>
+							<li>
+								$\color{green}{A^*(h) =}$ <span class="fragment custom blur" data-fragment-index="2">$ \color{green}{(\lambda \in U | a(v, \lambda) + c(v) = 0 \, \forall v \in U)}$ where $c(\lambda) = \langle h, \lambda \rangle_H$</span>
+							</li>
+						</ul>
+					</p>
+					<p class="fragment fade-in" data-fragment-index="1">
+						Derivation (we introduce $\lambda \in U$)
+						\begin{align*}
+						\langle h, A(g) \rangle_H = \langle h, u \rangle_H &= c(u) \\
+						&=c(u) + \color{orange}{\underbrace{a(u, \lambda) + b(\lambda)}_{=0 \, \forall \lambda \in U}} \\
+						&=\color{green}{\underbrace{c(u) + a(u, \lambda)}_{=0 \, \forall u \in U}} + b(\lambda) \\
+						& \hphantom{= c(u) + a(u, \lambda)} = b(\lambda) = \langle \lambda, g \rangle_G = \langle A^*(h), g \rangle_G
+						\end{align*}
+					</p>
+					<div class="fragment fade-in" data-fragment-index="2" style="display:flex;">
+						<div style="flex: 1;">
+							<h4>non-adjoint implementation</h4>
+								\begin{align*}
+									&\text{foreach } \color{orange}{i = 1, ... I} \\
+									&\qquad \color{orange}{\text{solve } a(u^{(i)}, v) + b^{(i)}(v) = 0 \quad \forall v \in U}\\
+									&\qquad \text{foreach } \color{green}{j = 1, ...J}\\
+									&\qquad \qquad \Sigma^{(ij)} = \color{green}{c^{(j)}}(\color{orange}{u^{(i)}})\\
+									&\qquad \text{end}\\
+									&\text{end} 
+								\end{align*}
+						</div>
+						<div style="flex: 1;">
+							<h4>adjoint implementation</h4>
+								\begin{align*}
+									&\text{foreach } \color{green}{j = 1, ...J} \\
+									&\qquad \color{green}{\text{solve } a(v, \lambda^{(j)}) + c^{(j)} = 0 \quad \forall v \in U}\\
+									&\qquad \text{foreach } \color{orange}{i = 1, ...I}\\
+									&\qquad \qquad \Sigma^{(ij)} = \color{orange}{b^{(i)}}(\color{green}{\lambda^{(j)}})\\
+									&\qquad \text{end}\\
+									&\text{end}
+								\end{align*}
+						</div>
+					</p>
+				</section>
+
+				<section style="text-align: left">
+					<h3>Applying Adjoints Twice</h3>
+					<div style="display:flex;">
+						<div style="flex: 3;">
+							We consider the model ($u^{(i)} \in U(\mathcal{R})$):
+							\begin{align*}
+								a_p(u^{(i)}, v) + b^{(i)}(v) &= 0 \quad \forall v \in U(\mathcal{R}) \\
+								\Sigma^{(i)} &= c(u^{(i)}) \\
+								C &= g_{\boldsymbol \Sigma} \\
+							\end{align*}
+						</div>
+						<div style="flex: 4; margin-left: 100px;">
+							<ul>
+								<li>domain $\mathcal{R}$, parameters $p \in \mathbb{R}^N$</li>
+								<li>system $a_p \in \text{Bil}(U(\mathcal{R}) \times U(\mathcal{R}), \mathbb{R})$ </li>
+								<li>excitations $\boldsymbol{b} = (b^{(1)}, ... b^{(I)})^T \in L(U(\mathcal{R}), \mathbb{R}^I)$</li>
+								<li>extraction $c \in L(U(\mathcal{R}), \mathbb{R})$</li>
+								<li>measurements $\boldsymbol{\Sigma} = (\Sigma^{(1)}, ..., \Sigma^{(I)})^T \in \mathbb{R}^I$</li>
+								<li>objective $g: \mathbb{R}^I \to \mathbb{R}$</li>
+								<li>$N, I \gg 1$, ($J=1$)</li>
+							</ul>
+						</div>
+					</div>
+					<table>
+						<tr style="border-style: hidden;">
+							<td style="text-align: left">
+								<h4>model ($u^{(i)} \in U(\mathcal{R}))$:</h4>
+								\begin{align*}
+									a_p(u^{(i)}, v) + b^{(i)}(v) &= 0 \quad \forall v \in U(\mathcal{R}) \\
+									\Sigma^{(i)} &= c(u^{(i)}) \\
+									C &= g_{\boldsymbol \Sigma} \\
+								\end{align*}
+							</td>
+							<td>
+								<h4>1st "adjoint method"($\lambda \in U(\mathcal{R})$):</h4>
+								\begin{align*}
+									a_p(v, \lambda) + c(v) &= 0 \quad \forall v \in U(\mathcal{R}) \\
+									\Sigma^{(i)} &= b^{(i)}(\lambda) \\
+									C &= g_{\boldsymbol \Sigma}
+								\end{align*}
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<h4>tangent model/sensitivity($\dot{\lambda}^{(n)} \in U(\mathcal{R})$): </h4>
+								\begin{align*}
+									a_p(v, \dot{\lambda}^{(n)}) + \underbrace{\dot{a}_p(v, \lambda, e^{(n)})}_{=\beta^{(n)}(v)} &= 0 \quad \forall v \in U(\mathcal{R})\\
+									\dot{C}^{(n)} &= \underbrace{\dot{g}_{\boldsymbol \Sigma}(\boldsymbol b(\dot{\lambda}^{(n)}))}_{=\gamma(\lambda^{(n)})}
+								\end{align*}
+							</td>
+							<td>
+								<h4>2nd "adjoint method" ($\bar{\lambda} \in U(\mathcal{R})$):</h4>
+								\begin{align*}
+									a_p(\bar{\lambda}, v) + \dot{g}_{\boldsymbol \Sigma}(\boldsymbol b(v)) &= 0 \quad \forall v \in U(\mathcal{R})\\
+									\dot{C}^{(n)} &= \dot{a}_p(\bar{\lambda}, \lambda, e^{(n)})
+								\end{align*}
+							</td>
+						</tr>
+					</table>
+				</section>
+
+				<section style="text-align: left;">
 					<h3>Applying Adjoints Twice: First adjoint</h3>
 					<div style="display:flex;">
 						<div style="flex: 2;">
@@ -661,7 +762,7 @@
 						</div>
 						<div style="flex: 3; margin-left: 100px;">
 							<ul>
-								<li>computational domain $\mathcal{R}$</li>
+								<li>domain $\mathcal{R}$</li>
 								<li>parametrization: $\gamma: \mathbb{R}^{n} \to M(\mathcal{R})$</li>
 								<li>system $a_m \in \text{Bil}(V(\mathcal{R}) \times V(\mathcal{R}), \mathbb{R})$ </li>
 								<li>excitations $\boldsymbol{b} = (b^{(1)}, ... b^{(I)})^T \in L(V(\mathcal{R}), \mathbb{R}^I)$</li>
@@ -788,7 +889,7 @@
 
 				<section style="text-align: left;">
 					<h3>Applying Adjoints Twice</h3>
-					<table style="text-align: center">
+					<table>
 						<tr style="border-style: hidden;">
 							<td style="text-align: center; ">
 								<h4>non-adjoint forward + tangent derivative</h4>
