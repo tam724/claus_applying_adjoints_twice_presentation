@@ -27,6 +27,11 @@
 			.section {
 				text-align: left;
 			}
+			.reveal .slides{
+				border-style: solid;
+				border-color: gray;
+				border-width: 1px;
+			}
 			.tr {
 				border-style: none;
 			}
@@ -221,7 +226,7 @@
 							<div style="flex:1; margin-right: 40px; margin-top:-20px;">
 								<p style="text-align: center; "><em>"Material imaging based on characteristic x-ray emission"</em></p>
 								<ul style="margin-top: 0px;">
-									<li>Material Science, Quality control, Mineralogy; Meteorite analysis</li>
+									<li>Material Science, Quality control, Mineralogy, Semiconductors</li>
 									<li>Ionization of material sample using high-energy focused electron beam</li>
 									<li>Wavelength-dispersive spectrometers measure characteristic x-radiation</li>
 
@@ -348,50 +353,56 @@
 						\[
 						\Sigma^{(ji)} = \langle h^{(j)}, A(g^{(i)}) \rangle_H = \langle A^*(h^{(j)}), g^{(i)} \rangle_G \quad \forall i=1, ...I \, j=1, ...J
 						\]
-						<div style="display:flex;">
-							<div style="flex: 1;">
-								<h4>non-adjoint implementation</h4>
-								\begin{align*}
-									&\text{foreach } \color{orange}{i = 1, ..., I} \text{ do} \\
-									&\qquad \color{orange}{v^{(i)} \leftarrow A(g^{(i)})}\\
-									&\qquad \text{foreach } \color{green}{j = 1, ..., J} \text{ do}\\
-									&\qquad \qquad \Sigma^{(ji)} \leftarrow \langle \color{green}{h^{(j)}}, \color{orange}{v^{(i)}} \rangle_H\\
-									&\qquad \text{end}\\
-									&\text{end}
-								\end{align*}
-								<ul>
-									<li>cost: $\color{orange}{I} \times \mathcal{C}(A) + \color{orange}{I}\color{green}{J} \times \mathcal{C}(\langle \cdot{}, \cdot{} \rangle_H)$</li>
-									<li>use if $\color{green}{J} > \color{orange}{I}$</li>
-								</ul>
-							</div>
-							<div style="flex: 1;">
-								<h4>adjoint implementation</h4>
-								\begin{align*}
-									&\text{foreach } \color{green}{j = 1, ..., J} \text{ do} \\
-									&\qquad \color{green}{\lambda^{(j)} \leftarrow A^*(h^{(j)})}\\
-									&\qquad \text{foreach } \color{orange}{i = 1, ..., I} \text{ do}\\
-									&\qquad \qquad \Sigma^{(ji)} \leftarrow \langle \color{green}{\lambda^{(j)}}, \color{orange}{g^{(i)}} \rangle_G\\
-									&\qquad \text{end}\\
-									&\text{end}
-								\end{align*}
-								<ul>
-									<li>cost: $\color{green}{J} \times \mathcal{C}(A^*) + \color{orange}{I}\color{green}{J} \times \mathcal{C}(\langle \cdot{}, \cdot{} \rangle_G)$
-									</li>
-									<li>use if $\color{orange}{I} > \color{green}{J} $</li>
-								</ul>
-							</div>
-						</div>
-						<div>
-							Derivative Notation: $f_{(\cdot{})}: X \to Y$ non-linear, differentiable
-							<p>
-								<ul>
-									<li><em>tangent operator</em> $\dot{f}_x \in L(X, Y)$, $\dot{f}_x(\dot{x}) = \lim_{h \to 0} \frac{f_{x+h\dot{x}} - f_x}{h}$, "directional derivative"</li>
-									<li><em>adjoint operator</em> $\bar{f}_x \in L(Y, X)$, $\langle \bar{y}, \dot{f}_x(\dot{x}) \rangle_Y = \langle \bar{f}_x(\bar{y}), \dot{x}\rangle_X$</li>
-									<li><em>tangent variables</em> $\dot{x}, \dot{y}$ where $\dot{y} = \dot{f}_x(\dot{x})$</li>
-									<li><em>adjoint variables</em> $\bar{x}, \bar{y}$ where $\bar{x} = \bar{f}_x(\bar{y})$</li>
-								</ul>
-							</p>
-						</div>
+						<table style="text-align: left;">
+							<tr style="border-style: hidden;">
+								<td>
+									<h4>non-adjoint implementation</h4>
+								</td>
+								<td style="width:300px; "></td>
+								<td>
+									<h4>adjoint implementation</h4>
+								</td>
+							</tr>
+							<tr style="border-style: hidden;">
+								<td>
+									\begin{align*}
+										&\text{foreach } \color{orange}{i = 1, ..., I} \text{ do} \\
+										&\qquad \color{orange}{v^{(i)} \leftarrow A(g^{(i)})}\\
+										&\qquad \text{foreach } \color{green}{j = 1, ..., J} \text{ do}\\
+										&\qquad \qquad \Sigma^{(ji)} \leftarrow \langle \color{green}{h^{(j)}}, \color{orange}{v^{(i)}} \rangle_H\\
+										&\qquad \text{end}\\
+										&\text{end}
+									\end{align*}
+								</td>	
+								<td style="width:50px; "></td>
+								<td>
+									\begin{align*}
+										&\text{foreach } \color{green}{j = 1, ..., J} \text{ do} \\
+										&\qquad \color{green}{\lambda^{(j)} \leftarrow A^*(h^{(j)})}\\
+										&\qquad \text{foreach } \color{orange}{i = 1, ..., I} \text{ do}\\
+										&\qquad \qquad \Sigma^{(ji)} \leftarrow \langle \color{green}{\lambda^{(j)}}, \color{orange}{g^{(i)}} \rangle_G\\
+										&\qquad \text{end}\\
+										&\text{end}
+									\end{align*}
+								</td>
+							</tr>
+							<tr style="border-style: hidden;">
+								<td>
+									<ul>
+										<li>cost: $\color{orange}{I} \times \mathcal{C}(A) + \color{orange}{I}\color{green}{J} \times \mathcal{C}(\langle \cdot{}, \cdot{} \rangle_H)$</li>
+										<li>use if $\color{green}{J} > \color{orange}{I}$</li>
+									</ul>
+								</td>
+								<td style="width:100px; "></td>
+								<td>
+									<ul>
+										<li>cost: $\color{green}{J} \times \mathcal{C}(A^*) + \color{orange}{I}\color{green}{J} \times \mathcal{C}(\langle \cdot{}, \cdot{} \rangle_G)$
+										</li>
+										<li>use if $\color{orange}{I} > \color{green}{J} $</li>
+									</ul>
+								</td>
+							</tr>
+						</table>
 					</section>
 
 				<!-- Riesz Representation Theorem/Def Adjoint -->
@@ -640,8 +651,8 @@
 				</section>
 
 				<section style="text-align: left;">
-					<h3>The adjoint of a bilinear weak form (pde)</h3>
-					$A$ is the solution operator of a bilinear weak form ($U, G, H$ Hilbert spaces: $G, H \subseteq U$)
+					<h3>The adjoint of the solution of a linear weak form (linear pde)</h3>
+					$A: G \to H$ is the solution operator of a linear weak form ($U, G, H$ Hilbert spaces: $U \subseteq G, H$)
 					<p>
 						<ul>
 							<li>
@@ -653,7 +664,7 @@
 						</ul>
 					</p>
 					<p class="fragment fade-in" data-fragment-index="1">
-						Derivation (we introduce $\lambda \in U$)
+						Derivation: we introduce $\lambda \in U$ (in continuous adjoint method (for $\partial_p$): "Lagrange-multiplier")
 						\begin{align*}
 						\langle h, A(g) \rangle_H = \langle h, u \rangle_H &= c(u) \\
 						&=c(u) + \color{orange}{\underbrace{a(u, \lambda) + b(\lambda)}_{=0 \, \forall \lambda \in U}} \\
@@ -661,276 +672,184 @@
 						& \hphantom{= c(u) + a(u, \lambda)} = b(\lambda) = \langle \lambda, g \rangle_G = \langle A^*(h), g \rangle_G
 						\end{align*}
 					</p>
-					<div class="fragment fade-in" data-fragment-index="2" style="display:flex;">
-						<div style="flex: 1;">
-							<h4>non-adjoint implementation</h4>
-								\begin{align*}
-									&\text{foreach } \color{orange}{i = 1, ... I} \\
-									&\qquad \color{orange}{\text{solve } a(u^{(i)}, v) + b^{(i)}(v) = 0 \quad \forall v \in U}\\
-									&\qquad \text{foreach } \color{green}{j = 1, ...J}\\
-									&\qquad \qquad \Sigma^{(ij)} = \color{green}{c^{(j)}}(\color{orange}{u^{(i)}})\\
-									&\qquad \text{end}\\
-									&\text{end} 
-								\end{align*}
+					<div style="margin-top: 30px;" class="fragment fade-in" data-fragment-index="2" >
+						<ul><li>given multiple $g^{(i)} \in G$ ($b^{(i)} \in L(G, \mathbb{R})$) and $h^{(j)} \in H$ ($c^{(j)} \in L(H, \mathbb{R})$)</li></ul>
+						<div style="display:flex; margin-top: 30px;">
+	 						<div style="flex: 1;">
+								<h4>non-adjoint implementation</h4>
+									\begin{align*}
+										&\text{foreach } \color{orange}{i = 1, ... I} \\
+										&\qquad \color{orange}{\text{solve } a(u^{(i)}, v) + b^{(i)}(v) = 0 \quad \forall v \in U}\\
+										&\qquad \text{foreach } \color{green}{j = 1, ...J}\\
+										&\qquad \qquad \Sigma^{(ij)} = \color{green}{c^{(j)}}(\color{orange}{u^{(i)}})\\
+										&\qquad \text{end}\\
+										&\text{end} 
+									\end{align*}
+							</div>
+							<div style="flex: 1;">
+								<h4>adjoint implementation</h4>
+									\begin{align*}
+										&\text{foreach } \color{green}{j = 1, ...J} \\
+										&\qquad \color{green}{\text{solve } a(v, \lambda^{(j)}) + c^{(j)} = 0 \quad \forall v \in U}\\
+										&\qquad \text{foreach } \color{orange}{i = 1, ...I}\\
+										&\qquad \qquad \Sigma^{(ij)} = \color{orange}{b^{(i)}}(\color{green}{\lambda^{(j)}})\\
+										&\qquad \text{end}\\
+										&\text{end}
+									\end{align*}
+							</div>
 						</div>
-						<div style="flex: 1;">
-							<h4>adjoint implementation</h4>
-								\begin{align*}
-									&\text{foreach } \color{green}{j = 1, ...J} \\
-									&\qquad \color{green}{\text{solve } a(v, \lambda^{(j)}) + c^{(j)} = 0 \quad \forall v \in U}\\
-									&\qquad \text{foreach } \color{orange}{i = 1, ...I}\\
-									&\qquad \qquad \Sigma^{(ij)} = \color{orange}{b^{(i)}}(\color{green}{\lambda^{(j)}})\\
-									&\qquad \text{end}\\
-									&\text{end}
-								\end{align*}
-						</div>
-					</p>
+						<ul>
+							<li>switching trial and test function is the continuous analog to the transposition</li>
+						</ul>
+					</div>
 				</section>
 
 				<section style="text-align: left">
 					<h3>Applying Adjoints Twice</h3>
 					<div style="display:flex;">
-						<div style="flex: 3;">
-							We consider the model ($u^{(i)} \in U(\mathcal{R})$):
-							\begin{align*}
-								a_p(u^{(i)}, v) + b^{(i)}(v) &= 0 \quad \forall v \in U(\mathcal{R}) \\
-								\Sigma^{(i)} &= c(u^{(i)}) \\
-								C &= g_{\boldsymbol \Sigma} \\
-							\end{align*}
-						</div>
-						<div style="flex: 4; margin-left: 100px;">
+						<div style="flex: 4;">
 							<ul>
-								<li>domain $\mathcal{R}$, parameters $p \in \mathbb{R}^N$</li>
+								<li>parameters $p \in \mathbb{R}^N$</li>
+								<li>domain $\mathcal{R}$</li>
 								<li>system $a_p \in \text{Bil}(U(\mathcal{R}) \times U(\mathcal{R}), \mathbb{R})$ </li>
 								<li>excitations $\boldsymbol{b} = (b^{(1)}, ... b^{(I)})^T \in L(U(\mathcal{R}), \mathbb{R}^I)$</li>
 								<li>extraction $c \in L(U(\mathcal{R}), \mathbb{R})$</li>
 								<li>measurements $\boldsymbol{\Sigma} = (\Sigma^{(1)}, ..., \Sigma^{(I)})^T \in \mathbb{R}^I$</li>
-								<li>objective $g: \mathbb{R}^I \to \mathbb{R}$</li>
+								<li>discrepancy $g: \mathbb{R}^I \to \mathbb{R}$</li>
 								<li>$N, I \gg 1$, ($J=1$)</li>
 							</ul>
 						</div>
+						<div style="flex: 3">
+							<div style="background-color: lightgray; border-radius: 10px; border-color: gray; border-width: 2px; border-style: dashed; padding: 5px; font-size: 80%;">
+								Notation: $f_{(\cdot{})}: X \to Y$ non-linear, differentiable
+								<ul>
+									<li><em>tangent operator</em> $\dot{f}_x(\dot{x}) = \lim_{h \to 0} \frac{f_{x+h\dot{x}} - f_x}{h}$</li>
+									<li><em>adjoint operator</em> $\bar{f}_x: \langle \bar{y}, \dot{f}_x(\dot{x}) \rangle_Y = \langle \bar{f}_x(\bar{y}), \dot{x}\rangle_X \, \forall \bar{y}, \dot{x}$</li>
+									<li><em>tangent variables</em> $\dot{x}, \dot{y}$, where $\dot{y} = \dot{f}_x(\dot{x})$</li>
+									<li><em>adjoint variables</em> $\bar{x}, \bar{y}$, where $\bar{x} = \bar{f}_x(\bar{y})$</li>
+								</ul>
+							</div>
+						</div>
 					</div>
-					<table>
+					<table style="width: 100%; margin-top: 50px;">
 						<tr style="border-style: hidden;">
 							<td style="text-align: left">
-								<h4>model ($u^{(i)} \in U(\mathcal{R}))$:</h4>
+								<h4>Model ($u^{(i)} \in U(\mathcal{R}))$:</h4>
 								\begin{align*}
 									a_p(u^{(i)}, v) + b^{(i)}(v) &= 0 \quad \forall v \in U(\mathcal{R}) \\
 									\Sigma^{(i)} &= c(u^{(i)}) \\
 									C &= g_{\boldsymbol \Sigma} \\
 								\end{align*}
 							</td>
-							<td>
+							<td class="fragment fade-in" data-fragment-index="1">
 								<h4>1st "adjoint method"($\lambda \in U(\mathcal{R})$):</h4>
-								\begin{align*}
-									a_p(v, \lambda) + c(v) &= 0 \quad \forall v \in U(\mathcal{R}) \\
-									\Sigma^{(i)} &= b^{(i)}(\lambda) \\
-									C &= g_{\boldsymbol \Sigma}
-								\end{align*}
+								<div class="r-stack">
+									<div class="fragment fade-out" data-fragment-index="2">
+										\begin{align*}
+											a_p(v, \lambda) + c(v) &= 0 \quad \forall v \in U(\mathcal{R}) \\
+											\Sigma^{(i)} &= b^{(i)}(\lambda) \\
+											C &= g_{\boldsymbol \Sigma}
+										\end{align*}
+									</div>
+									<div class="fragment fade-in" data-fragment-index="2">
+										\begin{align*}
+											a_p(v, \lambda) + c(v) &= 0 \quad \forall v \in U(\mathcal{R}) \\
+											C &= g_{\boldsymbol b(\lambda)}\\
+											\vphantom{C}
+										\end{align*}
+									</div>
+									
+								</div>
 							</td>
 						</tr>
 						<tr>
-							<td>
-								<h4>tangent model/sensitivity($\dot{\lambda}^{(n)} \in U(\mathcal{R})$): </h4>
-								\begin{align*}
-									a_p(v, \dot{\lambda}^{(n)}) + \underbrace{\dot{a}_p(v, \lambda, e^{(n)})}_{=\beta^{(n)}(v)} &= 0 \quad \forall v \in U(\mathcal{R})\\
-									\dot{C}^{(n)} &= \underbrace{\dot{g}_{\boldsymbol \Sigma}(\boldsymbol b(\dot{\lambda}^{(n)}))}_{=\gamma(\lambda^{(n)})}
-								\end{align*}
+							<td class="fragment fade-in" data-fragment-index="3">
+								<h4>Tangent model/sensitivity ($\dot{\lambda}^{(n)} \in U(\mathcal{R})$):</h4>
+								<div class="r-stack">
+									<div class="fragment fade-out" data-fragment-index="4">
+										\begin{align*}
+											a_p(v, \dot{\lambda}^{(n)}) + \dot{a}_p(v, \lambda, e^{(n)}) &= 0 \quad \forall v \in U(\mathcal{R})\\
+											\dot{C}^{(n)} &= \dot{g}_{\boldsymbol \Sigma}(\boldsymbol b(\dot{\lambda}^{(n)}))
+										\end{align*}
+									</div>
+									<div class="fragment fade-in" data-fragment-index="4">
+										\begin{align*}
+											a_p(v, \dot{\lambda}^{(n)}) + \overbrace{\dot{a}_p(v, \lambda, e^{(n)})}^{=\beta^{(n)}(v)} &= 0 \quad \forall v \in U(\mathcal{R})\\
+											\dot{C}^{(n)} &= \underbrace{\dot{g}_{\boldsymbol \Sigma}(\boldsymbol b(\dot{\lambda}^{(n)}))}_{=\gamma(\lambda^{(n)})}
+										\end{align*}
+									</div>
+								</div>
+								
 							</td>
-							<td>
+							<td class="fragment fade-in" data-fragment-index="5">
 								<h4>2nd "adjoint method" ($\bar{\lambda} \in U(\mathcal{R})$):</h4>
-								\begin{align*}
-									a_p(\bar{\lambda}, v) + \dot{g}_{\boldsymbol \Sigma}(\boldsymbol b(v)) &= 0 \quad \forall v \in U(\mathcal{R})\\
-									\dot{C}^{(n)} &= \dot{a}_p(\bar{\lambda}, \lambda, e^{(n)})
-								\end{align*}
+								<div class="r-stack">
+									<div class="fragment fade-out" data-fragment-index="6">
+										\begin{align*}
+											a_p(\bar{\lambda}, v) + \dot{g}_{\boldsymbol \Sigma}(\boldsymbol b(v)) &= 0 \quad \forall v \in U(\mathcal{R})\\
+											\dot{C}^{(n)} &= \dot{a}_p(\bar{\lambda}, \lambda, e^{(n)})
+										\end{align*}
+									</div>
+									<div class="fragment fade-in" data-fragment-index="6">
+										\begin{align*}
+											\bar{\Sigma} &= \bar{g}_{\boldsymbol \Sigma}(\bar{C})\\
+											a_p(\bar{\lambda}, v) + \bar{\boldsymbol \Sigma}^T \boldsymbol b(v) &= 0 \quad \forall v \in U(\mathcal{R})\\
+											\bar{p} &= \bar{a}_p(\bar{\lambda}, \lambda, \bar{C})\\
+											\nabla_p C &= \bar{p}
+										\end{align*}
+									</div>
+								</div>
+								
 							</td>
 						</tr>
 					</table>
 				</section>
 
-				<section style="text-align: left;">
-					<h3>Applying Adjoints Twice: First adjoint</h3>
-					<div style="display:flex;">
-						<div style="flex: 2;">
-							We consider the model 
-							\begin{align*}
-								m &= \gamma_p \\
-								a_m(u^{(i)}, v) + b^{(i)}(v) &= 0 \quad \forall v \in V(\mathcal{R}) \\
-								\Sigma^{(i)} &= c(u^{(i)}) \\
-								C &= g_{\boldsymbol \Sigma} \\
-							\end{align*}
-						</div>
-						<div style="flex: 3; margin-left: 100px;">
-							<ul>
-								<li>domain $\mathcal{R}$</li>
-								<li>parametrization: $\gamma: \mathbb{R}^{n} \to M(\mathcal{R})$</li>
-								<li>system $a_m \in \text{Bil}(V(\mathcal{R}) \times V(\mathcal{R}), \mathbb{R})$ </li>
-								<li>excitations $\boldsymbol{b} = (b^{(1)}, ... b^{(I)})^T \in L(V(\mathcal{R}), \mathbb{R}^I)$</li>
-								<li>extraction $c \in L(V(\mathcal{R}), \mathbb{R})$</li>
-								<li>measurements $\boldsymbol{\Sigma} = (\Sigma^{(1)}, ..., \Sigma^{(I)})^T \in \mathbb{R}^I$</li>
-								<li>objective $g: \mathbb{R}^I \to \mathbb{R}$</li>
-							</ul>
-						</div>
-					</div>
-					<div style="margin-top: 50px;">
-						<ul style="width: 100%">
-							<li><span style="color: gray;">solution operator $A(g^{(i)}) = (u^{(i)} | a_m(u^{(i)}, v) + b^{(i)}(v) = 0 \, \forall v \text{ where } b^{(i)}(v) = \langle g^{(i)}, v \rangle)$</span></li>
-							<li class="fragment fade-in" data-fragment-index="1">introduce a $\lambda \in V(\mathcal{R})$ (fixed but yet unspecified) "Lagrange-multiplier" 
-								<div class="r-stack">
-									<div class="fragment fade-in-then-out" data-fragment-index="1">
-										\[
-											\Sigma^{(i)} = c(u^{(i)}) \color{white}{+ \underbrace{a_m(u^{(i)}, \lambda) + b^{(i)}(\lambda)}_{=0 \vphantom{\forall u^{(i)}}}}
-										\]
-									</div>
-									<div class="fragment fade-in-then-out" data-fragment-index="2">
-										\[
-										\Sigma^{(i)} = c(u^{(i)}) + \underbrace{a_m(u^{(i)}, \lambda) + b^{(i)}(\lambda)}_{=0 \vphantom{\forall u^{(i)}}}
-									\]
-									</div>
-									<div class="fragment fade-in" data-fragment-index="3">
-										\[
-											\Sigma^{(i)} = \underbrace{c(u^{(i)}) + a_m(u^{(i)}, \lambda)}_{=0 \forall u^{(i)}} + b^{(i)}(\lambda)
-										\]
-									</div>
-								</div>
-							</li>
-							<li class="fragment fade-in" data-fragment-index="4"> now we specify $\lambda \in V(\mathcal{R})$ s.t.
-								<div>
-									\begin{align*}
-										a_m(u, \lambda) + c(u) &= 0 \quad \forall u \in V(\mathcal{R}) \\
-										\Sigma^{(i)} &= b^{(i)}(\lambda) \\
-									\end{align*}
-								</div>	
-							</li>
-							<li class="fragment fade-in" data-fragment-index="4"><span style="color: gray;">adjoint solution operator $A^*(h) = (\lambda | a_m(u, \lambda) + c(u) = 0 \, \forall u \text{ where } c(u) = \langle h, u \rangle)$</span></li>
-							<li class="fragment fade-in" data-fragment-index="5">
-								1st "application of an adjoint method"
-								<!-- \begin{align*}
-									a_m(u, \lambda) + c(u) &= 0 \quad \forall u \in V(\mathcal{R}) \\
-									C = g_{\boldsymbol\Sigma} &= g_{\boldsymbol b(\lambda)}
-								\end{align*} -->
-							</li>
-						</ul>
-					</div>
-				</section>
 
 				<section style="text-align: left;">
-					<h3>Applying Adjoints Twice: Second adjoint</h3>
-					We continue with
-					<div> 
-						\begin{align*}
-							a_m(u, \lambda) + c(u) &= 0 \quad \forall u \in V(\mathcal{R}) \\
-							C = g_{\boldsymbol\Sigma} &= g_{\boldsymbol b(\lambda)}
-						\end{align*}
-					</div>
-					<ul style="width: 100%">
-						<li class="fragment fade-in" data-fragment-index="1">
-							derive tangent model ($\dot{m}^{(n)} = \dot{\gamma}_p(e_n)$)
-							<div class="r-stack">
-								<span class="fragment fade-in-then-out" data-fragment-index="1">
-									\begin{alignat*}{2}
-										a_m(u, \dot{\lambda}^{(n)}) &+ \dot{a}_m(u, \lambda, \dot{m}^{(n)}) &&= 0 \quad \forall u \in V(\mathcal{R}) \\
-										&\dot{C}^{(n)} = \dot{g}_{\boldsymbol \Sigma}(\boldsymbol b(\dot{\lambda}^{(n)}))
-									\end{alignat*} 
-								</span>
-								<span class="fragment fade-in-then-out" data-fragment-index="2"> 
-									\begin{alignat*}{2}
-										a_m(u, \dot{\lambda}^{(n)}) &+ \beta^{(n)}(u) && = 0 \quad \forall u \in V(\mathcal{R}) \\
-										&\dot{C}^{(n)} = \dot{g}_{\boldsymbol \Sigma}(\boldsymbol b(\dot{\lambda}^{(n)}))
-									\end{alignat*}
-								</span>
-								<span class="fragment fade-in-then-out" data-fragment-index="3"> 
-									\begin{alignat*}{2}
-										a_m(u, \dot{\lambda}^{(n)}) &+ \beta^{(n)}(u) && = 0 \quad \forall u \in V(\mathcal{R}) \\
-										&\dot{C}^{(n)} = \alpha(\dot{\lambda}^{(n)}) \hspace{19pt}
-									\end{alignat*}
-								</span>
-								<span class="fragment fade-in-then-out" data-fragment-index="4"> 
-									\begin{alignat*}{2}
-										a_m(u, \dot{\lambda}^{(n)}) &+ \beta^{(n)}(u) && = 0 \quad \forall u \in V(\mathcal{R}) \\
-										&\dot{C}^{(n)} = \alpha(\dot{\lambda}^{(n)}) \hspace{19pt}
-									\end{alignat*} 
-								</span>
-								<span class="fragment fade-in" data-fragment-index="5">
-									\begin{alignat*}{2}
-										a_m(u, \dot{\lambda}^{(n)}) &+ \dot{a}_m(u, \lambda, \dot{m}^{(n)}) &&= 0 \quad \forall u \in V(\mathcal{R}) \\
-										&\dot{C}^{(n)} = \dot{g}_{\boldsymbol \Sigma}(\boldsymbol b(\dot{\lambda}^{(n)}))
-									\end{alignat*} 
-								</span>
-							</div> 
-						</li>
-						<li class="fragment fade-in" data-fragment-index="4">
-							second application of "an adjoint method" ($\bar{\lambda} \in U$) <em>(continuous adjoint method)</em>
-							<div class="r-stack">
-								<span class="fragment fade-in-then-out" data-fragment-index="4">
-									\begin{alignat*}{2}
-										a_m(\bar{\lambda}, \dot{\lambda}) &+ \alpha(\dot{\lambda}) && = 0 \quad \forall \dot{\lambda} \in V(\mathcal{R}) \\
-										&\dot{C}^{(n)} = \beta^{(n)}(\bar{\lambda}) \hspace{30pt}
-									\end{alignat*}
-								</span>
-								<span class="fragment fade-in" data-fragment-index="5">
-									\begin{alignat*}{2}
-										a_m(\bar{\lambda}, \dot{\lambda}) &+ \dot{g}_{\boldsymbol \Sigma}(\boldsymbol b(\dot{\lambda})) && = 0 \quad \forall \dot{\lambda} \in V(\mathcal{R}) \\
-										&\dot{C}^{(n)} = \dot{a}_m(\bar{\lambda}, \lambda, \dot{m}^{(n)})
-									\end{alignat*}
-								</span>
-							</div>
-						</li>
-						<li class="fragment fade-in" data-fragment-index="6">
-							with adjoint variables ($\bar{\boldsymbol{\Sigma}} = \bar{g}_{\boldsymbol\Sigma}(\bar{C})$)
-							\begin{alignat*}{2}
-										a_m(\bar{\lambda}, \dot{\lambda}) &+ \bar{\boldsymbol \Sigma}^T \boldsymbol b(\dot{\lambda}) && = 0 \quad \forall \dot{\lambda} \in V(\mathcal{R}) \\
-										&\bar{p} = \bar{\gamma}_p(\bar{a}_m(\bar{\lambda}, \lambda, \bar{C}))\\
-										&(\nabla_p C)^{(n)} = \bar{p}^{(n)}
-									\end{alignat*}
-						</li>
-					</ul>
-				</section>
-
-				<section style="text-align: left;">
-					<h3>Applying Adjoints Twice</h3>
+					<h3>Summary: Applying Adjoints Twice</h3>
 					<table>
 						<tr style="border-style: hidden;">
 							<td style="text-align: center; ">
-								<h4>non-adjoint forward + tangent derivative</h4>
+								<h4>adjoint forward + adjoint derivative</h4>
 							</td>
 							<td style="text-align: center; ">
-								<h4>adjoint forward + adjoint derivative</h4>
+								<h4>non-adjoint forward + tangent derivative</h4>
 							</td>
 						</tr>
 						<tr>
 							<td style="text-align: center; ">
-								\begin{align*}
-								a_m(u^{(i)}, v) + b^{(i)}(v) &= 0 \quad \forall v \in V(\mathcal{R}) \\
-								\Sigma^{(i)} &= c(u^{(i)}) \\
-								C &= g_{\boldsymbol \Sigma} \\
-								a_m(\dot{u}^{(i, n)}, v) + \dot{a}_m(u^{(i)}, v, \dot{m}^{(n)}) &= 0 \quad \forall v \in V(\mathcal{R})\\
-								\dot{\Sigma}^{(i, n)} &= c(\dot{u}^{(i, n)}) \\
-								(\nabla_p C)^{(n)} &= \dot{g}_{\boldsymbol \Sigma}(\dot{\boldsymbol \Sigma}^{(n)})
-							\end{align*}
-							</td>
-							<td style="text-align: center; ">
 								\begin{align}
-								a_m(u, \lambda) + c(u) &= 0 \quad \forall u \in V(\mathcal{R})\\
+								a_p(u, \lambda) + c(u) &= 0 \quad \forall u \in V(\mathcal{R})\\
 								\boldsymbol \Sigma &= \boldsymbol b(\lambda) \\
 								C &= g_{\boldsymbol \Sigma} \\
 								\bar{\boldsymbol \Sigma} &= \bar{g}_{\boldsymbol \Sigma}(\bar{C})\\
-								a_m(\bar{\lambda}, \dot{\lambda}) + \bar{\boldsymbol{\Sigma}}^T \boldsymbol b(\dot{\lambda}) &= 0 \quad \forall \dot{\lambda} \in V(\mathcal{R}) \\
-								\bar{p} &= \bar{\gamma}_p(\bar{a}_m(\bar{\lambda}, \lambda, \bar{C}))\\ 
+								a_p(\bar{\lambda}, \dot{\lambda}) + \bar{\boldsymbol{\Sigma}}^T \boldsymbol b(\dot{\lambda}) &= 0 \quad \forall \dot{\lambda} \in V(\mathcal{R}) \\
+								\bar{p} &= \bar{a}_p(\bar{\lambda}, \lambda, \bar{C})\\ 
 								(\nabla_p C)^{(n)} &= \bar{p}^{(n)} 
 							\end{align}
+							</td>
+							<td style="text-align: center; ">
+								\begin{align*}
+								a_p(u^{(i)}, v) + b^{(i)}(v) &= 0 \quad \forall v \in V(\mathcal{R}) \\
+								\Sigma^{(i)} &= c(u^{(i)}) \\
+								C &= g_{\boldsymbol \Sigma} \\
+								a_p(\dot{u}^{(i, n)}, v) + \dot{a}_p(u^{(i)}, v, e^{(n)}) &= 0 \quad \forall v \in V(\mathcal{R})\\
+								\dot{\Sigma}^{(i, n)} &= c(\dot{u}^{(i, n)}) \\
+								(\nabla_p C)^{(n)} &= \dot{g}_{\boldsymbol \Sigma}(\dot{\boldsymbol \Sigma}^{(n)})
+							\end{align*}
 							</td>
 						</tr>
 					</table>
 					<h4>Generalizations:</h4>
 					<ul>
-						<li>$m$-dependent excitation $b^{(i)}(v) \rightsquigarrow b_m^{(i)}(v)$</li>
-						<li>$m$-dependent extractions $c(u) \rightsquigarrow c_m(u)$</li>
-						<li>multiple extractions $c_m(u) \rightsquigarrow c^{(j)}_m(u)$ ($I, N \gg J$)</li>
+						<li>$p$-dependent excitation $b^{(i)}(v) \rightsquigarrow b_p^{(i)}(v)$</li>
+						<li>$p$-dependent extractions $c(u) \rightsquigarrow c_p(u)$</li>
+						<li>multiple extractions $c_p(u) \rightsquigarrow c^{(j)}_p(u)$ ($I, N \gg J$)</li>
 					</ul>
 					<h4 style="margin-top: 20px;">Assumptions:</h4>
 					<ul>
-						<li>the cost $\mathcal{C}(a)$ of solving $a(\cdot{}, \cdot{}) + ... = 0$ dominates (no direct solve possible)</li>
+						<li>the cost $\mathcal{C}(a)$ of solving $a(\cdot{}, \cdot{}) + ... = 0$ dominates (no direct solve possible, iterative)</li>
 						<li>cost comparison (naive): $(I + IN)\times \mathcal{C}(a) + ... \mathcal{C}(\langle\cdot\rangle)$</li>
 						<li>cost comparison (adjoint<sup>2</sup>): $2J \times \mathcal{C}(a) + ... \times \mathcal{C}(\langle\cdot\rangle)$</li>
 					</ul>
@@ -940,21 +859,23 @@
 					<section><h3>Example: An inverse problem based on the Poisson equation</h3>
 						<table>
 							<tr>
-								<td style="text-align: center; vertical-align: top;">
+								<td style="text-align: center; vertical-align: top; padding: 0px;">
 									<h4>forward (strong form)</h4>
-									\begin{align*}
-										&m = \gamma_p\\
-										&\begin{cases}
-											-\nabla \cdot{} m \nabla u^{(i)} = 0 \quad &\forall x \in \mathcal{R}\\
-											u^{(i)} = g^{(i)} \quad &\forall x \in \partial\mathcal{R}
-											\end{cases}\\
-										&\Sigma^{(i, j)} = \int_{\mathcal{R}} h^{(j)} u^{(i)} dx\\
-										&C = \frac{1}{2 IJ}\sum_{i, j=1}^{I,J} (\Sigma^{(i, j)} - \tilde{\Sigma}^{(i, j)})^2  
-									\end{align*}
+									<div style="margin-top:-30px">
+										\begin{align*}
+											&m = \gamma_p\\
+											&\begin{cases}
+												-\nabla \cdot{} m \nabla u^{(i)} = 0 \quad &\forall x \in \mathcal{R}\\
+												u^{(i)} = g^{(i)} \quad &\forall x \in \partial\mathcal{R}
+												\end{cases}\\
+											&\Sigma^{(i, j)} = \int_{\mathcal{R}} h^{(j)} u^{(i)} dx\\
+											&C = \frac{1}{2 IJ}\sum_{i, j=1}^{I,J} (\Sigma^{(i, j)} - \tilde{\Sigma}^{(i, j)})^2  
+										\end{align*}
+									</div>
 								</td>
-								<td style="text-align: center; vertical-align: top;">
+								<td style="text-align: center; vertical-align: top; padding: 0px;">
 									<div class="r-stack">
-										<ul class="fragment fade-out" data-fragment-index="1">
+										<ul class="fragment fade-out" data-fragment-index="2" style="margin-left: 50px; ">
 											<li>$\gamma: \mathbb{R}^N \to L^{(2)}(\mathcal{R})$</li>
 											<li>$m, h^{(j)} \in L^2(\mathcal{R})$, $g^{(i)} \in L^2(\partial \mathcal{R})$</li>
 											<li>weak enforcement of boundary conditions $u, v \in H^1_h(\mathcal{R})$</li>
@@ -962,74 +883,76 @@
 												\[a(u^{(i)}, v) + b^{(i)}(v) = 0 \quad \forall v \in H^1_h(\mathcal{R})\]
 											</li>
 											<li>$I, N \gg J$ (many bc $g^{(i)}$, many parameters $p \in \mathbb{R}^N$, some extractions $h^{(j)}$)</li>
-											<li>here: $I=800$, $N=2971$, $J=7$</li>
+											<li>here: $I=800$, $N=757$, $J=7$</li>
 										</ul>
-										<div class="fragment fade-in" data-fragment-index="1">
+										<div class="fragment fade-in" data-fragment-index="2">
 											<h4>adjoint forward (strong form)</h4>
-											\begin{align*}
-												& m = \gamma_p\\ 
-												&\begin{cases}
-													-\nabla \cdot{} m \nabla \lambda^{(j)} &= -h^{(j)} &\forall x \in \mathcal{R} \\
-													\lambda^{(j)} &= 0 \quad &\forall x \in \partial \mathcal{R}
-												\end{cases}\\
-												&\Sigma^{(i, j)} = \int_{\partial \mathcal{R}} \nabla_n \lambda^{(j)} g^{(i)} \, d x\\
-												&C = \frac{1}{2 I J} \sum_{i, j}^{I, J} (\Sigma^{(i, j)} - \tilde{\Sigma}^{(i, j)})^2
-											\end{align*}
+											<div style="margin-top: -30px;">
+												\begin{align*}
+													& m = \gamma_p\\ 
+													&\begin{cases}
+														-\nabla \cdot{} m \nabla \lambda^{(j)} &= -h^{(j)} &\forall x \in \mathcal{R} \\
+														\lambda^{(j)} &= 0 \quad &\forall x \in \partial \mathcal{R}
+													\end{cases}\\
+													&\Sigma^{(i, j)} = \int_{\partial \mathcal{R}} \nabla_n \lambda^{(j)} g^{(i)} \, d x\\
+													&C = \frac{1}{2 I J} \sum_{i, j}^{I, J} (\Sigma^{(i, j)} - \tilde{\Sigma}^{(i, j)})^2
+												\end{align*}
+											</div>
 										</div>
 									</div>
 								</td>
 							</tr>
 						</table>
-						<div class="r-stack">
+						<div class="r-stack" style="margin-top: -30px;">
 							<div class="fragment fade-out" data-fragment-index="1">
 								<table style="text-align: center">
 									<tr style="border-style: hidden;">
-										<td style="text-align: center; "><h5>forward solution $u^{(i)}$</h5></td>
-										<td style="text-align: center; "><h5>extraction $h^{(j)}$</h5></td>
-										<td style="text-align: center; "><h5>measurement $\Sigma^{(i, j)}$</h5></td>
+										<td style="text-align: center; padding: 0px;"><h5>forward solution $u^{(i)}$</h5></td>
+										<td style="text-align: center; padding: 0px;"><h5>extraction $h^{(j)}$</h5></td>
+										<td style="text-align: center; padding: 0px;"><h5>measurement $\Sigma^{(i, j)}$</h5></td>
 									</tr>
 									<tr>
-										<td style="text-align: center; ">
+										<td style="text-align: center; padding: 0px;">
 											<img src="figures/poisson/forward_solution/100.svg" width="600px"/>
 										</td>
-										<td style="text-align: center; ">
+										<td style="text-align: center; padding: 0px;">
 											<img src="figures/poisson/extractions/7.svg" width="600px"/>
 										</td>
-										<td style="text-align: center; ">
+										<td style="text-align: center; padding: 0px;">
 											<img src="figures/poisson/measurements/7.svg" height="600px"/>
 										</td>
 									</tr>
 									<tr style="border-style: hidden;">
-										<td style="text-align: center; "></td>
-										<td style="text-align: center; "></td>
-										<td style="text-align: center; ">$\hphantom{\sim 10 ns}$</td>
+										<td style="text-align: center; padding: 0px;"></td>
+										<td style="text-align: center; padding: 0px;"></td>
+										<td style="text-align: center; padding: 0px;">$\hphantom{\sim 10 ns}$</td>
 									</tr>
 								</table>
 							</div>
 							<div class="fragment fade-in" data-fragment-index="1">
 								<table style="text-align: center;">
 									<tr style="border-style: hidden;">
-										<td style="text-align: center; "><h5>forward solution $u^{(i)}$</h5></td>
-										<td style="text-align: center; "><h5>extraction $h^{(j)}$</h5></td>
-										<td style="text-align: center; ">
+										<td style="text-align: center; padding: 0px;"><h5>forward solution $u^{(i)}$</h5></td>
+										<td style="text-align: center; padding: 0px;"><h5>extraction $h^{(j)}$</h5></td>
+										<td style="text-align: center; padding: 0px;">
 											<div class="r-stack">
-												<div class="fragment fade-out" data-fragment-index="2">
+												<div class="fragment fade-out" data-fragment-index="3">
 													<h5>measurement $\Sigma^{(i, j)}$</h5>
 												</div>
-												<div class="fragment fade-in" data-fragment-index="2">
+												<div class="fragment fade-in" data-fragment-index="3">
 													<h5>measurement $\Sigma^{(i, j)}$ (naive)</h5>
 												</div>
 											</div>
 										</td>
 									</tr>
-									<tr style="border-style: hidden;">
-										<td style="text-align: center; ">
+									<tr style="border-style: hidden; padding: 0px;">
+										<td style="text-align: center; padding: 0px;">
 											<img src="figures/poisson/forward_solution/500.svg" width="600px"/>
 										</td>
-										<td style="text-align: center; ">
+										<td style="text-align: center; padding: 0px;">
 											<img src="figures/poisson/extractions/3.svg" width="600px"/>
 										</td>
-										<td style="text-align: center; ">
+										<td style="text-align: center; padding: 0px;">
 											<div class="r-stack">
 												<div class="fragment fade-out" data-fragment-index="2">
 													<img src="figures/poisson/all_measurements.svg" height="600px"/>
@@ -1041,18 +964,18 @@
 										</td>
 									</tr>
 									<tr style="border-style: hidden;">
-										<td style="text-align: center; ">
-											<div class="fragment fade-in" data-fragment-index="1">
+										<td style="text-align: center; padding: 0px;">
+											<div class="fragment fade-in" data-fragment-index="2">
 												$\sim 7ms$
 											</div></td>
-										<td style="text-align: center; "></td>
-										<td style="text-align: center; ">
+										<td style="text-align: center; padding: 0px;"></td>
+										<td style="text-align: center; padding: 0px;">
 											<div class="r-stack">
-												<div class="fragment fade-out" data-fragment-index="2" style="background-color: green;">
+												<div class="fragment fade-in-then-out" data-fragment-index="2" style="background-color: green;">
 													$\sim 55ms \approx 7 \times 7ms$
 												</div>
-												<div class="fragment fade-in" data-fragment-index="2" style="background-color: red;">
-													$\sim 5300ms \approx 800 \times 7ms$
+												<div class="fragment fade-in" data-fragment-index="3" style="background-color: red;">
+													$\sim 5.3s \approx 800 \times 7ms$
 												</div>
 											</div></td>
 									</tr>
@@ -1137,24 +1060,27 @@
 							</td> -->
 							<td style="text-align: left; vertical-align: top; ">
 								<ul>
-									<li>more text dsasdsadsadshere!</li>
+									<li>$\lambda^{(j)}$: heat source $\mu^{(j)}$</li>
+									<li>$\bar{\lambda}^{(j)}$: adjoint augmented excitations</li>
 								</ul>
 							</td>
 							<td style="text-align: center; vertical-align: top; ">
-								\begin{align*}
-									&\bar{\Sigma}^{(i, j)} = \frac{1}{IJ} (\Sigma^{(i, j)} - \tilde{\Sigma}^{(i, j)}) \bar{C}\\
-									&\begin{cases}
-										-\nabla \cdot{} m \nabla \bar{\lambda}^{(j)}  &= 0 \quad  &\forall x \in \mathcal{R} \\
-										\bar{\lambda}^{(j)} &= \sum_{i=1}^{I} \bar{\Sigma}^{(i, j)} g^{(i)} \quad &\forall x \in \partial \mathcal{R}\\
-									\end{cases} \\
-									&\bar{m} = \bar{C} \sum_{j=1}^{J} \nabla \bar{\lambda}^{(j)} \cdot{} \nabla \lambda^{(j)} \\
-									& (\nabla_p C)^{(n)} = (\bar{\gamma}_{p}(\bar{m}))^{(n)} = \int_{\mathcal{R}} \frac{\partial \gamma_p}{\partial p^{(n)}} \bar{m} \, d x\\
-								\end{align*}
+								<div style="margin-top: -30px;">
+									\begin{align*}
+										&\bar{\Sigma}^{(i, j)} = \frac{1}{IJ} (\Sigma^{(i, j)} - \tilde{\Sigma}^{(i, j)}) \bar{C}\\
+										&\begin{cases}
+											-\nabla \cdot{} m \nabla \bar{\lambda}^{(j)}  &= 0 \quad  &\forall x \in \mathcal{R} \\
+											\bar{\lambda}^{(j)} &= \sum_{i=1}^{I} \bar{\Sigma}^{(i, j)} g^{(i)} \quad &\forall x \in \partial \mathcal{R}\\
+										\end{cases} \\
+										&\bar{m} = \bar{C} \sum_{j=1}^{J} \nabla \bar{\lambda}^{(j)} \cdot{} \nabla \lambda^{(j)} \\
+										& (\nabla_p C)^{(n)} = (\bar{\gamma}_{p}(\bar{m}))^{(n)} = \int_{\mathcal{R}} \frac{\partial \gamma_p}{\partial p^{(n)}} \bar{m} \, d x\\
+									\end{align*}
+								</div>
 							</td>
 						</tr>
 					</table>
 
-					<table style="text-align: center; padding: 0px">
+					<table style="text-align: center; padding: 0px; margin-top: 10px;">
 						<tr style="border-style: hidden;">
 							<td style="text-align: center; padding: 0px"><h5>adjoint forward $\lambda^{(j)}$</h5></td>
 							<td style="text-align: center; padding: 0px"><h5>adjoint derivative $\bar{\lambda}^{(j)}$</h5></td>
@@ -1191,8 +1117,11 @@
 									<div class="fragment fade-out" data-fragment-index="2" style="background-color: green;">
 										$\sim 92 ms \approx 2 \times 7 \times 7ms$
 									</div>
-									<div class="fragment fade-in" data-fragment-index="2" style="background-color: red;">
-										$\sim 160 s \approx 2972 \times 55ms$
+									<div class="fragment fade-in-then-out" data-fragment-index="2" style="background-color: red;">
+										$\sim 45 s \approx 757 \times 55ms$
+									</div>
+									<div class="fragment fade-in" data-fragment-index="3" style="background-color: red;">
+										$\sim 1h\, 10min \approx 757 \times 800 \times 7ms$
 									</div>
 								</div>
 							</td>
@@ -1222,7 +1151,10 @@
 								<h5>optimized material $m$</h5>
 							</td>
 							<td style="text-align: center; " width="600px">
-								<h5>objective $\text{MSE}(\Sigma^{(i, j)}, \tilde{\Sigma}^{(i,j)})$</h5>
+								<div class="r-stack">
+									<h5 class="fragment fade-out" data-fragment-index="2">objective $\text{MSE}(\Sigma^{(i, j)}, \tilde{\Sigma}^{(i,j)})$</h5>
+									<h5 class="fragment fade-in" data-fragment-index="2">true material $\tilde{m}$</h5>
+								</div>
 							</td>
 						</tr>
 						<tr class="fragment highlight-red" data-fragment-index="1">
@@ -1232,23 +1164,24 @@
 								</video>
 							</td>
 							<td style="text-align: center; ">
+								<div class="fragment highlight-red" data-fragment-index="1">
+									<video data-autoplay style="width: 600px;">
+										<source data-src="figures/poisson/optimization_material.webm" type="video/webm">
+									</video>
+								</div>
+							</td>
+							<td style="text-align: center; vertical-align: top;">
 								<div class="r-stack">
-									<div class="fragment highlight-red" data-fragment-index="1">
-										<video data-autoplay style="width: 600px;">
-											<source data-src="figures/poisson/optimization_material.webm" type="video/webm">
-										</video>
-									</div>
+									<video data-autoplay style="width=550px; margin-top: 50px; "> 
+										<source data-src="figures/poisson/optimization_error.webm" type="video/webm">
+									</video>
 									<div class="fragment fade-in" data-fragment-index="2">
 										<video style="width: 600px;">
 											<source data-src="figures/poisson/true_material.webm" type="video/webm">
 										</video>
 									</div>
 								</div>
-							</td>
-							<td style="text-align: center; vertical-align: top;">
-								<video data-autoplay style="width=550px; margin-top: 50px; "> 
-									<source data-src="figures/poisson/optimization_error.webm" type="video/webm">
-								</video>
+								
 							</td>
 						</tr>
 					</table>
@@ -1295,6 +1228,7 @@
 						<h4 style="margin-top: 100px;">References</h4>
 						<div style="font-size: 60%;"> 
 							<ul>
+								<li>J. Bünger: <em>Three-dimensional modelling of x-ray emission in electron probe microanalysis based on deterministic transport equations</em>. Phd thesis, RWTH Aachen University (2021)<br><a href="https://doi.org/10.18154/RWTH-2021-05180">doi:10.18154/RWTH-2021-05180</a></li>
 								<li>T. Bui-Tanh: <em>Adjoint and Its roles in Sciences, Engineering, and Mathematics: A Tutorial</em>. arXiv (2023)<br><a href="https://doi.org/10.48550/arXiv.2306.09917">doi:10.48550/arXiv.2306.09917</a></li>
 								<li>J.A. Halbleib and J.E. Morel: <em>Adjoint Monte Carlo Electron Transport in the Continuous-Slowing-Down-Approximation</em>. J. Comput. Phys. (1980)<br><a href="https://doi.org/10.1016/0021-9991(80)90106-0">doi:10.1016/0021-9991(80)90106-0</a></li>
 								<li>U. Naumann: <em>The Art of Differentiating Computer Programs: An Introduction to Algorithmic Differentiation</em>. SIAM (2012)<br><a href="https://doi.org/10.1137/1.9781611972078">doi:10.1137/1.9781611972078</a></li>
