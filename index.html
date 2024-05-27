@@ -699,7 +699,7 @@
 							</div>
 						</div>
 						<ul>
-							<li>switching trial and test function is the continuous analog to the transposition</li>
+							<li>switching trial and test function is the continuous analog to solving the transposed system</li>
 						</ul>
 					</div>
 				</section>
@@ -742,7 +742,7 @@
 								\end{align*}
 							</td>
 							<td class="fragment fade-in" data-fragment-index="1">
-								<h4>1st "adjoint method"($\lambda \in U(\mathcal{R})$):</h4>
+								<h4>1st "adjoint method" ($\lambda \in U(\mathcal{R})$):</h4>
 								<div class="r-stack">
 									<div class="fragment fade-out" data-fragment-index="2">
 										\begin{align*}
@@ -766,13 +766,13 @@
 							<td class="fragment fade-in" data-fragment-index="3">
 								<h4>Tangent model/sensitivity ($\dot{\lambda}^{(n)} \in U(\mathcal{R})$):</h4>
 								<div class="r-stack">
-									<div class="fragment fade-out" data-fragment-index="4">
+									<div class="fragment fade-out" data-fragment-index="4" style="margin-top: 20px;"> 
 										\begin{align*}
 											a_p(v, \dot{\lambda}^{(n)}) + \dot{a}_p(v, \lambda, e^{(n)}) &= 0 \quad \forall v \in U(\mathcal{R})\\
 											\dot{C}^{(n)} &= \dot{g}_{\boldsymbol \Sigma}(\boldsymbol b(\dot{\lambda}^{(n)}))
 										\end{align*}
 									</div>
-									<div class="fragment fade-in" data-fragment-index="4">
+									<div class="fragment fade-in" data-fragment-index="4" style="margin-top: -50px;">
 										\begin{align*}
 											a_p(v, \dot{\lambda}^{(n)}) + \overbrace{\dot{a}_p(v, \lambda, e^{(n)})}^{=\beta^{(n)}(v)} &= 0 \quad \forall v \in U(\mathcal{R})\\
 											\dot{C}^{(n)} &= \underbrace{\dot{g}_{\boldsymbol \Sigma}(\boldsymbol b(\dot{\lambda}^{(n)}))}_{=\gamma(\lambda^{(n)})}
@@ -1047,8 +1047,8 @@
 					<table>
 						<tr style="border-style: hidden;">
 							<!-- <td style="text-align: center; "><h5>adjoint forward (strong form)</h5></td> -->
-							<td></td>
-							<td style="text-align: center; vertical-align: top; "><h5>adjoint derivative (strong form)</h5></td>
+							<td style="text-align: center; vertical-align: top; "><h4>adjoint forward (strong form)</h4> </td>
+							<td style="text-align: center; vertical-align: top; "><h4>adjoint derivative (strong form)</h4></td>
 						</tr>
 						<tr>
 							<!-- <td style="text-align: center; ">
@@ -1063,10 +1063,22 @@
 								\end{align*}
 							</td> -->
 							<td style="text-align: left; vertical-align: top; ">
-								<ul>
+								<!-- <ul>
 									<li>$\lambda^{(j)}$: heat source $\mu^{(j)}$</li>
 									<li>$\bar{\lambda}^{(j)}$: adjoint augmented excitations</li>
-								</ul>
+
+								</ul>-->
+								<div style="margin-top: -30px;">
+									\begin{align*}
+										& m = \gamma_p\\ 
+										&\begin{cases}
+											-\nabla \cdot{} m \nabla \lambda^{(j)} &= -h^{(j)} &\forall x \in \mathcal{R} \\
+											\lambda^{(j)} &= 0 \quad &\forall x \in \partial \mathcal{R}
+										\end{cases}\\
+										&\Sigma^{(i, j)} = \int_{\partial \mathcal{R}} \nabla_n \lambda^{(j)} g^{(i)} \, d x\\
+										&C = \frac{1}{2 I J} \sum_{i, j}^{I, J} (\Sigma^{(i, j)} - \tilde{\Sigma}^{(i, j)})^2
+									\end{align*}
+								</div>
 							</td>
 							<td style="text-align: center; vertical-align: top; ">
 								<div style="margin-top: -30px;">
@@ -1232,15 +1244,25 @@
 								</td>
 							</tr>
 						</table>
-						<h4 style="margin-top: 100px;">References</h4>
-						<div style="font-size: 60%;"> 
-							<ul>
-								<li>J. Bünger: <em>Three-dimensional modelling of x-ray emission in electron probe microanalysis based on deterministic transport equations</em>. Phd thesis, RWTH Aachen University (2021)<br><a href="https://doi.org/10.18154/RWTH-2021-05180">doi:10.18154/RWTH-2021-05180</a></li>
-								<li>T. Bui-Tanh: <em>Adjoint and Its roles in Sciences, Engineering, and Mathematics: A Tutorial</em>. arXiv (2023)<br><a href="https://doi.org/10.48550/arXiv.2306.09917">doi:10.48550/arXiv.2306.09917</a></li>
-								<li>J.A. Halbleib and J.E. Morel: <em>Adjoint Monte Carlo Electron Transport in the Continuous-Slowing-Down-Approximation</em>. J. Comput. Phys. (1980)<br><a href="https://doi.org/10.1016/0021-9991(80)90106-0">doi:10.1016/0021-9991(80)90106-0</a></li>
-								<li>U. Naumann: <em>The Art of Differentiating Computer Programs: An Introduction to Algorithmic Differentiation</em>. SIAM (2012)<br><a href="https://doi.org/10.1137/1.9781611972078">doi:10.1137/1.9781611972078</a></li>
-								<li>R.E. Plessix: <em> A review of the adjoint-state method for computing the gradient of a functional with geophysical applications</em>. Geophys. J. Int. (2006)<br><a href="https://doi.org/10.1111/j.1365-246X.2006.02978.x">doi:10.1111/j.1365-246X.2006.02978.x</a></li>
-							</ul>
+						<div style="display: flex;">
+							<div style="font-size: 60%; flex:2;">
+								<h4 style="margin-top: 100px; font-size: 150%;">References</h4>
+								<ul>
+									<li>J. Bünger: <em>Three-dimensional modelling of x-ray emission in electron probe microanalysis based on deterministic transport equations</em>. Phd thesis, RWTH Aachen University (2021)<br><a href="https://doi.org/10.18154/RWTH-2021-05180">doi:10.18154/RWTH-2021-05180</a></li>
+									<li>T. Bui-Tanh: <em>Adjoint and Its roles in Sciences, Engineering, and Mathematics: A Tutorial</em>. arXiv (2023)<br><a href="https://doi.org/10.48550/arXiv.2306.09917">doi:10.48550/arXiv.2306.09917</a></li>
+									<li>J.A. Halbleib and J.E. Morel: <em>Adjoint Monte Carlo Electron Transport in the Continuous-Slowing-Down-Approximation</em>. J. Comput. Phys. (1980)<br><a href="https://doi.org/10.1016/0021-9991(80)90106-0">doi:10.1016/0021-9991(80)90106-0</a></li>
+									<li>U. Naumann: <em>The Art of Differentiating Computer Programs: An Introduction to Algorithmic Differentiation</em>. SIAM (2012)<br><a href="https://doi.org/10.1137/1.9781611972078">doi:10.1137/1.9781611972078</a></li>
+									<li>R.E. Plessix: <em> A review of the adjoint-state method for computing the gradient of a functional with geophysical applications</em>. Geophys. J. Int. (2006)<br><a href="https://doi.org/10.1111/j.1365-246X.2006.02978.x">doi:10.1111/j.1365-246X.2006.02978.x</a></li>
+								</ul>
+							</div>
+							<div style="flex:1 ; font-size: 60%"> 
+								<h4 style="margin-top: 100px; ">Slides + Pluto.jl notebook (Poisson example)</h4>
+								<a href="https://github.com/tam724/claus_applying_adjoints_twice_presentation">
+									<img src="figures/tam724_github_qr.png">
+									<br>
+									github.com/tam724
+								</a>
+							</div>
 						</div>
 					</section>
 
