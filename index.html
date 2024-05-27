@@ -28,7 +28,7 @@
 				text-align: left;
 			}
 			.reveal .slides{
-				border-style: solid;
+				border-style: hidden;
 				border-color: gray;
 				border-width: 1px;
 			}
@@ -843,15 +843,19 @@
 					</table>
 					<h4>Generalizations:</h4>
 					<ul>
-						<li>$p$-dependent excitation $b^{(i)}(v) \rightsquigarrow b_p^{(i)}(v)$</li>
+						<li>$p$-dependent excitations $b^{(i)}(v) \rightsquigarrow b_p^{(i)}(v)$</li>
 						<li>$p$-dependent extractions $c(u) \rightsquigarrow c_p(u)$</li>
 						<li>multiple extractions $c_p(u) \rightsquigarrow c^{(j)}_p(u)$ ($I, N \gg J$)</li>
 					</ul>
 					<h4 style="margin-top: 20px;">Assumptions:</h4>
 					<ul>
-						<li>the cost $\mathcal{C}(a)$ of solving $a(\cdot{}, \cdot{}) + ... = 0$ dominates (no direct solve possible, iterative)</li>
-						<li>cost comparison (naive): $(I + IN)\times \mathcal{C}(a) + ... \mathcal{C}(\langle\cdot\rangle)$</li>
-						<li>cost comparison (adjoint<sup>2</sup>): $2J \times \mathcal{C}(a) + ... \times \mathcal{C}(\langle\cdot\rangle)$</li>
+						<li>the cost $\mathcal{C}(a)$ of solving $a(\cdot{}, \cdot{}) + ... = 0$ dominates over $\mathcal{C}(\langle \cdot{} \rangle)$</li>
+						<li>$a(\cdot{}, \cdot{})$ cannot be solved directly (e.g. LU)</li>
+					</ul>
+					<h4 style="margin-top: 20px;">Costs:</h4>
+					<ul>
+						<li>non-adjoint forward + tangent derivative: $(I + IN)\times \mathcal{C}(a) + ... \mathcal{C}(\langle\cdot\rangle)$</li>
+						<li>adjoint forward + adjoint derivative: $2J \times \mathcal{C}(a) + ... \times \mathcal{C}(\langle\cdot\rangle)$</li>
 					</ul>
 				</section>
 
@@ -1138,7 +1142,7 @@
 					<ul>
 						<li>inverting on $m$ directly is ill-posed</li>
 						<li>motivated from SciML: use a $\mathcal{NN}$ as the parametrization $\gamma_p$</li>
-						<li>we use the parametrization $\gamma_p$ to regularize (here: only phase classification)</li>
+						<li>we use the parametrization $\gamma_p$ to "regularize" (here: phase classification)</li>
 						<li>number of parameters: $544$</li>
 						<li>coarser discretization for the inversion ($757$ material cells vs $2972$ for the true measurements)</li>
 						<li>$1$% random noise added to the true measurements</li>
@@ -1187,6 +1191,8 @@
 						</tr>
 					</table>
 					<ul>
+						<li>convergence dependes in the inital guess (does not always converge)</li>
+						<li>optimizer: BFGS</li>
 						<li>taylor the parametrization $\gamma_p$ to a specific problem (layers, other geometry, phase values, e.g.)</li>
 					</ul>
 				</section>
