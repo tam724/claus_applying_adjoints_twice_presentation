@@ -903,7 +903,7 @@
 								</td>
 							</tr>
 						</table>
-						<div class="r-stack" style="margin-top: -30px;">
+						<div class="r-stack" style="margin-top: -20px;">
 							<div class="fragment fade-out" data-fragment-index="1">
 								<table style="text-align: center">
 									<tr style="border-style: hidden;">
@@ -1079,54 +1079,55 @@
 							</td>
 						</tr>
 					</table>
-
-					<table style="text-align: center; padding: 0px; margin-top: 10px;">
-						<tr style="border-style: hidden;">
-							<td style="text-align: center; padding: 0px"><h5>adjoint forward $\lambda^{(j)}$</h5></td>
-							<td style="text-align: center; padding: 0px"><h5>adjoint derivative $\bar{\lambda}^{(j)}$</h5></td>
-							<td style="text-align: center; padding: 0px">
-								<div class="r-stack">
-									<h5 class="fragment fade-out" data-fragment-index="2">gradient $\bar{m}$</h5>
-									<h5 class="fragment fade-in" data-fragment-index="2">gradient $\bar{m}$ (finite differences)</h5>
-								</div>
-							</td>
-						</tr>
-						<tr style="border-style: hidden;">
-							<td style="text-align: center; padding: 0px;">
-								<img src="figures/poisson/forward_adjoint/7.svg" style="width: 600px;"/>
-							</td>
-							<td style="text-align: center; padding: 0px;">
-								<img src="figures/poisson/derivative_adjoint/7.svg" style="width: 600px;"/>
-							</td>
-							<td style="text-align: center; padding: 0px;">
-								<div class="r-stack">
-									<div class="fragment fade-out" data-fragment-index="2" >
-										<img src="figures/poisson/gradient.svg" style="width: 600px;"/>
+					<div style="margin-top: 0px;">
+						<table style="text-align: center; padding: 0px; margin-top:-30px;">
+							<tr style="border-style: hidden;">
+								<td style="text-align: center; padding: 0px"><h5>adjoint forward $\lambda^{(j)}$</h5></td>
+								<td style="text-align: center; padding: 0px"><h5>adjoint derivative $\bar{\lambda}^{(j)}$</h5></td>
+								<td style="text-align: center; padding: 0px">
+									<div class="r-stack">
+										<h5 class="fragment fade-out" data-fragment-index="2">gradient $\bar{m}$</h5>
+										<h5 class="fragment fade-in" data-fragment-index="2">gradient $\bar{m}$ (finite differences)</h5>
 									</div>
-									<div class="fragment fade-in" data-fragment-index="2" >
-										<img src="figures/poisson/gradient_fd.svg" style="width: 600px;"/>
+								</td>
+							</tr>
+							<tr style="border-style: hidden;">
+								<td style="text-align: center; padding: 0px;">
+									<img src="figures/poisson/forward_adjoint/7.svg" style="width: 600px;"/>
+								</td>
+								<td style="text-align: center; padding: 0px;">
+									<img src="figures/poisson/derivative_adjoint/7.svg" style="width: 600px;"/>
+								</td>
+								<td style="text-align: center; padding: 0px;">
+									<div class="r-stack">
+										<div class="fragment fade-out" data-fragment-index="2" >
+											<img src="figures/poisson/gradient.svg" style="width: 600px;"/>
+										</div>
+										<div class="fragment fade-in" data-fragment-index="2" >
+											<img src="figures/poisson/gradient_fd.svg" style="width: 600px;"/>
+										</div>
 									</div>
-								</div>
-							</td>
-						</tr>
-						<tr style="border-style: hidden;">
-							<td style="text-align: center; padding: 0px;"></td>
-							<td style="text-align: center; padding: 0px;"></td>
-							<td style="text-align: center; padding: 0px;">
-								<div class="r-stack" style="margin: -50px">
-									<div class="fragment fade-out" data-fragment-index="2" style="background-color: green;">
-										$\sim 92 ms \approx 2 \times 7 \times 7ms$
+								</td>
+							</tr>
+							<tr style="border-style: hidden;">
+								<td style="text-align: center; padding: 0px;"></td>
+								<td style="text-align: center; padding: 0px;"></td>
+								<td style="text-align: center; padding: 0px;">
+									<div class="r-stack" style="margin: -50px">
+										<div class="fragment fade-out" data-fragment-index="2" style="background-color: green;">
+											$\sim 92 ms \approx 2 \times 7 \times 7ms$
+										</div>
+										<div class="fragment fade-in-then-out" data-fragment-index="2" style="background-color: red;">
+											$\sim 45 s \approx 757 \times 55ms$
+										</div>
+										<div class="fragment fade-in" data-fragment-index="3" style="background-color: red;">
+											$\sim 1h\, 10min \approx 757 \times 800 \times 7ms$
+										</div>
 									</div>
-									<div class="fragment fade-in-then-out" data-fragment-index="2" style="background-color: red;">
-										$\sim 45 s \approx 757 \times 55ms$
-									</div>
-									<div class="fragment fade-in" data-fragment-index="3" style="background-color: red;">
-										$\sim 1h\, 10min \approx 757 \times 800 \times 7ms$
-									</div>
-								</div>
-							</td>
-						</tr>
-					</table>
+								</td>
+							</tr>
+						</table>
+					</div>
 				</section>
 
 				<section style="text-align: left;">
