@@ -243,12 +243,12 @@
 									<img src="figures/01_material.jpg" alt="Material" width="700px" style="margin-top: 60px;">
 								</div>
 								<div class="fragment fade-in-then-out" data-fragment-index="2">
-									<video data-autoplay width="700px" style="margin-top: 40px;">
+									<video loop data-autoplay width="700px" style="margin-top: 40px;">
 										<source data-src="figures/02_forward.webm" type="video/webm">
 									</video>
 								</div>
 								<div class="fragment fade-in-then-out" data-fragment-index="3">
-									<video data-autoplay  width="700px" style="margin-top: 40px;">
+									<video loop data-autoplay  width="700px" style="margin-top: 40px;">
 										<source data-src="figures/03_ionization.webm" type="video/webm">
 									</video>
 								</div>
@@ -256,12 +256,12 @@
 									<img src="figures/04_interaction_volume.jpg" alt="Interaction Volume"  width="700px" style="margin-top: 60px;">
 								</div>
 								<div class="fragment fade-in-then-out" data-fragment-index="5">
-									<video data-autoplay  width="700px" style="margin-top: 40px;">
+									<video loop data-autoplay  width="700px" style="margin-top: 40px;">
 										<source data-src="figures/05_linescan.webm" type="video/webm">
 									</video>
 								</div>
 								<div class="fragment fade-in-then-out" data-fragment-index="6">
-									<video data-autoplay width="700px" style="margin-top: 40px;">
+									<video loop data-autoplay width="700px" style="margin-top: 40px;">
 										<source data-src="figures/06_linescan.webm" type="video/webm">
 									</video>
 								</div>
@@ -672,7 +672,7 @@
 						& \hphantom{= c(u) + a(u, \lambda)} = b(\lambda) = \langle \lambda, g \rangle_G = \langle A^*(h), g \rangle_G
 						\end{align*}
 					</p>
-					<div style="margin-top: 30px;" class="fragment fade-in" data-fragment-index="2" >
+					<div style="margin-top: 30px;" class="fragment fade-in" data-fragment-index="3" >
 						<ul><li>given multiple $g^{(i)} \in G$ ($b^{(i)} \in L(G, \mathbb{R})$) and $h^{(j)} \in H$ ($c^{(j)} \in L(H, \mathbb{R})$)</li></ul>
 						<div style="display:flex; margin-top: 30px;">
 	 						<div style="flex: 1;">
@@ -743,54 +743,42 @@
 							</td>
 							<td class="fragment fade-in" data-fragment-index="1">
 								<h4>1st "adjoint method" ($\lambda \in U(\mathcal{R})$):</h4>
-								<div class="r-stack">
-									<div class="fragment fade-out" data-fragment-index="2">
-										\begin{align*}
-											a_p(v, \lambda) + c(v) &= 0 \quad \forall v \in U(\mathcal{R}) \\
-											\Sigma^{(i)} &= b^{(i)}(\lambda) \\
-											C &= g_{\boldsymbol \Sigma}
-										\end{align*}
-									</div>
-									<div class="fragment fade-in" data-fragment-index="2">
-										\begin{align*}
-											a_p(v, \lambda) + c(v) &= 0 \quad \forall v \in U(\mathcal{R}) \\
-											C &= g_{\boldsymbol b(\lambda)}\\
-											\vphantom{C}
-										\end{align*}
-									</div>
-									
-								</div>
+									\begin{align*}
+										a_p(v, \lambda) + c(v) &= 0 \quad \forall v \in U(\mathcal{R}) \\
+										\Sigma^{(i)} &= b^{(i)}(\lambda) \\
+										C &= g_{\boldsymbol \Sigma}
+									\end{align*}
 							</td>
 						</tr>
 						<tr>
-							<td class="fragment fade-in" data-fragment-index="3">
+							<td class="fragment fade-in" data-fragment-index="2">
 								<h4>Tangent model/sensitivity ($\dot{\lambda}^{(n)} \in U(\mathcal{R})$):</h4>
 								<div class="r-stack">
-									<div class="fragment fade-out" data-fragment-index="4" style="margin-top: 20px;"> 
+									<div class="fragment fade-out" data-fragment-index="3" style="margin-top: 20px;"> 
 										\begin{align*}
 											a_p(v, \dot{\lambda}^{(n)}) + \dot{a}_p(v, \lambda, e^{(n)}) &= 0 \quad \forall v \in U(\mathcal{R})\\
 											\dot{C}^{(n)} &= \dot{g}_{\boldsymbol \Sigma}(\boldsymbol b(\dot{\lambda}^{(n)}))
 										\end{align*}
 									</div>
-									<div class="fragment fade-in" data-fragment-index="4" style="margin-top: -50px;">
+									<div class="fragment fade-in" data-fragment-index="3" style="margin-top: -50px;">
 										\begin{align*}
 											a_p(v, \dot{\lambda}^{(n)}) + \overbrace{\dot{a}_p(v, \lambda, e^{(n)})}^{=\beta^{(n)}(v)} &= 0 \quad \forall v \in U(\mathcal{R})\\
-											\dot{C}^{(n)} &= \underbrace{\dot{g}_{\boldsymbol \Sigma}(\boldsymbol b(\dot{\lambda}^{(n)}))}_{=\gamma(\lambda^{(n)})}
+											\dot{C}^{(n)} &= \underbrace{\dot{g}_{\boldsymbol \Sigma}(\boldsymbol b(\dot{\lambda}^{(n)}))}_{=\alpha(\dot{\lambda}^{(n)})}
 										\end{align*}
 									</div>
 								</div>
 								
 							</td>
-							<td class="fragment fade-in" data-fragment-index="5">
+							<td class="fragment fade-in" data-fragment-index="4">
 								<h4>2nd "adjoint method" ($\bar{\lambda} \in U(\mathcal{R})$):</h4>
 								<div class="r-stack">
-									<div class="fragment fade-out" data-fragment-index="6">
+									<div class="fragment fade-out" data-fragment-index="5">
 										\begin{align*}
 											a_p(\bar{\lambda}, v) + \dot{g}_{\boldsymbol \Sigma}(\boldsymbol b(v)) &= 0 \quad \forall v \in U(\mathcal{R})\\
 											\dot{C}^{(n)} &= \dot{a}_p(\bar{\lambda}, \lambda, e^{(n)})
 										\end{align*}
 									</div>
-									<div class="fragment fade-in" data-fragment-index="6">
+									<div class="fragment fade-in" data-fragment-index="5">
 										\begin{align*}
 											\bar{\Sigma} &= \bar{g}_{\boldsymbol \Sigma}(\bar{C})\\
 											a_p(\bar{\lambda}, v) + \bar{\boldsymbol \Sigma}^T \boldsymbol b(v) &= 0 \quad \forall v \in U(\mathcal{R})\\
@@ -1176,24 +1164,24 @@
 						</tr>
 						<tr class="fragment highlight-red" data-fragment-index="1">
 							<td style="text-align: center; vertical-align: top;">
-								<video data-autoplay style="width=550px; margin-top: 20px;"> 
+								<video loop data-autoplay style="width=550px; margin-top: 20px;"> 
 									<source data-src="figures/poisson/optimization_measurements.webm" type="video/webm">
 								</video>
 							</td>
 							<td style="text-align: center; ">
 								<div class="fragment highlight-red" data-fragment-index="1">
-									<video data-autoplay style="width: 600px;">
+									<video loop data-autoplay style="width: 600px;">
 										<source data-src="figures/poisson/optimization_material.webm" type="video/webm">
 									</video>
 								</div>
 							</td>
 							<td style="text-align: center; vertical-align: top;">
 								<div class="r-stack">
-									<video data-autoplay style="width=550px; margin-top: 50px; "> 
+									<video loop data-autoplay style="width=550px; margin-top: 50px; "> 
 										<source data-src="figures/poisson/optimization_error.webm" type="video/webm">
 									</video>
 									<div class="fragment fade-in" data-fragment-index="2">
-										<video style="width: 600px;">
+										<video loop style="width: 600px;">
 											<source data-src="figures/poisson/true_material.webm" type="video/webm">
 										</video>
 									</div>
@@ -1230,12 +1218,12 @@
 							</tr>
 							<tr style="border-style: hidden;">
 								<td style="text-align: center; vertical-align: top;">
-									<video data-autoplay style="width: 600px; margin-top: 00px;">
+									<video loop data-autoplay style="width: 600px; margin-top: 00px;">
 										<source data-src="figures/adjoint_visualization/forward.webm" type="video/webm">
 									</video>
 								</td>
 								<td style="text-align: center; vertical-align: top;">
-									<video data-autoplay style="width: 600px; margin-top: 00px;">
+									<video loop data-autoplay style="width: 600px; margin-top: 00px;">
 										<source data-src="figures/adjoint_visualization/adjoint.webm" type="video/webm">
 									</video>
 								</td>
@@ -1421,6 +1409,10 @@
 
 				transition: 'none',
 				backgroundTransition: 'fade-in',
+
+				slideNumber: slide => {
+					// Ignore numbering of vertical slides
+					return [ Reveal.getIndices(slide ).h+"/"+(Reveal.getHorizontalSlides().length-1)];},
 
 				// Learn about plugins: https://revealjs.com/plugins/
 				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath]
