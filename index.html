@@ -85,25 +85,25 @@
 										<source data-src="figures/02_forward.webm" type="video/webm">
 									</video>
 								</div>
-								<div class="fragment fade-in-then-out" data-fragment-index="3">
+								<!-- <div class="fragment fade-in-then-out" data-fragment-index="3">
 									<video loop data-autoplay  width="700px" style="margin-top: 40px;">
 										<source data-src="figures/03_ionization.webm" type="video/webm">
 									</video>
-								</div>
-								<div class="fragment fade-in-then-out" data-fragment-index="4">
+								</div> -->
+								<div class="fragment fade-in-then-out" data-fragment-index="3">
 									<img src="figures/04_interaction_volume.jpg" alt="Interaction Volume"  width="700px" style="margin-top: 60px;">
 								</div>
-								<div class="fragment fade-in-then-out" data-fragment-index="5">
+								<div class="fragment fade-in-then-out" data-fragment-index="4">
 									<video loop data-autoplay  width="700px" style="margin-top: 40px;">
 										<source data-src="figures/05_linescan.webm" type="video/webm">
 									</video>
 								</div>
-								<div class="fragment fade-in-then-out" data-fragment-index="6">
+								<div class="fragment fade-in-then-out" data-fragment-index="5">
 									<video loop data-autoplay width="700px" style="margin-top: 40px;">
 										<source data-src="figures/06_linescan.webm" type="video/webm">
 									</video>
 								</div>
-								<div class="fragment fade-in" data-fragment-index="7">
+								<div class="fragment fade-in" data-fragment-index="6">
 									<video data-autoplay width="700px" style="margin-top: 40px;">
 										<source data-src="figures/07_linescan.webm" type="video/webm">
 									</video>
@@ -114,17 +114,17 @@
 									<li class="fragment fade-in" data-fragment-index="1">Example Material: two-phase (<span style="color: orange">A</span>, <span style="color: green;">B</span>)</li>
 									<li class="fragment fade-in" data-fragment-index="2"><span style="color:blue">Electron</span> propagation affected by scattering (animated: different energies) </li>
 									<li class="fragment fade-in" data-fragment-index="3">Ionization and emission of characteristic x-rays (wavelength of <span style="color:orange">A-rays</span> and <span style="color:green">B-rays</span> differ)</li>
-									<li class="fragment fade-in" data-fragment-index="4">Measure wavelength-dispersive x-ray intensity</li>
-									<li class="fragment fade-in" data-fragment-index="5">Spatial information gained via different beam positions (linescan), <span class="fragment fade-in" data-fragment-index="6">beam angles </span> <span class="fragment fade-in" data-fragment-index="7">and beam energies</span></li>
-									<li class="fragment fade-in" data-fragment-index="8"><em>inverse problem of material reconstruction</em>
-										<span class="fragment fade-in" data-fragment-index="8">
+									<!-- <li class="fragment fade-in" data-fragment-index="4">Measure wavelength-dispersive x-ray intensity</li> -->
+									<li class="fragment fade-in" data-fragment-index="4">Spatial information gained via different beam positions (linescan), <span class="fragment fade-in" data-fragment-index="5">beam angles </span> <span class="fragment fade-in" data-fragment-index="6">and beam energies</span></li>
+									<li class="fragment fade-in" data-fragment-index=7"><em>inverse problem of material reconstruction</em>
+										<span class="fragment fade-in" data-fragment-index="7">
 											\begin{equation}
-												p^* = \underset{p \in P}{\text{arg min}} \underbrace{|| (\Sigma \circ \gamma)(p)  - \tilde{\Sigma} ||^2}_{=C(p)}
+												p^* = \underset{p \in P}{\text{arg min}} \underbrace{|| \Sigma(p)  - \tilde{\Sigma} ||^2}_{=C(p)}
 											\end{equation}
 										</span>
 									</li>
-									<li class="fragment fade-in" data-fragment-index="9">gradient-based iterative methods (Steepest Descent, BFGS, or HMC)</li>
-									<li class="fragment fade-in" data-fragment-index="10"><em>we focus on computing $\nabla_p C(p)$ efficiently via adjoints</em></li>
+									<li class="fragment fade-in" data-fragment-index="8">gradient-based iterative methods (Steepest Descent, BFGS, or HMC)</li>
+									<li class="fragment fade-in" data-fragment-index="9"><em>we focus on computing $\nabla_p C(p)$ efficiently via adjoints</em></li>
 								</ul>
 							</div>
 						</div>
